@@ -1,0 +1,135 @@
+---
+layout: 'default'
+title: 'Lecture 06'
+weburl: ''
+units: []
+---
+
+include ../../fragments/slide_mixins
+
+ 
+
+.deck-container
+
+  #title-slide.slide
+    img.bkg(src='/img/bkg/flowers/DSC_4550.JPG')
+    .spacer &nbsp;
+    .title-block(style="position:relative; top:325px"): .title-container
+        h1.title1 Logic I (PH126)
+        h1.title2 #{document.title}
+        h3.email s.butterfill@warwick.ac.uk
+    if document.weburl
+      .words
+        span(style="position:relative;top:250px;left:450px;").white-box.big.center #{document.weburl}
+
+  .slide
+    .container_12: grid_12
+      .words
+        p 'What is the difference between putting the negation outside of parenthesis and putting into individual brackets?'
+    .slide
+      .clear
+      .container_12.em-above
+        .grid_6
+          p ¬P ∨ ¬Q
+          p E.g. "The parrot is not dead; or I am not dead."
+        .slide.grid_6
+          p ¬(P ∨ Q)
+          p E.g. "This is untrue: the parrot is dead or I am dead"
+
+
+  //- *nb might have done this in lecture_05
+  //- unit: Syntax for Logiya 
+  - var d = get_unit(230)
+    section#unit_230.slide
+      img.bkg(src='/img/bkg/flowers/DSC_AA_7346.JPG')
+      .spacer &nbsp;
+      .title-block: .title-container
+        h2.title1 #{d.title}
+    //- unit_231 is just a recap
+    - var d2 = get_unit(231) 
+      != d2.contentRendered  
+    != d.contentRendered  
+
+  //- *skip because alt version in unit_232 for now (*todo fix)
+    //- postsecret quiz: syntax
+    - each d in getCollection("documents").findAll({url:'/quizes/postsecret_02.html'},[{year:-1,sort_order:1}]).toJSON()
+      != d.contentRendered
+
+  - var d = get_unit(232)
+    != d.contentRendered
+
+
+  //- unit: negation (rules of proof)
+  section#unit_280.slide
+    img.bkg(src='/img/bkg/flowers/DSC_AA_7394.JPG')
+    .spacer &nbsp;
+    .title-block: .title-container
+        h2.title1 ¬Intro, ¬Elim
+  //- ¬Elim 
+  - d = get_unit(280)
+    != d.contentRendered
+  //- ¬Intro
+  - d = get_unit(281)
+    != d.contentRendered  
+  //- unit_282 just completes a proof example
+  - d = get_unit(282)
+    != d.contentRendered  
+
+  //- unit: subproofs are tricky
+  - d = get_unit(224)
+    section#unit_224.slide
+      img.bkg(src='/img/bkg/flowers/P1011077 crop.JPG')
+      .spacer &nbsp;
+      .title-block: .title-container
+          h2.title1 #{d.title}
+    //- prefix with unit_223, a recap of the use of or-elim
+    - d2 = get_unit(223)
+      != d2.contentRendered  
+    != d.contentRendered  
+
+  //- skit: Baudrillard
+  - each d in getCollection("documents").findAll({url:'/skits/skit_02.html'},[{year:-1,sort_order:1}]).toJSON()
+    != d.contentRendered
+
+
+  //- unit: everything is broken (intro to quantifiers)
+  //- *did this in lecture_05
+    - d = get_unit(471)
+    - each d in getCollection("documents").findAll({url:'/units/unit_471.html'},[{year:-1,sort_order:1}]).toJSON()
+      section#unit_471.slide
+        img.bkg(src='/img/bkg/flowers/P9172323.JPG')
+        .spacer &nbsp;
+        .title-block: .title-container
+            h2.title1 #{d.title}
+      //- choose your quantifiers (polka, value)
+      - d = get_unit(473)
+        != d2.contentRendered
+      != d.contentRendered
+
+  //- unit: I met a philosopher
+  //- *only if unit_471 done in lecture_05
+  - d = get_unit(501)
+    section#unit_501.slide
+      img.bkg(src='/img/bkg/flowers/P9172323.JPG')
+      .spacer &nbsp;
+      .title-block: .title-container
+          h2.title1 #{d.title}
+    != d.contentRendered  
+
+
+
+  //- would be good to leave this for another lecture
+  //- unit: scope
+  section#unit_290.slide
+    img.bkg(src='/img/bkg/flowers/P1011068.JPG')
+    .spacer &nbsp;
+    .title-block: .title-container
+        h2.title1 Scope
+  //- introduce it with discussion of a mistake about ¬Intro (rules of proof apply only to connective with widest scope)
+  - d = get_unit(291)
+    != d.contentRendered
+  //- scope 
+  - d = get_unit(290)
+    != d.contentRendered  
+
+    a.deck-permalink(href='.', title='Permalink to this slide') #

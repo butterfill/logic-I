@@ -2,6 +2,8 @@
 # It is simply a CoffeeScript Object which is parsed by CSON
 docpadConfig = {
 
+	renderPasses : 2
+
 	# =================================
 	# Template Data
 	# These are variables that will be accessible via our templates
@@ -14,23 +16,17 @@ docpadConfig = {
 			# The production url of our website
 			url: "http://website.com"
 
-			# Here are some old site urls that you would like to redirect from
-			oldUrls: [
-				'www.website.com',
-				'website.herokuapp.com'
-			]
-
 			# The default title of our website
-			title: "Your Website"
+			title: "Logic I (PH126)"
 
 			# The website description (for SEO)
 			description: """
-				When your website appears in search results in say Google, the text here will be shown underneath your website's title.
+				Notes for lectures on Logic I (PH126), an introduction to predicate logic.
 				"""
 
 			# The website keywords (for SEO) separated by commas
 			keywords: """
-				place, your, website, keywoards, here, keep, them, related, to, the, content, of, your, website
+				logic, truth, logical validity
 				"""
 
 
@@ -86,6 +82,10 @@ docpadConfig = {
 					res.redirect(newUrl+req.url, 301)
 				else
 					next()
+	
+	collections:
+		lectures: -> @getCollection('documents').findAll({basename:/^(fast)?lecture_/}, [basename:1])
+		fast_lectures: -> @getCollection('documents').findAll({basename:$startsWith:'fastlecture_'}, [basename:1])
 }
 
 # Export our DocPad Configuration

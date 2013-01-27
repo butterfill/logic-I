@@ -1,0 +1,86 @@
+Dear Peter,
+
+Thanks for signing up to teach Logic 1 this year (PH126).  I hope this email will put us in complete agreement about everything.
+
+Let's fix up a time to meet, after you've had chance to implement the points below.  How about Wednesday at 2pm?
+
+Do: 
+------
+
+1. Please make sure that you can log in as an instructor on the LPL web site:
+
+http://ggweb.stanford.edu/lpl/
+
+When you do this you should somehow see that you are part of a class called '2013-13 spring PH126'.  I have registered you for this using these email addresses:
+
+h.lerman@warwick.ac.uk
+P.Shum@warwick.ac.uk
+K.Wilson@warwick.ac.uk
+
+2. If you don't yet have a copy of the textbook, please get one.  There are some in my office, on the bookshelf nearest the window.  If I'm not around, please ask Sarah or someone in the office to let you in.  Make sure you get a shrink-wrapped copy as you'll need the code that comes with a new book.  
+
+3. I am attaching the first set of exercises & course outline which are designed to explain to students what is going on --- please read these to see how it all works.
+
+4. I think you haven't taught this course with me before, but you did with Michael so you're already familiar with the syntax, exercises &c.
+
+
+Notes:
+-------------
+
+i. There is now a second edition of our textbook with new software and some changes to the exercises.  I don't have any copies of it yet.  The students will have different editions of the book from the one you have.  This has not proved to be a big problem.  Here are the changes:
+
+http://ggweb.stanford.edu/lpl/secondedition
+
+ii. There are no seminars in week 1 this year.  Seminars start in week 2.  
+
+iii.  At the end of the module you will be asked to write a report on each student.  This report should include details of attendance at seminars and their marks for the seminar exercises.  So please keep a good record of this for each week (it's really painful to have to reconstruct if you don't, as I discovered the first year I did this).
+
+iv. Details of lecture times are here:
+http://www2.warwick.ac.uk/fac/soc/philosophy/undergraduate/modules/ph126/
+
+v. I'm considering whether to put handouts and exercises online this year or just to have students who miss a lecture email me for them.  In any case I will try to email you them as soon as I set them.
+
+vi. The first set of exercises are online & attached.
+
+
+best wishes,
+Steve
+
+
+
+Dear Hemdat & Keith,
+
+Thanks for signing up to teach Logic 1 this year (PH126).  I hope this email will put us in complete agreement about everything.
+
+(Keith --- I'm told you're teaching logic but I don't see any seminars; please ignore this email if you're not down to teach logic this term.)
+
+Do: 
+------
+
+1. Please make sure that you can log in as an instructor on the LPL web site:
+
+http://ggweb.stanford.edu/lpl/
+
+When you do this you should somehow see that you are part of a class called '2013-13 spring PH126'.  I have registered you for this using these email addresses:
+
+h.lerman@warwick.ac.uk
+P.Shum@warwick.ac.uk
+K.Wilson@warwick.ac.uk
+
+
+Notes:
+-------------
+
+i. There are no seminars in week 1 this year.  Seminars start in week 2.  
+
+ii.  You know this already but ... At the end of the module you will be asked to write a report on each student.  This report should include details of attendance at seminars and their marks for the seminar exercises.  So please keep a good record of this for each week (it's really painful to have to reconstruct if you don't, as I discovered the first year I did this).
+
+iii. Details of lecture times are here (same as last year):
+http://www2.warwick.ac.uk/fac/soc/philosophy/undergraduate/modules/ph126/
+
+iv. I'm aiming to make at most minimal changes to the exercises from last year.  I'm considering whether to put handouts and exercises online this year or just to have students who miss a lecture email me for them.  In any case I will try to email you them as soon as I set them.
+
+v. The first set of exercises are online & attached.
+
+best wishes,
+Steve

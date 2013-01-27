@@ -1,0 +1,32 @@
+#pigs2.slide
+  .words
+    .container_12
+      .grid_12
+        table
+          tbody
+            tr
+              td(style="width:50%")
+                p Either it went up the left fork or it went up the right fork
+              td.hide.step2
+                p
+                  span.stretch-2 } 
+                  |  premise
+              td(rowspan='4').hide.step4
+                p
+                  span.stretch-6 }
+                  |  argument
+            tr
+              td
+                p It didn’t go up the left fork
+              td.hide.step2
+                p } premise
+            tr
+              td
+                p therefore:
+            tr
+              td
+                p It went up the right fork
+              td.hide.step3
+                p } conclusion
+    mixin steps(4)
+

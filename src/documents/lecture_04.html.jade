@@ -1,0 +1,91 @@
+---
+layout: 'default'
+title: 'Lecture 04'
+weburl: ''
+---
+
+include ../../fragments/slide_mixins
+
+
+.deck-container
+  #title-slide.slide
+    img.bkg(src='/img/bkg/frozen/DSC_1587_mod.jpg')
+    .spacer &nbsp;
+    .title-block: .title-container
+        h1.title1 Logic I (PH126)
+        h1.title2 #{document.title}
+        h3.email s.butterfill@warwick.ac.uk
+    if document.weburl
+      .words
+        span(style="position:relative;top:250px;left:450px;").white-box.big.center #{document.weburl}
+
+
+  //- unit: proof - compare conjunction intro with disjunction intro
+  - each d in getCollection("documents").findAll({url:'/units/unit_212.html'},[{year:-1,sort_order:1}]).toJSON()
+    section#unit_212.slide
+      p.middle.center How come we can prove only valid arguments?
+    != d.contentRendered  
+
+  //- unit: formal proof (identity again)
+  - each d in getCollection("documents").findAll({url:'/units/unit_111.html'},[{year:-1,sort_order:1}]).toJSON()
+    section#unit_111.slide
+      img.bkg(src='/img/bkg/frozen/DSC_1593_mod.jpg')
+      .spacer &nbsp;
+      .title-block: .title-container
+          h2.title1 #{d.title}
+    != d.contentRendered  
+
+
+  //- unit: truth-functional connectives
+  - each d in getCollection("documents").findAll({url:'/units/unit_072.html'},[{year:-1,sort_order:1}]).toJSON()
+    section#unit_072.slide
+      img.bkg(src='/img/bkg/frozen/DSC_1595_mod.jpg')
+      .spacer &nbsp;
+      .title-block: .title-container
+          h2.title1 #{d.title}
+    != d.contentRendered  
+  
+  //- the Bush examples
+  .slide
+    p.middle.center Dissatisfaction is good
+  - each d in getCollection("documents").findAll({url:'/units/unit_162.html'},[{year:-1,sort_order:1}]).toJSON()
+    != d.contentRendered  
+
+  
+  //- unit: A and B or C
+  - each d in getCollection("documents").findAll({url:'/units/unit_151.html'},[{year:-1,sort_order:1}]).toJSON()
+    section#unit_151.slide
+      img.bkg(src='/img/bkg/frozen/DSC_1600_mod.jpg')
+      .spacer &nbsp;
+      .title-block: .title-container
+          h2.title1 #{d.title}
+    != d.contentRendered  
+  - each d in getCollection("documents").findAll({url:'/units/unit_153.html'},[{year:-1,sort_order:1}]).toJSON()
+    != d.contentRendered
+  - each d in getCollection("documents").findAll({url:'/units/unit_154.html'},[{year:-1,sort_order:1}]).toJSON()
+    != d.contentRendered
+  
+  
+  //- not used in 2012/3
+    //- unit: Ambiguity (elephant pyjamas)
+    - each d in getCollection("documents").findAll({url:'/units/unit_170.html'},[{year:-1,sort_order:1}]).toJSON()
+      section#unit_170.slide
+        img.bkg(src='/img/bkg/frozen/DSC_1603.jpg')
+        .spacer &nbsp;
+        .title-block: .title-container
+            h2.title1 #{d.title}
+      != d.contentRendered  
+
+  
+  //---------------------------------------------------------
+  //- 2012/3 : decided not to do this (or put in lecture 04?): important to get stuck into formal proof
+    //- recap: validity and counterexamples (quick opener)
+    //- nb: this might have been used in lecture 02 (depending on whether counterexamples where covered in lecture 01 or later)
+    - each d in getCollection("documents").findAll({url:'/units/unit_05.html'},[{year:-1,sort_order:1}]).toJSON()
+      != d.contentRendered
+
+
+  
+
+
+    a.deck-permalink(href='.', title='Permalink to this slide') #

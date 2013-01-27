@@ -1,0 +1,106 @@
+---
+layout: 'default'
+title: 'Lecture 01'
+weburl: 'http://goo.gl/CYlgf'
+---
+
+include ../../fragments/slide_mixins
+
+
+.deck-container
+  #title-slide.slide
+    // *notes This is a course about the limits of the world.  But let me start with a concrete example.
+    img.bkg(src='/img/bkg/bees/DSC_0172_crop.jpg')
+    .spacer &nbsp;
+    .title-block: .title-container
+        h1.title1 Logic I (PH126)
+        h1.title2 #{document.title}
+        h3.email s.butterfill@warwick.ac.uk
+    if document.weburl
+      .words
+        span(style="position:relative;top:250px;left:450px;").white-box.big.center #{document.weburl}
+ 
+  //- section: unit_01 two pigs
+  //- started translating to html
+  //- include ../../fragments/unit_01_two_pigs
+  - each d in getCollection("documents").findAll({url:'/units/unit_01.html'},[{year:-1,sort_order:1}]).toJSON()
+    != d.contentRendered
+
+  - each d in getCollection("documents").findAll({url:'/units/unit_011.html'},[{year:-1,sort_order:1}]).toJSON()
+    section#unit_011.slide
+      img.bkg(src='/img/bkg/bees/DSC_0200_crop.jpg')
+      .spacer &nbsp;
+      .title-block: .title-container
+          h2.title1 #{d.title}
+    != d.contentRendered
+    
+  // *notes admin section
+  section.slide
+    img.bkg(src='/img/bkg/bees/DSC_0157_crop.jpg')
+    .spacer &nbsp;
+    .title-block: .title-container
+        h2.title1 Admin
+    .words: .container_12: .grid_12
+      ul
+        li.slide Seminar groups (check email or see module web page)
+        li.slide Exercises
+        li.slide Fast-track lectures 
+          span#and_seminars.hide and seminars
+          div.slide.anim-removeclass(data-what="#and_seminars",data-class="hide")
+        li.slide Support
+  // more about support --- the exams, bad email
+  //- cut exams
+    section.slide
+      img.bkg(src='/img/lecture_01/slide-025.jpeg')
+    section.slide
+      img.bkg(src='/img/lecture_01/slide-026.jpeg')
+    section.slide
+      img.bkg(src='/img/lecture_01/slide-027.jpeg')
+  // *notes bad email the night before resit exam
+  section.slide
+    img.bkg(src='/img/lecture_01/slide-031.jpeg')
+  // *notes staircase, need to progress stepwise but we will go into the light
+  section.slide
+    img.bkg(src='/img/lecture_01/P4258786 merge2.jpg')
+
+  //- unit: quick intro to Logiya
+  - each d in getCollection("documents").findAll({url:'/units/unit_02.html'},[{year:-1,sort_order:1}]).toJSON()
+    section#unit_02.slide
+      img.bkg(src='/img/bkg/bees/DSC_0169_crop.jpg')
+      .spacer &nbsp;
+      .title-block: .title-container
+          h2.title1 #{d.title}
+    != d.contentRendered
+  //- extension -- *todo incorporate in unit_02
+  // *notes We need a formal language because ambiguity is awkward to deal with theoretically
+  section.slide
+    p.middle.center This is a hospital where doctors are trained.
+  // *notes Appearance and reality. We need a formal language because we want a guarantee that a sentence which seems to express a proposition really does express a proposition.
+  section.slide
+    p.middle.center Many more people have been to Paris than I have.
+
+  //- unit: logically valid arguments
+  - each d in getCollection("documents").findAll({url:'/units/unit_03.html'},[{year:-1,sort_order:1}]).toJSON()
+    section#unit_03.slide
+      img.bkg(src='/img/bkg/bees/DSC_0165_crop.jpg')
+      .spacer &nbsp;
+      .title-block: .title-container
+          h2.title1 #{d.title}
+    != d.contentRendered
+
+  // *notes didn't do this in 2012-3 but leave it in in case you do have time!
+  //- counterexamples & sound argument
+  // 
+    - each d in getCollection("documents").findAll({url:'/units/unit_04.html'},[{year:-1,sort_order:1}]).toJSON()
+      section#unit_04.slide
+        img.bkg(src='/img/bkg/bees/DSC_0170_crop.jpg')
+        .spacer &nbsp;
+        .title-block: .title-container
+            h2.title1 #{d.title}
+      != d.contentRendered
+    //- omit title for sound argument, treat it as part of counterexamples
+    - each d in getCollection("documents").findAll({url:'/units/unit_041.html'},[{year:-1,sort_order:1}]).toJSON()
+      != d.contentRendered
+     
+
+    a.deck-permalink(href='.', title='Permalink to this slide') #

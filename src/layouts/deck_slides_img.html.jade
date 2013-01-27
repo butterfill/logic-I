@@ -1,0 +1,7 @@
+---cson
+---
+
+each f in getFilesAtPath('img/'+document.images+'/',[{basename:1}]).toJSON()
+    section.slide
+        img(src=f.url)
+

@@ -1,0 +1,148 @@
+---
+layout: 'default'
+title: 'Fast Lecture 03'
+weburl: ''
+units: []
+---
+
+include ../../fragments/slide_mixins
+
+
+.deck-container
+  #title-slide.slide
+    img.bkg(src='/img/bkg/birds_baby/P5260025_crop.JPG')
+    .spacer &nbsp;
+    .title-block(style="position:relative; top:325px"): .title-container
+        h1.title1 Logic I (PH126)
+        h1.title2 #{document.title}
+        h3.email s.butterfill@warwick.ac.uk
+    if document.weburl
+      .words
+        span(style="position:relative;top:250px;left:450px;").white-box.big.center #{document.weburl}
+
+  //- unit: Syntax for Logiya 
+  section#unit_230.slide
+    p.center.middle Syntax of Logiya
+      br
+      | or: what the brackets mean
+  //- unit_231 is just a recap
+  - var d = get_unit(231)
+    != d.contentRendered  
+  - d = get_unit(230)
+    != d.contentRendered  
+
+  //- syntax is followed by postsecret quiz but do this later in the lecture (see below)
+
+  
+  .slide
+    p.center.middle No lecture next week (Tuesday 29 January)
+
+  
+
+  //- unit: disjunction-Elim ∨Elim (and ∨Intro)
+  - d = get_unit(221)
+    section#unit_221.slide
+      img.bkg(src='/img/bkg/birds_baby/P5260007.JPG')
+      .spacer &nbsp;
+      .title-block: .title-container
+          h2.title1 #{d.title}
+    //- prefix with super quick into to ∨Intro
+    - d2 = get_unit(222)
+      != d2.contentRendered  
+    != d.contentRendered  
+
+  //- unit: subproofs are tricky
+  - d = get_unit(224)
+    section#unit_224.slide
+      img.bkg(src='/img/bkg/birds_baby/P5260015.JPG')
+      .spacer &nbsp;
+      .title-block: .title-container
+          h2.title1 #{d.title}
+    != d.contentRendered  
+
+  //- postsecret quiz: syntax
+  - each d in getCollection("documents").findAll({url:'/quizes/postsecret_02.html'},[{year:-1,sort_order:1}]).toJSON()
+    != d.contentRendered
+
+
+  //- unit: negation and contradiction (rules of proof for contradiction)
+  - d = get_unit(270)
+    section#unit_270.slide
+      img.bkg(src='/img/bkg/birds_baby/P5260027_crop.JPG')
+      .spacer &nbsp;
+      .title-block(style="position:relative; top:425px"): .title-container
+          h2.title1 #{d.title}
+    != d.contentRendered  
+
+  .slide
+    p.center.middle No lecture next week (Tuesday 29 January)
+
+  //- skit: feedback
+  - each d in getCollection("documents").findAll({url:'/skits/skit_01.html'},[{year:-1,sort_order:1}]).toJSON()
+    != d.contentRendered
+    #2012_3.slide
+      .container_12: .grid_12
+        p.center.middle ‘The lectures are really helpful and engaging, however it is quite difficult to write down all the important points during the lectures so it would be really helpful if the powerpoints from the lectures and maybe even audio recordings could be made available to students.’
+  
+  
+  //- unit: negation (rules of proof)
+  section#unit_280.slide
+    img.bkg(src='/img/bkg/birds_baby/P5260031_crop.JPG')
+    .spacer &nbsp;
+    .title-block(style="position:relative; top:425px"): .title-container
+        h2.title1 ¬Elim, ¬Intro
+  //- ¬Elim 
+  - d = get_unit(280)
+    != d.contentRendered
+  //- ¬Intro
+  - d = get_unit(281)
+    != d.contentRendered  
+  //- unit_282 just completes the proof --- unnecessary for fast group
+    - d = get_unit(282)
+      != d.contentRendered  
+  
+
+  //- unit: arrow intro, arrow elim
+  - d = get_unit(390)
+    section#unit_390.slide
+      img.bkg(src='/img/bkg/birds_baby/P5260056.JPG')
+      .spacer &nbsp;
+      .title-block: .title-container
+          h2.title1 #{d.title}
+    != d.contentRendered  
+  //- continuation: arrow elim hard proof example (is this appropriate for fast lectures?)
+  - d = get_unit(391)
+    != d.contentRendered  
+
+  .slide
+    p.center.middle No lecture next week (Tuesday 29 January)
+
+  //- unit: scope
+  section#unit_290.slide
+    img.bkg(src='/img/bkg/birds_baby/P5260009.JPG')
+    .spacer &nbsp;
+    .title-block: .title-container
+        h2.title1 Scope
+  //- introduce it with discussion of a mistake about ¬Intro (rules of proof apply only to connective with widest scope)
+  - d = get_unit(291)
+    != d.contentRendered
+  //- scope
+  - d = get_unit(290)
+    != d.contentRendered
+
+  
+  //- nb this ended up in lecture_04 in 2011-2
+  //- unit: everything is broken (intro to quantifiers)
+  - d = get_unit(471)
+    section#unit_471.slide
+      img.bkg(src='/img/bkg/birds_baby/P5260020.JPG')
+      .spacer &nbsp;
+      .title-block: .title-container
+          h2.title1 #{d.title}
+    //- choose your quantifiers (polka, value)
+    - d2 = get_unit(473)
+      != d2.contentRendered
+    != d.contentRendered
+
+  .slide
+    p.center.middle No lecture next week (Tuesday 29 January)

@@ -1,0 +1,101 @@
+---
+layout: 'default'
+title: 'Fast Lecture 02'
+weburl: ''
+---
+
+include ../../fragments/slide_mixins
+
+
+.deck-container
+  #title-slide.slide
+    // *notes This course is about the notion of logical Validity
+    img.bkg(src='/img/bkg/sunset/PC175703.JPG')
+    .spacer &nbsp;
+    .title-block: .title-container
+        h1.title1 Logic I (PH126)
+        h1.title2 #{document.title}
+        h3.email s.butterfill@warwick.ac.uk
+    if document.weburl
+      .words
+        span(style="position:relative;top:250px;left:450px;").white-box.big.center #{document.weburl}
+ 
+  //- section: unit_211, unit_21 = formal proof 1
+  - each d in getCollection("documents").findAll({url:'/units/unit_211.html'},[{year:-1,sort_order:1}]).toJSON()
+    != d.contentRendered
+  - each d in getCollection("documents").findAll({url:'/units/unit_21.html'},[{year:-1,sort_order:1}]).toJSON()
+    != d.contentRendered
+
+  //- unit: proof - compare conjunction intro with disjunction intro
+  - each d in getCollection("documents").findAll({url:'/units/unit_212.html'},[{year:-1,sort_order:1}]).toJSON()
+    section#unit_212.slide
+      img.bkg(src='/img/bkg/sunset/PC175701.JPG')
+      .spacer &nbsp;
+      .title-block: .title-container
+          h2.title1 #{d.title}
+    != d.contentRendered  
+
+  section#exercises_warning.slide
+    p.middle.center Fast track and normal seminars have 
+      span.diff different exercises.
+    .slide.anim-addclass(data-what=".diff", data-class="bkg-words-highlight-red")
+  
+  //- unit: rules for identity
+  - each d in getCollection("documents").findAll({url:'/units/unit_11.html'},[{year:-1,sort_order:1}]).toJSON()
+    section#unit_011.slide
+      img.bkg(src='/img/bkg/sunset/PC175704.JPG')
+      .spacer &nbsp;
+      .title-block: .title-container
+          h2.title1 #{d.title}
+    != d.contentRendered  
+  
+  //- unit: truth-functional connectives
+  - each d in getCollection("documents").findAll({url:'/units/unit_072.html'},[{year:-1,sort_order:1}]).toJSON()
+    section#unit_072.slide
+      img.bkg(src='/img/bkg/sunset/PC175705.JPG')
+      .spacer &nbsp;
+      .title-block: .title-container
+          h2.title1 #{d.title}
+    != d.contentRendered  
+  
+  //- unit: formal proof (identity again)
+  - each d in getCollection("documents").findAll({url:'/units/unit_111.html'},[{year:-1,sort_order:1}]).toJSON()
+    section#unit_111.slide
+      img.bkg(src='/img/bkg/sunset/PC175709.JPG')
+      .spacer &nbsp;
+      .title-block: .title-container
+          h2.title1 #{d.title}
+    != d.contentRendered  
+  
+  
+  //- unit: A and B or C
+  - each d in getCollection("documents").findAll({url:'/units/unit_151.html'},[{year:-1,sort_order:1}]).toJSON()
+    section#unit_151.slide
+      img.bkg(src='/img/bkg/sunset/PC175714.JPG')
+      .spacer &nbsp;
+      .title-block: .title-container
+          h2.title1 #{d.title}
+    != d.contentRendered  
+  - each d in getCollection("documents").findAll({url:'/units/unit_152.html'},[{year:-1,sort_order:1}]).toJSON()
+    != d.contentRendered
+  - each d in getCollection("documents").findAll({url:'/units/unit_154.html'},[{year:-1,sort_order:1}]).toJSON()
+    != d.contentRendered
+  
+  //- unit: Ambiguity (elephant pyjamas)
+  - each d in getCollection("documents").findAll({url:'/units/unit_170.html'},[{year:-1,sort_order:1}]).toJSON()
+    section#unit_170.slide
+      img.bkg(src='/img/bkg/sunset/PC175723.JPG')
+      .spacer &nbsp;
+      .title-block: .title-container
+          h2.title1 #{d.title}
+    != d.contentRendered  
+
+  //- didn't need in 2012-3  
+    //- unit: Syntax for Logiya (hopefully won't have time: belongs in lecture 03)
+    - each d in getCollection("documents").findAll({url:'/units/unit_230.html'},[{year:-1,sort_order:1}]).toJSON()
+      section#unit_230.slide
+        img.bkg(src='/img/bkg/sunset/PC175731.JPG')
+        .spacer &nbsp;
+        .title-block: .title-container
+            h2.title1 #{d.title}
+      != d.contentRendered  

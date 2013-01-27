@@ -1,0 +1,153 @@
+---
+layout: 'default'
+title: 'Lecture 03'
+weburl: ''
+---
+
+include ../../fragments/slide_mixins
+
+
+.deck-container
+  #title-slide.slide
+    img.bkg(src='/img/bkg/budapest/IMG_nc_5766.JPG')
+    .spacer &nbsp;
+    .title-block: .title-container
+        h1.title1 Logic I (PH126)
+        h1.title2 #{document.title}
+        h3.email s.butterfill@warwick.ac.uk
+    if document.weburl
+      .words
+        span(style="position:relative;top:250px;left:450px;").white-box.big.center #{document.weburl}
+
+  //- 2012/3 : decided not to do this (or put in lecture 04?): important to get stuck into formal proof
+    //- recap: validity and counterexamples (quick opener)
+    //- nb: this might have been used in lecture 02 (depending on whether counterexamples where covered in lecture 01 or later)
+    - each d in getCollection("documents").findAll({url:'/units/unit_05.html'},[{year:-1,sort_order:1}]).toJSON()
+      != d.contentRendered
+
+  //- section: unit_211, unit_21 = formal proof 1
+  - each d in getCollection("documents").findAll({url:'/units/unit_211.html'},[{year:-1,sort_order:1}]).toJSON()
+    //- (*check: because right after title slide lecture)
+      section.slide#unit_211
+          img.bkg(src='/img/bkg/budapest/IMG_nc_5364.JPG')
+          .spacer &nbsp;
+          .title-block(style="position:relative; top:425px"): .title-container
+              h2.title1 #{d.title} 
+    != d.contentRendered
+  - each d in getCollection("documents").findAll({url:'/units/unit_213.html'},[{year:-1,sort_order:1}]).toJSON()
+    != d.contentRendered
+  - each d in getCollection("documents").findAll({url:'/units/unit_21.html'},[{year:-1,sort_order:1}]).toJSON()
+    != d.contentRendered
+
+
+  //- break
+  // *notes: logic can be confusing at first. Don't despair. It's important to have a logic partner.
+  section#be_honest.slide
+    img.bkg(src="/img/xkcd_1146.png",width="800px").em-above
+    .right(style="position:absolute;top:520px;")
+      p source: 
+        em xkcd.com/1146
+  
+  section#exercises_warning.slide
+    p.middle.center Fast track and normal seminars have 
+      span.diff different exercises.
+    .slide.anim-addclass(data-what=".diff", data-class="bkg-words-highlight-red")
+  
+  //- reply to student email (keep anonymous; o.j.neil-smith@warwick.ac.uk)
+  section#disjunction_is_exclusive.slide
+    .words: .container_12: .grid_12
+      p ‘... some confusion in regards to 
+        span.first-mistake the ∨ symbol 
+          span.first-mistake-b representing ‘or’
+        | ...’
+      .slide.anim-addclass(data-what=".first-mistake", data-class="bkg-words-highlight-red")
+      //- indent to avoid dimming!
+      .slide.em-above
+        table.truth-table
+          tr
+            td A
+            td B
+            td.result-col A ∨ B
+          tr
+            td T
+            td T
+            td.result-col T
+            td.comment.hide <--- ‘surely this is illogical’
+          tr
+            td T
+            td F
+            td.result-col
+              span.error F
+              span.correct.hide T
+          tr
+            td F
+            td T
+            td.result-col 
+              span.error F
+              span.correct.hide T
+          tr
+            td F
+            td F
+            td.result-col F
+        //- fix mistake in truth table
+        .slide.anim-hide.anim-continue(data-what='.error')
+        .slide.anim-removeclass(data-what='.correct', data-class='hide')
+        //- indent to avoid dimming!
+        .slide.anim-attribute.anim-continue(data-what=".first-mistake-b", data-attr="text-decoration:line-through")
+        .slide.anim-attribute.anim-continue(data-what=".first-mistake-b", data-attr="opacity:0.4")
+        .slide.anim-removeclass(data-what=".first-mistake", data-class="bkg-words-highlight-red")
+        .slide
+          p.em-above ‘What makes the ∨ inclusive or exclusive, and is it always one of the two, or can it mean different things in different situations?’
+        .slide
+          p  It ‘is clearer with the example: ‘The pig went down the left fork or the right fork.’ Clearly this is a case where it can only be one or the other. The pig cannot go down both forks.’ 
+          //- indent to avoid dimming!
+          .slide.anim-removeclass(data-what=".comment", data-class="hide")
+
+
+
+  //- unit: rules for identity
+  - each d in getCollection("documents").findAll({url:'/units/unit_11.html'},[{year:-1,sort_order:1}]).toJSON()
+    section#unit_011.slide
+      img.bkg(src='/img/bkg/budapest/IMG_nc_5507.JPG')
+      .spacer &nbsp;
+      .title-block: .title-container
+          h2.title1 #{d.title}
+    != d.contentRendered  
+  
+
+  //- unit: how to write proofs
+  - each d in getCollection("documents").findAll({url:'/units/unit_130.html'},[{year:-1,sort_order:1}]).toJSON()
+    section#unit_130.slide
+      img.bkg(src='/img/bkg/budapest/IMG_nc_5546.JPG')
+      .spacer &nbsp;
+      .title-block: .title-container
+          h2.title1 #{d.title}
+    != d.contentRendered  
+  
+
+  //- unit: complex truth tables: (P and R) or R
+  - each d in getCollection("documents").findAll({url:'/units/unit_09.html'},[{year:-1,sort_order:1}]).toJSON()
+    section#unit_09.slide
+      img.bkg(src='/img/bkg/budapest/IMG_nc_5605.JPG')
+      .spacer &nbsp;
+      .title-block(style="position:relative; top:425px"): .title-container
+          h2.title1 #{d.title}
+    != d.contentRendered  
+  
+
+
+  //- unit: tautologies and contradictions, logical validity is not what you think it is.
+  //- *check: this might have been used in lecture 02 (if run out of time)
+  //- 2012-3 didn't have time for bush part (unit_162)
+  - each d2 in getCollection("documents").findAll({url:'/units/unit_161.html'},[{year:-1,sort_order:1}]).toJSON()
+    != d2.contentRendered
+  - each d in getCollection("documents").findAll({url:'/units/unit_160.html'},[{year:-1,sort_order:1}]).toJSON()
+    section.slide#unit_160
+      img.bkg(src='/img/bkg/budapest/IMG_nc_5805.JPG')
+      .spacer &nbsp;
+      .title-block: .title-container
+          h2.title1 #{d.title} 
+    != d.contentRendered
+
+
+    a.deck-permalink(href='.', title='Permalink to this slide') #

@@ -1,0 +1,101 @@
+---
+layout: 'default'
+title: 'Lecture 01'
+---
+
+include ../../fragments/slide_mixins
+
+
+.deck-container
+  #title-slide.slide
+    img.bkg(src='/img/bkg_title.jpg')
+    .words
+      .title-container
+        h1.title1 Logic I (PH126)
+        h3.email s.butterfill@warwick.ac.uk
+ 
+
+  - each d in getCollection("documents").findAll({url:'/units/unit_01.html'},[{year:-1,sort_order:1}]).toJSON()
+    != d.contentRendered
+   
+  include ../../fragments/unit_01_two_pigs
+
+  #pigs3.slide
+    .words.em-above
+      table
+        tbody
+          tr
+            td(style="width:50%")
+              p
+                span.premise Either it went up the left fork or it went up the right fork
+            td(rowspan='2').hide.step2
+              p.center
+                span#premise-label premises
+            td(rowspan='4').hide.step4
+              p argument
+          tr
+            td
+              p
+                span.premise It didn’t go up the left fork
+          tr
+            td
+              p therefore:
+          tr
+            td
+              p It went up the right fork
+            td.hide.step3
+              p.center  conclusion
+    mixin steps(4)
+    script(src="/vendor/jquery.min.js")
+    script
+      $(document).ready(function(){
+        jsPlumb.ready(function(){
+          console.log('drawing connector');
+          jsPlumb.connect({
+            source : $('#premise-label'),
+            target : $('.premise')[0],
+            endpoint : ["Dot", {radius:3}],
+            anchors : ["LeftMiddle","RightMiddle"],
+            overlays : [
+              //["PlainArrow", {length:50, width:20, location:0.95}]
+            ]
+          });
+          jsPlumb.connect({
+            source : $('#premise-label'),
+            target : $('.premise')[1],
+            endpoint : ["Rectangle"],
+            anchors : ["LeftMiddle","RightMiddle"],
+            overlays : [
+              //["PlainArrow", {length:50, width:20, location:0.95}]
+            ]
+          });
+        });
+      });
+
+  #test-slide.slide(style="box-shadow:inset 0px 0px 0px 10px #f00;")
+    .words
+      .container_12(style="padding-top:2em;box-shadow:inset 0px 0px 0px 5px #ff0;")
+        .grid_6(style="box-shadow:inset 0px 0px 0px 10px #f00;")
+          .pad-right.em-above-p.no-below-p
+            p painting a house together
+            .right.small (Bratman 1992)
+            p lifting a heavy sofa together 
+            .right.small (Velleman 1997)
+            p preparing a hollandaise sauce together 
+            .right.small (Searle 1990)
+            p going to Chicago together 
+            .right.small (Kutz 2000)
+            p walking together 
+            .right.small (Gilbert 1990)
+        .grid_6(style="box-shadow:inset 0px 0px 0px 10px #f00;")
+          .pad-left.em-above-p.no-below-p
+            p tidying up the toys together
+            .right.small (Behne et al 2005)
+            p cooperatively pulling handles in sequence to make a dog-puppet sing 
+            .right.small (Brownell et al 2006)
+            p bouncing a ball on a large trampoline together 
+            .right.small (Tomasello & Carpenter 2007)
+            p pretending to row a boat together
+
+
+    a.deck-permalink(href='.', title='Permalink to this slide') #

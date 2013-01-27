@@ -1,0 +1,99 @@
+
+
+- get_unit = function(unit_num) { var d = getCollection("documents").findAll({url:'/units/unit_'+unit_num+'.html'},[{year:-1,sort_order:1}]).toJSON(); if (document.units && document.units.indexOf(unit_num)==-1) { document.units.push(unit_num); } return d[0]; }
+
+
+
+//- logically valid df
+mixin df_valid(p)
+  div.white-box(style="width:230px;position:absolute;top:20px;left:500px;")
+    p(style="padding: 0 0.3em;") An argument is 
+      strong logically valid 
+      | just if 
+      span.the_df(style="#{p.reveal ? 'opacity: 0' : ''}") there’s no possible situation in which the premises are true and the conclusion false.
+  if p.reveal
+    .slide.anim-show(data-what=".the_df")
+
+//- add a slide for the specified step
+mixin step(num)
+  //- uses deck.anim extension to unhide elements
+  div.slide.anim-removeclass(data-what=".step#{num}",data-class="hide")
+
+//- add slides for num steps, where @param num is the total number of steps 
+mixin steps(num)
+  - var counter = 2 //start at slide 2
+  while counter <= num
+    mixin step(counter)
+    - counter += 1
+
+
+//- animation
+
+//- use this after applying one or more of the animation mixins (because they use anim-continue)
+mixin anim_end()
+  .slide.anim-addclass(data-what="#notanelement", data-class="")
+
+
+
+//- proofs: using mixins
+
+//- highlight a row of a proof
+mixin highlight_row(row_num)
+  .slide.anim-addclass.anim-continue(data-what=".fitch-proof .row-#{row_num} .highlight-hook", data-class="bkg-grey-row")
+mixin unhighlight_row(row_num)
+  .slide.anim-removeclass.anim-continue(data-what=".fitch-proof .row-#{row_num} .highlight-hook", data-class="bkg-grey-row")
+
+//- highlights just one of the numbers in a rule of proof
+mixin highlight_citation(row_num, citation_num)
+  .slide.anim-addclass.anim-continue(data-what=".fitch-proof .row-#{row_num} .citation-#{citation_num}", data-class="bkg-words-highlight-red")
+mixin unhighlight_citation(row_num, citation_num)
+  .slide.anim-removeclass.anim-continue(data-what=".fitch-proof .row-#{row_num} .citation-#{citation_num}", data-class="bkg-words-highlight-red")
+
+//- highlights the specified line as a line highlighted
+mixin highlight_cited_sentence(row_num)
+  .slide.anim-addclass.anim-continue(data-what=".fitch-proof .row-#{row_num} .sentence", data-class="bkg-words-highlight-red")
+mixin unhighlight_cited_sentence(row_num)
+  .slide.anim-removeclass.anim-continue(data-what=".fitch-proof .row-#{row_num} .sentence", data-class="bkg-words-highlight-red")
+  
+//- create a proof.  The proof may include subproofs
+mixin fitch_proof(prf)
+  table.fitch-proof
+    - var premises = prf['premises']
+    - var line_no = 1
+    each premise in premises
+      tr(class="premise row-#{line_no}")
+        td(class="#{line_no == premises.length ? 'last-premise' : ''}")
+            span.highlight-hook &#8203;
+        td #{prf. no_line_numbers ? '' : line_no+'.'}
+        td
+          p.sentence #{premise}
+        td
+        - line_no += 1
+    - var lines = prf['lines']
+    each line in lines
+      if line.__proto__ == Object().__proto__
+        //- subproof
+        - var subproof = line
+        tr
+          td 
+          td(colspan="3")
+            mixin fitch_proof(subproof)
+      if line.__proto__ == [].__proto__
+        //- ordinary line
+        tr(class="line row-#{line_no}")
+          td(class="#{line_no == premises.length ? 'last-premise premise' : 'premise'}")
+              span.highlight-hook &#8203;
+          td #{prf. no_line_numbers ? '' : line_no+'.'}
+          td
+            span.sentence #{line[0]}
+          td #{line[1]}
+            if line[2]
+              | : 
+              - var ctr = 1
+              span.citations
+                each cited_line in line[2]
+                  span(class="citation-#{ctr}") #{cited_line}
+                    if line[2].length !== ctr
+                      | ,
+                  - ctr += 1
+        - line_no += 1

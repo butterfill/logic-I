@@ -1,0 +1,38 @@
+---
+layout: 'default'
+title: 'Fast Lecture 04'
+weburl: ''
+units: []
+---
+
+include ../../fragments/slide_mixins
+
+
+.deck-container
+  #title-slide.slide
+    img.bkg(src='/img/bkg/birds_baby/P5260025_crop.JPG')
+    .spacer &nbsp;
+    .title-block(style="position:relative; top:325px"): .title-container
+        h1.title1 Logic I (PH126)
+        h1.title2 #{document.title}
+        h3.email s.butterfill@warwick.ac.uk
+    if document.weburl
+      .words
+        span(style="position:relative;top:250px;left:450px;").white-box.big.center #{document.weburl}
+
+  //- * todo : mention the maths & philosophy degree
+
+  //- *todo move these to another lecture?  Need to keep with exercises!
+
+  //- unit: what arrow means
+  - var d = get_unit(700)
+    section#unit_700.slide
+      img.bkg(src='/img/bkg/budapest/IMG_nc_5507.JPG')
+      .spacer &nbsp;
+      .title-block: .title-container
+          h2.title1 #{d.title}
+    != d.contentRendered
+  
+  //- unit (as continuation): Does ‘if’ mean what ‘→’ means?
+  - var d = get_unit(640)
+    != d.contentRendered

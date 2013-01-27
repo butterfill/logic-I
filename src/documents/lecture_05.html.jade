@@ -1,0 +1,118 @@
+---
+layout: 'default'
+title: 'Lecture 05'
+weburl: ''
+---
+
+include ../../fragments/slide_mixins
+
+
+.deck-container
+  #title-slide.slide
+    img.bkg(src='/img/bkg/birds_baby/P5260025_crop.JPG')
+    .spacer &nbsp;
+    .title-block(style="position:relative; top:325px"): .title-container
+        h1.title1 Logic I (PH126)
+        h1.title2 #{document.title}
+        h3.email s.butterfill@warwick.ac.uk
+    if document.weburl
+      .words
+        span(style="position:relative;top:250px;left:450px;").white-box.big.center #{document.weburl}
+
+
+  //- skit: logic buddy
+  - each d in getCollection("documents").findAll({url:'/skits/skit_03.html'},[{year:-1,sort_order:1}]).toJSON()
+    != d.contentRendered
+  
+  .slide
+    p.center.middle No lecture next Tuesday (29th January)
+
+  //- unit: negation and contradiction (rules of proof for contradiction)
+  - each d in getCollection("documents").findAll({url:'/units/unit_270.html'},[{year:-1,sort_order:1}]).toJSON()
+    section#unit_270.slide
+      img.bkg(src='/img/bkg/birds_baby/P5260007.JPG')
+      .spacer &nbsp;
+      .title-block: .title-container
+          h2.title1 #{d.title}
+    != d.contentRendered
+    
+  .slide
+    p.center.middle No lecture next week (Tuesday 29 January)
+
+
+  //- unit: arrow intro, arrow elim
+  - each d in getCollection("documents").findAll({url:'/units/unit_390.html'},[{year:-1,sort_order:1}]).toJSON()
+    section#unit_390.slide
+      img.bkg(src='/img/bkg/birds_baby/P5260015.JPG')
+      .spacer &nbsp;
+      .title-block: .title-container
+          h2.title1 #{d.title}
+    != d.contentRendered  
+  //- continuation: arrow elim hard proof example
+  - each d in getCollection("documents").findAll({url:'/units/unit_391.html'},[{year:-1,sort_order:1}]).toJSON()
+    != d.contentRendered  
+
+
+  //- skit: feedback
+  #2012_3.slide
+    .container_12: .grid_12
+      p.center.middle feedback
+  .slide.container_12: .grid_12
+    p.em-above ‘The lectures are really helpful and engaging, however it is quite difficult to write down all the important points during the lectures so it would be really helpful if the powerpoints from the lectures and maybe even audio recordings could be made available to students.’
+    p.slide  ‘I couldn’t fail to dislike your lectures less.’
+    p.slide  ‘WHY HAVEN’T WE BEEN GIVEN ANY HELP FOR USING THE PROGRAMMES?!!! Pen and Paper all the way. I can’t do half of the exercises as I can’t use the programmes that we’re s’posed to do them on..’
+  - each d in getCollection("documents").findAll({url:'/skits/skit_01.html'},[{year:-1,sort_order:1}]).toJSON()
+    != d.contentRendered
+  
+  //- unit: disjunction-Elim ∨Elim (and ∨Intro)
+  section#unit_221.slide
+    img.bkg(src='/img/bkg/birds_baby/P5260027_crop.JPG')
+    .spacer &nbsp;
+    .title-block: .title-container
+        h2.title1 ∨Intro and ∨Elim 
+  - each d in getCollection("documents").findAll({url:'/units/unit_221.html'},[{year:-1,sort_order:1}]).toJSON()
+    //- prefix with introduction to ∨Intro
+    - each d2 in getCollection("documents").findAll({url:'/units/unit_225.html'},[{year:-1,sort_order:1}]).toJSON()
+      != d2.contentRendered  
+    //- prefix with discussion of why ∨Elim can't be much simpler (soundness theorem)
+    - each d2 in getCollection("documents").findAll({url:'/units/unit_226.html'},[{year:-1,sort_order:1}]).toJSON()
+      != d2.contentRendered  
+    != d.contentRendered  
+
+  .slide
+    p.center.middle No lecture next week (Tuesday 29 January)
+
+  
+  //- 2011-2 ended here and was ~10min too short, so I moved syntax into this lecture
+
+  //- unit: everything is broken (intro to quantifiers)
+  - each d in getCollection("documents").findAll({url:'/units/unit_471.html'},[{year:-1,sort_order:1}]).toJSON()
+    section#unit_471.slide
+      img.bkg(src='/img/bkg/birds_baby/P5260020.JPG')
+      .spacer &nbsp;
+      .title-block: .title-container
+          h2.title1 #{d.title}
+    //- choose your quantifiers (polka, value)
+    - each d2 in getCollection("documents").findAll({url:'/units/unit_473.html'},[{year:-1,sort_order:1}]).toJSON()
+      != d2.contentRendered
+    != d.contentRendered
+
+  //2012-3 ended here, was fine (even a bit tight)
+  //-
+    //- unit: Syntax for Logiya 
+    - each d in getCollection("documents").findAll({url:'/units/unit_230.html'},[{year:-1,sort_order:1}]).toJSON()
+      section#unit_230.slide
+        img.bkg(src='/img/bkg/birds_baby/P5260056.JPG')
+        .spacer &nbsp;
+        .title-block: .title-container
+            h2.title1 #{d.title}
+      //- unit_231 is a recap
+      - each d2 in getCollection("documents").findAll({url:'/units/unit_231.html'},[{year:-1,sort_order:1}]).toJSON()
+        != d2.contentRendered  
+      != d.contentRendered  
+  
+    .slide
+      p.center.middle No lecture next week (Tuesday 29 January)
+
+
+    a.deck-permalink(href='.', title='Permalink to this slide') #

@@ -1,0 +1,29 @@
+---
+layout: 'info'
+title: 'Logic I: PH126'
+---
+
+include ../../fragments/slide_mixins
+
+
+.container_12
+  .grid_12
+    .words
+      .title-block: .title-container
+        h1.title1 Logic I (PH126)
+        h3.email s.butterfill@warwick.ac.uk
+
+    each lecture in getCollection("lectures").toJSON()
+      h2 #{lecture.title}
+      if lecture.units
+        - each unit_num in lecture.units
+          - unit = get_unit(unit_num)
+          h3 unit #{unit_num}: #{unit.title}
+          p #{unit.description}
+          if unit.book && unit.book.length > 0 
+            p reading:  §#{unit.book.join(', §')}
+          if unit.exercises && unit.exercises.length > 0 
+            p exercises: #{unit.exercises.join(', ')}
+          if unit.exercises_fast && unit.exercises_fast.length > 0
+            p fast exercises: #{unit.exercises_fast.join(', ')}
+        
