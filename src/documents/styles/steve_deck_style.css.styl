@@ -42,8 +42,12 @@ invert_text()
  * supposed to prevent reduced opacity for previous slide
  * ***TODO: not working!
  */
-.deck-container > .slide .deck-previous .nodim
-  opacity: 1
+.deck-container > .slide .deck-before .nodim, .deck-container > .slide .deck-previous .nodim 
+  opacity 1
+
+
+.deck-container .slide .nodim
+  opacity 1
 
 /**
  * avoid deck.core.css overwriting our 960 grid css

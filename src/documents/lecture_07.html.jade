@@ -1,0 +1,144 @@
+---
+layout: 'default'
+title: 'Lecture 07'
+weburl: ''
+units: []
+---
+
+include ../../fragments/slide_mixins
+
+ 
+
+.deck-container
+
+  #title-slide.slide
+    img.bkg(src='/img/bkg/twins_2008/DSC_3606_crop.jpg')
+    .spacer &nbsp;
+    .title-block(style="position:relative; top:325px"): .title-container
+        h1.title1 Logic I (PH126)
+        h1.title2 #{document.title}
+        h3.email s.butterfill@warwick.ac.uk
+    if document.weburl
+      .words
+        span(style="position:relative;top:250px;left:450px;").white-box.big.center #{document.weburl}
+
+
+  //- unit: All squares are blue
+  - d = get_unit(503)
+    != d.contentRendered  
+
+
+  //- unit: Vegetarians are evil
+  - d = get_unit(502)
+    section#unit_502.slide
+      img.bkg(src='/img/bkg/twins_2008/DSC_2627_crop_announce.jpg')
+      .spacer &nbsp;
+      .title-block(style="position:relative; top:425px"): .title-container
+          h2.title1 #{d.title}
+    != d.contentRendered  
+
+  //- feedback: rules of proof are on your handout
+  .slide.nodim
+    .container_12: .grid_12: .words
+      p I recently compiled all the rules of proofs on a sheet and now use this sheet as a constant reference while working on them.  It has improved the way i work substancially so that logic no longer makes me want to die inside 
+        span.slide(style="border-bottom: 4px dashed yellow") ... as much.  
+
+
+  //- unit: not-intro proof example
+  - d = get_unit(283)
+    section#unit_283.slide
+      img.bkg(src='/img/bkg/twins_2008/DSC_2635_s.jpg')
+      .spacer &nbsp;
+      .title-block: .title-container
+          h2.title1 #{d.title}
+    != d.contentRendered  
+
+
+  //- logical validity doesn't require that the conclusion follow from the premises
+  .slide
+    .container_12: .grid_12: .words
+      p Hi, we have been working on the logic exercises for next week and it has ended in a 15 minute argument between two maths students and two philosophy students about a particular question!
+  .slide
+    .container_12: .grid_8: .words
+      p.nodim The exercise is 5.6 which says:
+        br
+        | 'From P ˄ Q and ¬P, infer R'
+      .slide.nodim
+        p.the-mistake We knew that it was invalid because of not being able to infer R when it is not involved at all in the premise, 
+        .slide
+          mixin df_valid({})
+      .slide.anim-addclass.anim-continue(data-what=".premises-true",data-class="bkg-words-highlight-red")
+      .slide.anim-addclass(data-what=".no-possible-situation",data-class="bkg-words-highlight-red")
+      .slide.anim-addclass(data-what=".the-mistake",data-class="bkg-words-highlight-red")
+      .slide
+        p however the problem arose when we were discussing the premises.
+      .slide
+        p.nodim Is it a contradiction to say that it is the case that P and Q, then have a second statement that says it's not the case that P? 
+      .slide.nodim
+        p And if so, then if the premises are contradictory does that automatically make the argument 
+          span.the-mistake2 invalid 
+          span by default?
+      .slide.anim-addclass(data-what=".the-mistake2",data-class="bkg-words-highlight-red")
+
+
+
+  //- unit: arrow-intro proof example
+  - d = get_unit(392)
+    section#unit_392.slide
+      img.bkg(src='/img/bkg/twins_2008/DSC_4340.jpg')
+      .spacer &nbsp;
+      .title-block: .title-container
+          h2.title1 #{d.title}
+    != d.contentRendered  
+
+
+
+  //- unit: subproofs are tricky: the answer
+  - d = get_unit(224)
+    section#unit_224.slide
+      img.bkg(src='/img/bkg/twins_2008/DSC_6284.jpg')
+      .spacer &nbsp;
+      .title-block: .title-container
+          h2.title1 #{d.title}
+    != d.contentRendered  
+
+
+
+  //- unit: What ∀ means
+  - d = get_unit(492)
+    section#unit_492.slide
+      img.bkg(src='/img/bkg/twins_2008/DSC_6072.jpg')
+      .spacer &nbsp;
+      .title-block: .title-container
+          h2.title1 #{d.title}
+    != d.contentRendered  
+
+
+  
+  //- unit: scope
+  //- *2012-3 did cover this but was tight
+  section#unit_290.slide
+    img.bkg(src='/img/bkg/twins_2008/DSC_7593.jpg')
+    .spacer &nbsp;
+    .title-block(style="position:relative; top:425px"): .title-container
+        h2.title1 Scope
+  //- introduce it with discussion of a mistake about ¬Intro (rules of proof apply only to connective with widest scope)
+  - d = get_unit(291)
+    != d.contentRendered
+  //- scope 
+  - d = get_unit(290)
+    != d.contentRendered  
+
+
+  //- extra, probably no time
+  //- *2012-3 didn't cover this
+    //- unit: Proof Example: ¬(P∨Q) therefore ¬P∧¬Q
+    - d = get_unit(821)
+      section#unit_821.slide
+        img.bkg(src='/img/bkg/twins_2008/DSC_2635_s.jpg')
+        .spacer &nbsp;
+        .title-block: .title-container
+            h2.title1 #{d.title}
+      != d.contentRendered  
+
+    a.deck-permalink(href='.', title='Permalink to this slide') #

@@ -120,16 +120,17 @@ include ../../fragments/slide_mixins
 
   //- would be good to leave this for another lecture
   //- unit: scope
-  section#unit_290.slide
-    img.bkg(src='/img/bkg/flowers/P1011068.JPG')
-    .spacer &nbsp;
-    .title-block: .title-container
-        h2.title1 Scope
-  //- introduce it with discussion of a mistake about ¬Intro (rules of proof apply only to connective with widest scope)
-  - d = get_unit(291)
-    != d.contentRendered
-  //- scope 
-  - d = get_unit(290)
-    != d.contentRendered  
+  //- *didn't cover this in 2012-3
+    section#unit_290.slide
+      img.bkg(src='/img/bkg/flowers/P1011068.JPG')
+      .spacer &nbsp;
+      .title-block: .title-container
+          h2.title1 Scope
+    //- introduce it with discussion of a mistake about ¬Intro (rules of proof apply only to connective with widest scope)
+    - d = get_unit(291)
+      != d.contentRendered
+    //- scope 
+    - d = get_unit(290)
+      != d.contentRendered  
 
     a.deck-permalink(href='.', title='Permalink to this slide') #

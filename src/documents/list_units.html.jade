@@ -1,0 +1,30 @@
+---
+layout: 'info'
+title: 'Logic I: PH126'
+---
+
+include ../../fragments/slide_mixins
+
+
+.container_12
+  .grid_12
+    .words
+      .title-block: .title-container
+        h1.title1 Logic I (PH126): List of Units
+        h3.email s.butterfill@warwick.ac.uk
+
+    - var unit_num
+    each unit in getCollection("units").toJSON()
+      - unit_num = unit.basename.substr(5)
+      h3 unit #{unit_num}:
+        a(href="/units_grid/#{unit.outFilename}") #{unit.title}
+      if unit.images && unit.basename != unit.images
+        p(style="background-color: red") !!!error unit.basename != unit.images !!!
+      p #{unit.description}
+      if unit.book && unit.book.length > 0 
+        p reading:  §#{unit.book.join(', §')}
+      if unit.exercises && unit.exercises.length > 0 
+        p exercises: #{unit.exercises.join(', ')}
+      if unit.exercises_fast && unit.exercises_fast.length > 0
+        p fast exercises: #{unit.exercises_fast.join(', ')}
+        

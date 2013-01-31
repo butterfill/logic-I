@@ -10,7 +10,12 @@ mixin df_valid(p)
     p(style="padding: 0 0.3em;") An argument is 
       strong logically valid 
       | just if 
-      span.the_df(style="#{p.reveal ? 'opacity: 0' : ''}") there’s no possible situation in which the premises are true and the conclusion false.
+      span.the_df(style="#{p.reveal ? 'opacity: 0' : ''}") there’s 
+        span.no-possible-situation no possible situation 
+        span in which 
+        span.premises-true the premises are true 
+        span and 
+        span.conclusion-false the conclusion false.
   if p.reveal
     .slide.anim-show(data-what=".the_df")
 

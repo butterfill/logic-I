@@ -1,7 +1,12 @@
 ---cson
 ---
 
-each f in getFilesAtPath('img/'+document.images+'/',[{basename:1}]).toJSON()
-    section.slide
-        img(src=f.url)
+if document.url.indexOf('units_grid') !=-1
+    div(style="background-color:grey; margin: 0px; padding: 0px; width: 100%;")
+        each f in getFilesAtPath('img/'+document.images+'/',[{basename:1}]).toJSON()
+          img(src=f.url, width="300", style="padding: 15px")
+else
+    each f in getFilesAtPath('img/'+document.images+'/',[{basename:1}]).toJSON()
+        section.slide
+            img(src=f.url)
 

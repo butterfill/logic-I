@@ -1,0 +1,71 @@
+---cson
+layout: 'deck_units'
+title: 'Why Logic?'
+tags: ['definitions']
+description: "Provides two reasons for studing logic, one abstract the other practical."
+depends: []
+---
+
+
+section.slide#limits_of_the_world
+  .words: .container_12: .grid_12
+    img(src="/img/people/wittgenstein.jpg",width="150px").float-right
+    p ‘Logic pervades the world: the limits of the world are also its limits.’
+      // So we cannot say in logic, "The world has this in it, and this, but not that""
+    p.right (Wittgenstein, 
+      em Tractatus 
+      | 5.61)
+    .clear: .grid_12
+    .slide
+      img(src="/img/people/trotter.jpg",width="150px").float-right
+      p ‘don’t obey no laws, not even gravity’
+      p.right (Tariq Trotter)
+      // *notes Why study logic?  Easy to escape supply and demand—that law applies only to rational agents, and we are none of us entirely rational, slightly harder to escape gravity, which was thought to apply to all physical things although Tariq Trotter claims to have done it on Game Theory (Livin’ in a New World) … laws of logic are fundamental in the sense that absolutely everything is subject to them, even musicians.  After I heard Game Theory I tried to get the philosophy department to put Tariq forward for an honourary doctorate so that he could call himself *DR* Black Thought but in the end they gave it to Professor Peacocke instead.
+
+
+
+section.slide
+  .words
+    p.middle.center precise expression
+
+
+section.slide
+  .words
+    .container_12: .grid_12
+      p ‘If a card has a vowel on one side, then it has an even number on the other side.’
+      p.right (Waison & Johnson-Laird 1972)
+    .container_12: .grid_12
+      p &nbsp;
+    .slide
+      .container_12
+        .grid_2.prefix_2
+          p.white-box.center.huge.step1 E
+        .grid_2
+          p.white-box.center.huge.step2 K
+        .grid_2
+          p.white-box.center.huge.step3 4
+        .grid_2
+          p.white-box.center.huge.step4 7
+      // *notes ask them about each in turn
+      .slide.anim-addclass(data-what=".step1",data-class="glow-border-red")
+      // next card
+      .slide.anim-removeclass.anim-continue(data-what=".step1",data-class="glow-border-red")
+      .slide.anim-addclass(data-what=".step2",data-class="glow-border-red")
+      // next card
+      .slide.anim-removeclass.anim-continue(data-what=".step2",data-class="glow-border-red")
+      .slide.anim-addclass(data-what=".step3",data-class="glow-border-red")
+      // next card
+      .slide.anim-removeclass.anim-continue(data-what=".step3",data-class="glow-border-red")
+      .slide.anim-addclass(data-what=".step4",data-class="glow-border-red")
+      // well, what's the answer?
+      .slide.anim-removeclass(data-what=".step4",data-class="glow-border-red")
+      // *notes the solution is E and 7
+      .slide.anim-addclass.anim-continue(data-what=".step1",data-class="glow-border-red")
+      .slide.anim-addclass(data-what=".step4",data-class="glow-border-red")
+
+section.slide
+  .words
+    p.middle.center ‘Philosophy is thinking in slow motion.’ (John Campbell)
+    img(src="/img/people/campbell_john_bw.jpg",width="150px",style="position:relative;top:300px;").float-right
+
+    
