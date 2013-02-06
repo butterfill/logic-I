@@ -19,6 +19,64 @@ include ../../fragments/slide_mixins
       .words
         span(style="position:relative;top:250px;left:450px;").white-box.big.center #{document.weburl}
 
+
+  .slide#test_steps
+    .words
+      .container_12: .grid_12
+        p.step2.hide above
+        p middle
+        p.step3.hide below
+        mixin steps(3)
+
+  .slide#test_mid_steps
+    .words
+      .container_12: .grid_12
+        p.step5.hide five
+        p.step4.hide four
+        p.step2.hide two
+        p one -- should see four five and then two three
+        p.step3.hide three
+        mixin steps(4,5)
+        mixin steps(2,3)
+
+  .slide
+    .words
+      .container_12: .grid_12
+        table.truth-table
+          tr
+            td A
+            td B
+            td.result-col A ∨ B
+          tr
+            td T
+            td T
+            td.result-col T
+            td.comment.hide <--- ‘surely this is illogical’
+          tr
+            td T
+            td F
+            td.result-col
+              span.error F
+              span.correct.hide T
+          tr
+            td F
+            td T
+            td.result-col 
+              span.error F
+              span.correct.hide T
+          tr
+            td F
+            td F
+            td.result-col F
+  
+  
+  .slide
+    .words
+      .container_12: .grid_12
+        p test truth table mxin
+        mixin truth-table(['A ∨ B','¬A'],[['T','T','T','F'],['F','F','T','T']])
+        .slide.anim-addclass(data-what=".truth-table .row-3 .highlight-hook", data-class="bkg-grey-row")
+
  
   .slide
     .words
@@ -34,6 +92,17 @@ include ../../fragments/slide_mixins
           p left column
         .grid_6
           p right column
+
+
+  .slide
+    img.bkg(src='/img/bkg/duckling.jpeg')
+    .middle
+      .container_12
+        .grid_4
+          .center.bkg-black-33
+            h1(style="text-align: center") Trans Bkg Box 
+            p S0.11
+            p 3-5pm on Wednesdays
   
   .slide
     div.white-box(style="width:230px;position:absolute;top:20px;left:500px;")

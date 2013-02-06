@@ -1,0 +1,90 @@
+---
+layout: 'default'
+title: 'Lecture 08'
+weburl: ''
+units: []
+---
+
+include ../../fragments/slide_mixins
+
+- var images = get_images('flowers')
+ 
+
+.deck-container
+
+  mixin title_slide({document:document, images:images})
+
+
+  //- unit: recap on scope (from trees on)
+  .slide
+    .center.middle
+      p recap: scope
+  - d = get_unit(292)
+    != d.contentRendered  
+
+
+  //- unit: scope and negation
+  - d = get_unit(320)
+    mixin section({unit:d, images:images})
+    != d.contentRendered  
+
+
+  //- PhilSoc Logic Support 
+  .slide
+    img.bkg(src='/img/bkg/duckling.jpeg')
+    .middle
+      .container_12
+        .grid_4
+          .center.bkg-black-33
+            h1(style="text-align: center") PhilSoc Logic Support 
+            p S0.11
+            p 3-5pm on Wednesdays
+
+
+
+  //- postsecret quiz: state rules of proof
+  - each d in getCollection("documents").findAll({url:'/quizes/postsecret_03.html'},[{year:-1,sort_order:1}]).toJSON()
+    != d.contentRendered
+
+  //- unit: proof example: ¬P∨R therefore P→R
+  - d = get_unit(820)
+    mixin section({unit:d, images:images})
+    != d.contentRendered  
+
+
+  //- unit: what does  ∃ mean?
+  - d = get_unit(491)
+    mixin section({unit:d, images:images})
+    != d.contentRendered  
+
+  //- unit: scope and quantifiers
+  - d = get_unit(710)
+    mixin section({unit:d, images:images})
+    != d.contentRendered  
+
+
+  //- *ended here in 2012-3 (would have been much too long!)
+    //- unit: translating sentences with quantifiers
+    - d = get_unit(507)
+      mixin section({unit:d, images:images})
+      != d.contentRendered  
+  
+  
+    //- unit: ∃Elim
+    - d = get_unit(550)
+      mixin section({unit:d, images:images})
+      != d.contentRendered  
+  
+  
+    //- unit: what arrow means
+    - d = get_unit(700)
+      mixin section({unit:d, images:images})
+      != d.contentRendered  
+  
+  
+    //- unit: Proof Example: ¬(P∨Q) therefore ¬P∧¬Q
+    - d = get_unit(821)
+      mixin section({unit:d, images:images})
+      != d.contentRendered  
+
+  a.deck-permalink(href='.', title='Permalink to this slide') #

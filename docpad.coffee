@@ -2,7 +2,7 @@
 # It is simply a CoffeeScript Object which is parsed by CSON
 docpadConfig = {
 
-	renderPasses : 2
+	renderPasses : 1
 
 	# =================================
 	# Template Data
@@ -53,6 +53,11 @@ docpadConfig = {
 		getPreparedKeywords: ->
 			# Merge the document keywords with the site keywords
 			@site.keywords.concat(@document.keywords or []).join(', ')
+			
+		#list_lectures: ->
+		#	titles = []
+		#	titles.push(l.title) for l in @getCollection('documents').findAll({basename:/^(fast)?lecture_/}, [basename:1]).toJSON()
+		#	titles
 
 
 	# =================================

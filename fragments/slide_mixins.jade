@@ -1,10 +1,148 @@
 
 
-- get_unit = function(unit_num) { var d = getCollection("documents").findAll({url:'/units/unit_'+unit_num+'.html'},[{year:-1,sort_order:1}]).toJSON(); if (document.units && document.units.indexOf(unit_num)==-1) { document.units.push(unit_num); } return d[0]; }
+- get_unit = function(unit_num) { var extract=(unit_num+'').match(/^unit_([0-9]*)/); if(extract){ unit_num=extract[1]; }; var d = getCollection("documents").findAll({url:'/units/unit_'+unit_num+'.html'},[{year:-1,sort_order:1}]).toJSON(); if (document.units && document.units.indexOf(unit_num)==-1) { document.units.push(unit_num); } return d[0]; }
+- get_images = function(folder) { var images = getFilesAtPath('img/bkg/'+folder+'/',[{basename:-1}]).toJSON(); return images }
+
+
+//- -------------
+//- title slides
+//- -------------
+
+// create title slide for a lecture
+// param p contains document and images (an array of images to use)
+mixin title_slide(p)
+  #title-slide.slide
+    - var img = p.images.pop()
+    img.bkg(src='#{img.url}')
+    .spacer &nbsp;
+    - var low = false
+      if img.filename.indexOf('.low.') != -1
+        - low = true
+    .title-block(style="#{low ? 'position:relative; top:325px' : ''}"): .title-container
+        h1.title1 Logic I (PH126)
+        h1.title2 #{p.document.title}
+        h3.email s.butterfill@warwick.ac.uk
+    if p.document.weburl
+      .words
+        span(style="position:relative;top:250px;left:450px;").white-box.big.center #{p.document.weburl}
+
+//- title slides for subsections
+// param p contains p.unit and p.images (an array of images)
+mixin section(p)
+  section(id="#{p.unit ? p.unit.basename : ''}").slide
+    - var low = false
+    if p.images
+      - var img = p.images.pop()
+      img.bkg(src='#{img.url}')
+      if img.filename.indexOf('.low.') != -1
+        - low = true
+    .spacer &nbsp;
+    .title-block(style="#{low ? 'position:relative; top:425px' : ''}"): .title-container
+        h2.title1 #{p.unit ? p.unit.title : p.title}
+
+
+//- -------------
+//- animation: show, hide and steps
+//- -------------
+//- create a slide with .step2.hide, .step3.hide and then call mixin steps(3) to reveal them slide by slide
+
+//- use this after applying one or more of the proof animation mixins (because they use anim-continue)
+mixin anim_end()
+  .slide.anim-addclass(data-what="#notanelement", data-class="")
+
+//- show something(s)
+//- param what is an array of jquery identifiers
+mixin show(what)
+  each thing in what
+    .slide.anim-continue.anim-removeclass(data-what="#{thing}",data-class="hide")
+  mixin anim_end()
+  
+mixin hide(what)
+  each thing in what
+    .slide.anim-continue.anim-addclass(data-what="#{thing}",data-class="hide")
+  mixin anim_end()
+
+mixin remove(what)
+  each thing in what
+    .slide.anim-continue.anim-addclass(data-what="#{thing}",data-class="remove-me")
+  mixin anim_end()
+
+mixin unremove(what)
+  each thing in what
+    .slide.anim-continue.anim-removeclass(data-what="#{thing}",data-class="remove-me")
+  mixin anim_end()
+
+mixin showhide(showwhat, hidewhat)
+  each thing in showwhat
+    .slide.anim-continue.anim-removeclass(data-what="#{thing}",data-class="hide")
+  each thing in hidewhat
+    .slide.anim-continue.anim-addclass(data-what="#{thing}",data-class="hide")
+  mixin anim_end()
+
+mixin showremove(showwhat, hidewhat)
+  each thing in showwhat
+    .slide.anim-continue.anim-removeclass(data-what="#{thing}",data-class="hide")
+  each thing in hidewhat
+    .slide.anim-continue.anim-addclass(data-what="#{thing}",data-class="remove-me")
+  mixin anim_end()
+
+mixin dim(what)
+  each thing in what
+    .slide.anim-continue.anim-addclass(data-what="#{thing}",data-class="dim")
+  mixin anim_end()
+
+mixin undim(what)
+  each thing in what
+    .slide.anim-continue.anim-removeclass(data-what="#{thing}",data-class="dim")
+  mixin anim_end()
+
+mixin words-bkg(what, color, container)
+  each thing in what
+    .slide.anim-continue.anim-addclass(data-what="#{container ? container : ''} #{thing}",data-class="bkg-words-highlight-#{color}")
+  mixin anim_end()
+
+mixin words-bkg-faint(what, color, container)
+  each thing in what
+    .slide.anim-continue.anim-addclass(data-what="#{container ? container : ''} #{thing}",data-class="bkg-words-highlight-faint-#{color}")
+  mixin anim_end()
+
+mixin words-bkg-remove(what, color, container)
+  each thing in what
+    .slide.anim-continue.anim-removeclass(data-what="#{container ? container : ''} #{thing}",data-class="bkg-words-highlight-#{color}")
+  mixin anim_end()
+
+
+mixin invert(what, container)
+  each thing in what
+    .slide.anim-continue.anim-addclass(data-what="#{container ? container : ''} #{thing}", data-class="invert")
+    .slide.anim-continue.anim-addclass(data-what="#{container ? container : ''} #{thing}",data-class="bkg-words-highlight-white")
+  mixin anim_end()
+
+//- add a slide for the specified step
+mixin step(num, container)
+  //- uses deck.anim extension to unhide elements
+  div.slide.anim-removeclass(data-what="#{container ? container : ''} .step#{num}",data-class="hide")
+
+//- add slides for num steps, where @param num is the total number of steps 
+mixin steps(start_num, end_num, container)
+  if !end_num
+    - end_num = start_num
+    - start_num = 2
+  if typeof(end_num) == typeof('')
+    - container = end_num
+    - end_num = start_num
+    - start_num = 2
+  - var counter = start_num //start at slide 2
+  while counter <= end_num
+    mixin step(counter, container)
+    - counter += 1
 
 
 
+
+//- -------------
 //- logically valid df
+//- -------------
 mixin df_valid(p)
   div.white-box(style="width:230px;position:absolute;top:20px;left:500px;")
     p(style="padding: 0 0.3em;") An argument is 
@@ -19,48 +157,65 @@ mixin df_valid(p)
   if p.reveal
     .slide.anim-show(data-what=".the_df")
 
-//- add a slide for the specified step
-mixin step(num)
-  //- uses deck.anim extension to unhide elements
-  div.slide.anim-removeclass(data-what=".step#{num}",data-class="hide")
 
-//- add slides for num steps, where @param num is the total number of steps 
-mixin steps(num)
-  - var counter = 2 //start at slide 2
-  while counter <= num
-    mixin step(counter)
-    - counter += 1
+//- -------------
+//- truth tables
+//- -------------
+//- param sentences is an array of sentences
+//- param values is an array of arrays of values, one per sentence
+//- e.g. mixin truth-table(['A ∨ B','¬A'],[['T','T','T','F'],['F','F','T','T']])
+mixin truth-table(sentences, values)
+  - var len = values[0].length
+  - var cols = ['A']
+  if values[0].length > 2
+      - cols.push('B')
+  if values[0].length > 4
+    - cols.push('C')
+  if values[0].length > 8
+    - cols.push('D')
+  table.truth-table
+    // header row
+    tr
+      each letter, i in cols
+        td
+          span(class='col-#{i+1}') #{letter}
+      each sentence,i4 in sentences 
+        td.result-col
+          span(class='result-col-#{i4+1}') #{sentence}
+    each val, i in values[0]
+      tr(class="row-#{i+1}")
+        - var structure = i.toString(2)
+        // pad
+        - while( structure.length < cols.length)  structure = "0" + structure
+        each letter, i2 in cols
+          td
+            if i2 == 0
+              span.highlight-hook &#8203;
+            span #{(structure[i2] === "0" ? "T" : "F")}
+        each value_set, i3 in values
+          td.result-col
+            span(class='result-col-#{i3+1}') #{value_set[i]}
+
+mixin tt-highlight-cols(cols, color, container)
+  each col in cols
+    div.slide.anim-continue.anim-addclass(data-what="#{container ? container : ''} table.truth-table tr td:nth-child(#{col})",data-class="bkg-words-highlight-#{color}")
+  mixin anim_end()
+
+mixin tt-highlight-rows(rows, container)
+  each row in rows
+    .slide.anim-continue.anim-addclass(data-what="#{container ? container : ''} .truth-table .row-#{row} .highlight-hook", data-class="bkg-grey-row")
+  mixin anim_end()
 
 
-//- animation
 
-//- use this after applying one or more of the animation mixins (because they use anim-continue)
-mixin anim_end()
-  .slide.anim-addclass(data-what="#notanelement", data-class="")
+//- -------------
+//- proofs
+//- -------------
 
-
-
-//- proofs: using mixins
-
-//- highlight a row of a proof
-mixin highlight_row(row_num)
-  .slide.anim-addclass.anim-continue(data-what=".fitch-proof .row-#{row_num} .highlight-hook", data-class="bkg-grey-row")
-mixin unhighlight_row(row_num)
-  .slide.anim-removeclass.anim-continue(data-what=".fitch-proof .row-#{row_num} .highlight-hook", data-class="bkg-grey-row")
-
-//- highlights just one of the numbers in a rule of proof
-mixin highlight_citation(row_num, citation_num)
-  .slide.anim-addclass.anim-continue(data-what=".fitch-proof .row-#{row_num} .citation-#{citation_num}", data-class="bkg-words-highlight-red")
-mixin unhighlight_citation(row_num, citation_num)
-  .slide.anim-removeclass.anim-continue(data-what=".fitch-proof .row-#{row_num} .citation-#{citation_num}", data-class="bkg-words-highlight-red")
-
-//- highlights the specified line as a line highlighted
-mixin highlight_cited_sentence(row_num)
-  .slide.anim-addclass.anim-continue(data-what=".fitch-proof .row-#{row_num} .sentence", data-class="bkg-words-highlight-red")
-mixin unhighlight_cited_sentence(row_num)
-  .slide.anim-removeclass.anim-continue(data-what=".fitch-proof .row-#{row_num} .sentence", data-class="bkg-words-highlight-red")
-  
 //- create a proof.  The proof may include subproofs
+//- e.g.:
+//-  - var prf = {premises:['P ∧ Q', 'Q ∧ R'], lines:[['P','∧Elim', [1]],['R', '∧Elim',[2]]]}
+//-  mixin fitch_proof(prf)
 mixin fitch_proof(prf)
   table.fitch-proof
     - var premises = prf['premises']
@@ -69,7 +224,7 @@ mixin fitch_proof(prf)
       tr(class="premise row-#{line_no}")
         td(class="#{line_no == premises.length ? 'last-premise' : ''}")
             span.highlight-hook &#8203;
-        td #{prf. no_line_numbers ? '' : line_no+'.'}
+        td #{prf.no_line_numbers ? '' : line_no+'.'}
         td
           p.sentence #{premise}
         td
@@ -88,7 +243,7 @@ mixin fitch_proof(prf)
         tr(class="line row-#{line_no}")
           td(class="#{line_no == premises.length ? 'last-premise premise' : 'premise'}")
               span.highlight-hook &#8203;
-          td #{prf. no_line_numbers ? '' : line_no+'.'}
+          td #{prf.no_line_numbers ? '' : line_no+'.'}
           td
             span.sentence #{line[0]}
           td #{line[1]}
@@ -102,3 +257,25 @@ mixin fitch_proof(prf)
                       | ,
                   - ctr += 1
         - line_no += 1
+
+//- animations to highlight rows / sentences / reference numbers in proofs
+//- nb: these use anim-continue so you can do several highlights in one slide
+//- nb: after calling one or more of these highlights, use mixin anim_end
+
+//- highlight a row of a proof
+mixin highlight_row(row_num)
+  .slide.anim-addclass.anim-continue(data-what=".fitch-proof .row-#{row_num} .highlight-hook", data-class="bkg-grey-row")
+mixin unhighlight_row(row_num)
+  .slide.anim-removeclass.anim-continue(data-what=".fitch-proof .row-#{row_num} .highlight-hook", data-class="bkg-grey-row")
+
+//- highlights just one of the numbers in a rule of proof
+mixin highlight_citation(row_num, citation_num)
+  .slide.anim-addclass.anim-continue(data-what=".fitch-proof .row-#{row_num} .citation-#{citation_num}", data-class="bkg-words-highlight-red")
+mixin unhighlight_citation(row_num, citation_num)
+  .slide.anim-removeclass.anim-continue(data-what=".fitch-proof .row-#{row_num} .citation-#{citation_num}", data-class="bkg-words-highlight-red")
+
+//- highlights the specified line as a line highlighted
+mixin highlight_cited_sentence(row_num)
+  .slide.anim-addclass.anim-continue(data-what=".fitch-proof .row-#{row_num} .sentence", data-class="bkg-words-highlight-red")
+mixin unhighlight_cited_sentence(row_num)
+  .slide.anim-removeclass.anim-continue(data-what=".fitch-proof .row-#{row_num} .sentence", data-class="bkg-words-highlight-red")

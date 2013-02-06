@@ -1,0 +1,62 @@
+---
+layout: 'default'
+title: 'Lecture 09'
+weburl: ''
+units: []
+---
+
+include ../../fragments/slide_mixins
+
+
+// *todo change images
+- var images = get_images('flowers')
+ 
+
+.deck-container
+
+  mixin title_slide({document:document, images:images})
+
+  //- *todo: difference between ∀x(Square(x)∧Broken(x)) and ∀x(Square(x)→Broken(x)) ?
+  //- (It's a way of reinforcing the thing about ∀ works with →
+
+  // demorgan
+  - d = get_unit(235)
+    mixin section({unit:d, images:images})
+    != d.contentRendered  
+
+  //- unit: Proof Example: ¬(P∨Q) therefore ¬P∧¬Q
+  //- this is particularly appropriate given that we were doing demorgan
+  - d = get_unit(821)
+    mixin section({unit:d, images:images})
+    != d.contentRendered  
+
+  // conditionals and negation
+  - d = get_unit(237)
+    mixin section({unit:d, images:images})
+    != d.contentRendered  
+
+  // don't use existential with arrow
+  - d = get_unit(245)
+    mixin section({unit:d, images:images})
+    != d.contentRendered  
+
+  //- unit: translating sentences with quantifiers
+  - d = get_unit(507)
+    mixin section({unit:d, images:images})
+    != d.contentRendered  
+
+
+  //- unit: what arrow means
+  - d = get_unit(700)
+    mixin section({unit:d, images:images})
+    != d.contentRendered  
+
+
+
+  //- unit: ∃Elim
+  - d = get_unit(550)
+    mixin section({unit:d, images:images})
+    != d.contentRendered  
+
+
+  a.deck-permalink(href='.', title='Permalink to this slide') #

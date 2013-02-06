@@ -40,7 +40,6 @@ invert_text()
 
 /**
  * supposed to prevent reduced opacity for previous slide
- * ***TODO: not working!
  */
 .deck-container > .slide .deck-before .nodim, .deck-container > .slide .deck-previous .nodim 
   opacity 1
@@ -48,6 +47,10 @@ invert_text()
 
 .deck-container .slide .nodim
   opacity 1
+
+.deck-container .slide .dim
+  opacity 0.4
+
 
 /**
  * avoid deck.core.css overwriting our 960 grid css
@@ -101,6 +104,9 @@ div.words
   right: 0
   top: 300px
   transform: translate3d(0, -50%, 0)
+
+.deck-container .hem-above
+  padding-top: 0.5em
 
 .deck-container .em-above
   padding-top: 1em
@@ -188,6 +194,8 @@ td, .deck-container td
   list-style: circle
   padding-bottom: 0.1em
 
+.deck-container .center table
+ margin 0 auto
 
 table.truth-table
   border-collapse: collapse
@@ -199,7 +207,17 @@ table.truth-table
   td.result-col
     border-left 2px solid white //horizontal line after premises
 
+.invert table.truth-table
+  tr:first-child td
+    border-bottom: 2px solid black  //left border for proof
+  td.result-col
+    border-left 2px solid black //horizontal line after premises
 
+.compress table.truth-table
+  tr td
+    padding 0em 0.3em //less vertical and horizontal spacing for all lines
+
+ 
 table.fitch-proof
   border-collapse: collapse
   tr td
@@ -238,33 +256,36 @@ table.fitch-proof
 .deck-container .invisible
   opacity: 0
 
-.hide
+.deck-container .hide
   visibility hidden
+
+.deck-container .remove-me
+  display none
+
 
 /**
  * make part of the screen white (with black text)
  */
-.deck-container .bottom-half-white
+btm-white(height,top) 
   background-color: white
   float: left
   position: absolute
-  top:300px
-  height:300px
+  top: top
+  height:height
   width: 800px
   left: 0px
   invert_text()
   box-shadow: 0px -8px 8px 0 rgba(255,255,255,0.5)
 
+.deck-container .bottom-white
+  btm-white 225px, 375px
+ 
+.deck-container .bottom-half-white
+  btm-white 300px, 300px
+
 .deck-container .bottom-third-white
-  background-color: white
-  float: left
-  position: absolute
-  top:400px
-  height:200px
-  width: 800px
-  left: 0px
-  invert_text()
-  box-shadow: 0px -8px 8px 0 rgba(255,255,255,0.5)
+ btm-white 200px, 400px
+
 
 .deck-container .right-half-white
   background-color: white
@@ -306,17 +327,37 @@ table.fitch-proof
 
 .deck-container .bkg-grey-row
   background-color: rgba(255,255,255,0.6)
-  box-shadow: 0 0 1px black, 0 0 1.5em white
+  box-shadow: 0 0 1px black, 0 0 0.5em white
   margin-left: -40em
   border-left: solid 40em rgba(255,255,255,0.3)
   margin-right: -40em
   border-right: solid 40em rgba(255,255,255,0.3)
   text-outline: 1px 2px red
 
+.deck-container .invert .bkg-grey-row
+  background-color: rgba(0,0,0,0.6)
+  box-shadow: 0 0 1px white, 0 0 0.5em black
+  margin-left: -40em
+  border-left: solid 40em rgba(0,0,0,0.3)
+  margin-right: -40em
+  border-right: solid 40em rgba(0,0,0,0.3)
+  text-outline: 1px 2px red
+
+
 /**
- * highlight words
+ * transparent backgrounds
+ */
+.deck-container  .bkg-black-33
+  background: rgba(0,0,0,0.33)
+  box-shadow: 0 0 15px 64px rgba(0,0,0,0.33)
+  
+
+
+/**
+ * highlight words -- just for one slide
  * (configured so that highlights disappear if not current slide)
  */
+ 
 .deck-container .deck-current .words-highlight-red
   background-color: rgba(255,0,0,0.8)
   box-shadow: 0 0 15px 8px rgba(255,0,0,0.8)
@@ -324,17 +365,83 @@ table.fitch-proof
   -moz-box-shadow: 0 0 15px 8px rgba(255,0,0,0.8)
   border-radius: 5px
 
-.deck-container .bkg-words-highlight-red
-  background-color: rgba(255,0,0,1)
-  border-radius: 5px
-  box-shadow: 0  0 1px 4px rgba(255,0,0,1), 0  0 15px 8px rgba(255,0,0,1)
-  border-color: rgba(255,0,0,1)
+
+/**
+ * highlight words -- permanent
+ * (configured so that highlights disappear if not current slide)
+ */
+ 
+highlight-bkg(col)
+  background-color col
+  box-shadow 0 0 15px 8px col
+  border-radius 5px
   //marging-right doesn't work in firefox  (margin-left does!)
   //margin-left: -10px
   //border-left: solid 10px  rgba(255,0,0,0.8)
   //margin-right: -10px
   //border-right: solid 10px  rgba(255,0,0,0.8)
   //outline: 5px solid rgba(255,0,0,0.8)
+ 
+.deck-container .bkg-words-highlight-white
+  highlight-bkg rgba(255, 255, 255, 1)
+
+.deck-container .bkg-words-highlight-faint-white
+  highlight-bkg rgba(255, 255, 255, 0.3)
+
+.deck-container .bkg-words-highlight-blue
+  highlight-bkg rgba(0, 128, 255,1)
+
+.deck-container .bkg-words-highlight-faint-blue
+  highlight-bkg rgba(0, 128, 255, 0.3)
+
+.deck-container .bkg-words-highlight-pink
+  highlight-bkg rgba(255, 111, 207,1)
+
+.deck-container .bkg-words-highlight-faint-pink
+  highlight-bkg rgba(255, 111, 207,0.3)
+
+.deck-container .bkg-words-highlight-yellow
+  highlight-bkg rgba(255, 255, 0, 1)
+
+.deck-container .bkg-words-highlight-faint-yellow
+  highlight-bkg rgba(255, 255, 0, 0.3)
+
+.deck-container .bkg-words-highlight-red
+  highlight-bkg rgba(255, 0, 0, 1)
+
+.deck-container .bkg-words-highlight-faint-red
+  highlight-bkg rgba(255, 0, 0, 0.3)
+
+.deck-container .bkg-words-highlight-forestgreen
+  highlight-bkg: rgba(34,139,34,1)
+
+.deck-container .bkg-words-highlight-faint-forestgreen
+  highlight-bkg: rgba(34,139,34,0.3)
+
+.deck-container .bkg-words-highlight-olive
+  highlight-bkg: rgba(128,128,0,1)
+
+.deck-container .bkg-words-highlight-faint-olive
+  highlight-bkg: rgba(128,128,0,0.3)
+
+.deck-container .bkg-words-highlight-teal
+  highlight-bkg: rgba(0,128,128,1)
+
+.deck-container .bkg-words-highlight-faint-teal
+  highlight-bkg: rgba(0,128,128,0.3)
+
+.deck-container .bkg-words-highlight-lime
+  highlight-bkg: rgba(0,255,0,1)
+
+.deck-container .bkg-words-highlight-faint-lime
+  highlight-bkg: rgba(0,255,0,0.3)
+
+.deck-container .bkg-words-highlight-limegreen
+  highlight-bkg: rgba(50,205,50,1)
+
+.deck-container .bkg-words-highlight-faint-limegreen
+  highlight-bkg: rgba(50,205,50,0.3)
+
 
 /**
  * boxes
@@ -402,11 +509,13 @@ table.fitch-proof
   -o-transform: none
   transform: none
   padding: 0
+  text-shadow: 0 0 2px black, 1px 1px 2px black, 1px -1px 2px black, -1px 1px 2px black, -1px -1px 2px black
 
 .csstransforms .deck-container h2
   font-size: 30pt
   border-bottom: none
   margin-bottom: 0
+  text-shadow: 0 0 2px black, 1px 1px 2px black, 1px -1px 2px black, -1px 1px 2px black, -1px -1px 2px black
   
 .deck-container  .title-block
   background: linear-gradient(left, black, transparent)

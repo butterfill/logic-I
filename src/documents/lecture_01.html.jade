@@ -2,37 +2,27 @@
 layout: 'default'
 title: 'Lecture 01'
 weburl: 'http://goo.gl/CYlgf'
+units: []
 ---
 
 include ../../fragments/slide_mixins
 
+- var images = get_images('bees')
 
 .deck-container
-  #title-slide.slide
-    // *notes This is a course about the limits of the world.  But let me start with a concrete example.
-    img.bkg(src='/img/bkg/bees/DSC_0172_crop.jpg')
-    .spacer &nbsp;
-    .title-block: .title-container
-        h1.title1 Logic I (PH126)
-        h1.title2 #{document.title}
-        h3.email s.butterfill@warwick.ac.uk
-    if document.weburl
-      .words
-        span(style="position:relative;top:250px;left:450px;").white-box.big.center #{document.weburl}
+  // *notes This is a course about the limits of the world.  But let me start with a concrete example.
+  mixin title_slide({document:document, images:images})
+
  
   //- section: unit_01 two pigs
   //- started translating to html
   //- include ../../fragments/unit_01_two_pigs
-  - each d in getCollection("documents").findAll({url:'/units/unit_01.html'},[{year:-1,sort_order:1}]).toJSON()
+  - var d = get_unit('01')
     != d.contentRendered
 
-  - each d in getCollection("documents").findAll({url:'/units/unit_011.html'},[{year:-1,sort_order:1}]).toJSON()
-    section#unit_011.slide
-      img.bkg(src='/img/bkg/bees/DSC_0200_crop.jpg')
-      .spacer &nbsp;
-      .title-block: .title-container
-          h2.title1 #{d.title}
-    != d.contentRendered
+  - d = get_unit('011')
+    mixin section({unit:d, images:images})
+    != d.contentRendered  
     
   // *notes admin section
   section.slide
@@ -63,14 +53,11 @@ include ../../fragments/slide_mixins
   section.slide
     img.bkg(src='/img/lecture_01/P4258786 merge2.jpg')
 
+
   //- unit: quick intro to Logiya
-  - each d in getCollection("documents").findAll({url:'/units/unit_02.html'},[{year:-1,sort_order:1}]).toJSON()
-    section#unit_02.slide
-      img.bkg(src='/img/bkg/bees/DSC_0169_crop.jpg')
-      .spacer &nbsp;
-      .title-block: .title-container
-          h2.title1 #{d.title}
-    != d.contentRendered
+  - d = get_unit('02')
+    mixin section({unit:d, images:images})
+    != d.contentRendered  
   //- extension -- *todo incorporate in unit_02
   // *notes We need a formal language because ambiguity is awkward to deal with theoretically
   section.slide
@@ -80,13 +67,9 @@ include ../../fragments/slide_mixins
     p.middle.center Many more people have been to Paris than I have.
 
   //- unit: logically valid arguments
-  - each d in getCollection("documents").findAll({url:'/units/unit_03.html'},[{year:-1,sort_order:1}]).toJSON()
-    section#unit_03.slide
-      img.bkg(src='/img/bkg/bees/DSC_0165_crop.jpg')
-      .spacer &nbsp;
-      .title-block: .title-container
-          h2.title1 #{d.title}
-    != d.contentRendered
+  - d = get_unit('03')
+    mixin section({unit:d, images:images})
+    != d.contentRendered  
 
   // *notes didn't do this in 2012-3 but leave it in in case you do have time!
   //- counterexamples & sound argument

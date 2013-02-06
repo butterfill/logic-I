@@ -1,0 +1,64 @@
+---cson
+layout: 'deck_units'
+title: 'Translation with Quantifiers'
+tags: ['translation']
+description: "Discusses how to translate 'Some persuasive arguments are not valid' and 'All French discordians weep and wail except Gillian Deleude' into first-order logic."
+depends: ['unit_503']
+---
+
+include ../../../fragments/slide_mixins
+
+
+.slide#unit_507
+  .container_12
+    .grid_12
+      .words
+        .existential_translation
+          p Some 
+            span.step5.hide
+              span.bkg-words-highlight-yellow persuasive 
+              span and 
+            span.step3.hide.bkg-words-highlight-red useful 
+            span arguments are not valid.
+          p.step2.hide ∃x(
+            span.step6.hide
+              span.bkg-words-highlight-yellow Persuasive(x) 
+              span ∧ 
+            span.step4.hide
+              span.bkg-words-highlight-red Useful(x) 
+              span ∧  
+            span Argument(x) ∧ ¬Valid(x))
+          mixin steps(6)
+        .slide.anim-addclass(data-what=".existential_translation",data-class="dim")
+        .slide.nodim
+          p.em-above All 
+            span.universal-who discordians 
+            span.universal-what weep.
+          p.slide.nodim ∀x( 
+            span.universal-who Dscrdn(x) 
+            span → 
+            span.universal-what Wps(x) 
+            span )
+          .slide.anim-addclass(data-what=".universal-who",data-class="bkg-words-highlight-blue")
+          .slide.anim-addclass(data-what=".universal-what",data-class="bkg-words-highlight-pink")
+        .slide
+          p.em-above All 
+            span.bkg-words-highlight-yellow French 
+            span discordians weep. 
+          p.slide ∀x( (
+            span.bkg-words-highlight-yellow Frnch(x)
+            span ∧ Dscrdn(x) ) →  Wps(x) )
+        .slide
+          p.em-above All French discordians weep 
+            span.bkg-words-highlight-yellow and wail.
+          p.slide ∀x( ( Frnch(x) ∧ Dscrdn(x) ) → 
+            span.bkg-words-highlight-yellow ( 
+            span Wps(x) 
+            span.bkg-words-highlight-yellow ∧ Wls(x) ) 
+            span )
+        .slide
+          p.em-above All French discordians weep and wail 
+            span.bkg-words-highlight-yellow except Gillian Deleude.
+          p.slide ∀x( ( Frnch(x) ∧ Dscrdn(x) 
+            span.bkg-words-highlight-yellow ∧ ¬x=a
+            span ) →  ( Wps(x) ∧ Wls(x) ) )

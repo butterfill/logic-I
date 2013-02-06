@@ -7,32 +7,147 @@ units: []
 
 include ../../fragments/slide_mixins
 
+- var images = get_images('flowers')
+
+
+//- *todo: bit slow for fast group --- also maybe no big points!  (Or was it just my mood in 2012-3)
 
 .deck-container
-  #title-slide.slide
-    img.bkg(src='/img/bkg/birds_baby/P5260025_crop.JPG')
-    .spacer &nbsp;
-    .title-block(style="position:relative; top:325px"): .title-container
-        h1.title1 Logic I (PH126)
-        h1.title2 #{document.title}
-        h3.email s.butterfill@warwick.ac.uk
-    if document.weburl
-      .words
-        span(style="position:relative;top:250px;left:450px;").white-box.big.center #{document.weburl}
 
-  //- * todo : mention the maths & philosophy degree
+  mixin title_slide({document:document, images:images})
 
-  //- *todo move these to another lecture?  Need to keep with exercises!
 
+  // *note: 700 and 340 are connected by 'meaning is use' issues'
   //- unit: what arrow means
+  .slide
+    p.middle.center What does ‘→’ mean?
   - var d = get_unit(700)
-    section#unit_700.slide
-      img.bkg(src='/img/bkg/budapest/IMG_nc_5507.JPG')
-      .spacer &nbsp;
-      .title-block: .title-container
-          h2.title1 #{d.title}
+    != d.contentRendered
+
+  //- unit: Fubar Rules
+  - d = get_unit(340)
+    mixin section({unit:d, images:images})
+    != d.contentRendered  
+
+
+  .slide
+    p.middle.center No lectures or seminars in reading week (Week 6).
+    
+
+  //- unit: proof: ∃Elim 
+  - d = get_unit(550)
+    mixin section({unit:d, images:images})
+    != d.contentRendered  
+
+  //- unit: proof: ∀Intro
+  - d = get_unit(570)
+    mixin section({unit:d, images:images})
+    != d.contentRendered  
+
+  //- unit: summary of rules of proof
+  - d = get_unit(575)
+    mixin section({unit:d, images:images})
+    != d.contentRendered  
+
+
+  
+  //- advertise logic options and the degree
+  .slide#maths_phil_advert
+    p.center.middle advert
+  .slide
+    img(src="/img/people/walt_s.jpg",width="300px",style="position:relative;top:230px;").float-right
+    .words: .container_12: .grid_6
+          ul
+            li Logic II: Metatheory
+            li Logic III: Incompleteness and Undecidability
+            li Modal Logic
+            li Philosophy of Logic
+            li Philosophy of Mathematics
+            li Philosophy of Computation
+    .slide
+      .right-half-white
+        .words
+          .container_12: .grid_5
+              p 3 year BSc in Mathematics and Philosophy
+              p.em-above 4 year BSc in Mathematics and Philosophy with specialism in Logic and Foundations
+
+
+  //- unit: all squares are blue (fast version)
+  - d = get_unit(504)
+    mixin section({unit:d, images:images})
+    != d.contentRendered  
+
+  //- unit: What does ∀ mean?
+  - d = get_unit(492)
+    mixin section({unit:d, images:images})
+    != d.contentRendered  
+
+  
+  
+  //- compare and contrast formulae
+  .slide#universal_arrow
+    .words
+      .container_12: .grid_6
+        p ∀x( Square(x) ∧ Broken(x) )
+        p ∀x( Square(x) → Broken(x) )
+        p.step2.hide ∀x(  ¬Square(x) ∨ Broken(x) )
+        .em-above
+        p.step3.hide ∃x( Square(x) → Broken(x) )
+        p.step4.hide ∃x( ¬Square(x) ∨ Broken(x) )
+        p.step3.hide ∃x( Square(x) ∧ Broken(x) )
+        mixin steps(4, '#universal_arrow')
+
+
+  //- unit: scope and quantifiers
+  - d = get_unit(710)
+    mixin section({unit:d, images:images})
+    != d.contentRendered  
+
+  //- unit: translating sentences with quantifiers
+  - d = get_unit(507)
+    mixin section({unit:d, images:images})
+    != d.contentRendered  
+
+  //- unit: quantifiers: binding
+  - d = get_unit(711)
+    mixin section({unit:d, images:images})
+    != d.contentRendered  
+
+
+  .slide
+    p.middle.center No lectures or seminars in reading week (Week 6).
+
+
+  //- unit: State the subsitution theorem
+  - d = get_unit(250)
+    mixin section({unit:d, images:images})
+    // prefix with reminder about demorgan (not actually done
+    .slide#demorgan_recap
+      .middle
+        p A ∧ B ⫤⊨ ¬(¬A ∨ ¬B)
+        p A ∨ B ⫤⊨ ¬(¬A ∧ ¬B)
+        p A → B ⫤⊨ ¬A ∨ B
     != d.contentRendered
   
-  //- unit (as continuation): Does ‘if’ mean what ‘→’ means?
-  - var d = get_unit(640)
+  
+  // 2012-3 ended here
+    
+  //- unit: Something is above something
+  - d = get_unit(740)
+    mixin section({unit:d, images:images})
     != d.contentRendered
+    
+  //- unit: Two things are broken
+  - d = get_unit(470)
+    mixin section({unit:d, images:images})
+    != d.contentRendered
+
+
+  //- *hope not to have time for this (but it's a good one to end on)
+  //- unit: Does ‘if’ mean what ‘→’ means?
+  - var d = get_unit(640)
+    mixin section({unit:d, images:images})
+    != d.contentRendered
+  
+
+

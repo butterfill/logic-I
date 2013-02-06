@@ -16,10 +16,15 @@ include ../../fragments/slide_mixins
     - var unit_num
     each unit in getCollection("units").toJSON()
       - unit_num = unit.basename.substr(5)
-      h3 unit #{unit_num}:
+      h3 #{unit_num}:
         a(href="/units_grid/#{unit.outFilename}") #{unit.title}
       if unit.images && unit.basename != unit.images
         p(style="background-color: red") !!!error unit.basename != unit.images !!!
+      p depends on units:
+        each dependency in unit.depends
+          span #{dependency} 
+          span | 
+      p tags: #{unit.tags}
       p #{unit.description}
       if unit.book && unit.book.length > 0 
         p reading:  §#{unit.book.join(', §')}
