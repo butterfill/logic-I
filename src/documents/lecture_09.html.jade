@@ -8,7 +8,6 @@ units: []
 include ../../fragments/slide_mixins
 
 
-// *todo change images
 - var images = get_images('twins_2009')
  
 
@@ -16,47 +15,43 @@ include ../../fragments/slide_mixins
 
   mixin title_slide({document:document, images:images})
 
-  //- *todo: difference between ∀x(Square(x)∧Broken(x)) and ∀x(Square(x)→Broken(x)) ?
-  //- (It's a way of reinforcing the thing about ∀ works with →
+  //- unit: what arrow means
+  - d = get_unit(700)
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)
 
   // demorgan
   - d = get_unit(235)
     mixin section({unit:d, images:images})
-    != d.contentRendered  
+    mixin render_unit(d)
 
   //- unit: Proof Example: ¬(P∨Q) therefore ¬P∧¬Q
   //- this is particularly appropriate given that we were doing demorgan
   - d = get_unit(821)
     mixin section({unit:d, images:images})
-    != d.contentRendered  
+    mixin render_unit(d)  
 
   // conditionals and negation
   - d = get_unit(237)
     mixin section({unit:d, images:images})
-    != d.contentRendered  
+    mixin render_unit(d)  
 
   // don't use existential with arrow
   - d = get_unit(245)
     mixin section({unit:d, images:images})
-    != d.contentRendered  
+    mixin render_unit(d)  
 
   //- unit: translating sentences with quantifiers
   - d = get_unit(507)
     mixin section({unit:d, images:images})
-    != d.contentRendered  
-
-
-  //- unit: what arrow means
-  - d = get_unit(700)
-    mixin section({unit:d, images:images})
-    != d.contentRendered  
-
-
+    mixin render_unit(d)  
 
   //- unit: ∃Elim
   - d = get_unit(550)
     mixin section({unit:d, images:images})
-    != d.contentRendered  
+    mixin render_unit(d)  
 
+
+  //- *2012-3 covered everything --- nothing in reserve
 
   a.deck-permalink(href='.', title='Permalink to this slide') #

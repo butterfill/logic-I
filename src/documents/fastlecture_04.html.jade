@@ -22,12 +22,12 @@ include ../../fragments/slide_mixins
   .slide
     p.middle.center What does ‘→’ mean?
   - var d = get_unit(700)
-    != d.contentRendered
+    mixin render_unit(d)
 
   //- unit: Fubar Rules
   - d = get_unit(340)
     mixin section({unit:d, images:images})
-    != d.contentRendered  
+    mixin render_unit(d)  
 
 
   .slide
@@ -37,17 +37,17 @@ include ../../fragments/slide_mixins
   //- unit: proof: ∃Elim 
   - d = get_unit(550)
     mixin section({unit:d, images:images})
-    != d.contentRendered  
+    mixin render_unit(d)  
 
   //- unit: proof: ∀Intro
   - d = get_unit(570)
     mixin section({unit:d, images:images})
-    != d.contentRendered  
+    mixin render_unit(d)  
 
   //- unit: summary of rules of proof
   - d = get_unit(575)
     mixin section({unit:d, images:images})
-    != d.contentRendered  
+    mixin render_unit(d)  
 
 
   
@@ -75,12 +75,12 @@ include ../../fragments/slide_mixins
   //- unit: all squares are blue (fast version)
   - d = get_unit(504)
     mixin section({unit:d, images:images})
-    != d.contentRendered  
+    mixin render_unit(d)  
 
   //- unit: What does ∀ mean?
   - d = get_unit(492)
     mixin section({unit:d, images:images})
-    != d.contentRendered  
+    mixin render_unit(d)  
 
   
   
@@ -101,17 +101,17 @@ include ../../fragments/slide_mixins
   //- unit: scope and quantifiers
   - d = get_unit(710)
     mixin section({unit:d, images:images})
-    != d.contentRendered  
+    mixin render_unit(d)  
 
   //- unit: translating sentences with quantifiers
   - d = get_unit(507)
     mixin section({unit:d, images:images})
-    != d.contentRendered  
+    mixin render_unit(d)  
 
   //- unit: quantifiers: binding
   - d = get_unit(711)
     mixin section({unit:d, images:images})
-    != d.contentRendered  
+    mixin render_unit(d)  
 
 
   .slide
@@ -127,7 +127,7 @@ include ../../fragments/slide_mixins
         p A ∧ B ⫤⊨ ¬(¬A ∨ ¬B)
         p A ∨ B ⫤⊨ ¬(¬A ∧ ¬B)
         p A → B ⫤⊨ ¬A ∨ B
-    != d.contentRendered
+    mixin render_unit(d)
   
   
   // 2012-3 ended here
@@ -135,19 +135,19 @@ include ../../fragments/slide_mixins
   //- unit: Something is above something
   - d = get_unit(740)
     mixin section({unit:d, images:images})
-    != d.contentRendered
+    mixin render_unit(d)
     
   //- unit: Two things are broken
   - d = get_unit(470)
     mixin section({unit:d, images:images})
-    != d.contentRendered
+    mixin render_unit(d)
 
 
   //- *hope not to have time for this (but it's a good one to end on)
   //- unit: Does ‘if’ mean what ‘→’ means?
   - var d = get_unit(640)
     mixin section({unit:d, images:images})
-    != d.contentRendered
+    mixin render_unit(d)
   
 
 

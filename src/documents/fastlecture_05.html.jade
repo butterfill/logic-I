@@ -22,5 +22,5 @@ include ../../fragments/slide_mixins
   //- unit: Does ‘if’ mean what ‘→’ means?
   - var d = get_unit(640)
     mixin section({unit:d, images:images})
-    != d.contentRendered
+    mixin render_unit(d)
   

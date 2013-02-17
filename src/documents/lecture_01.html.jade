@@ -18,11 +18,11 @@ include ../../fragments/slide_mixins
   //- started translating to html
   //- include ../../fragments/unit_01_two_pigs
   - var d = get_unit('01')
-    != d.contentRendered
+    mixin render_unit(d)
 
   - d = get_unit('011')
     mixin section({unit:d, images:images})
-    != d.contentRendered  
+    mixin render_unit(d)
     
   // *notes admin section
   section.slide
@@ -57,7 +57,7 @@ include ../../fragments/slide_mixins
   //- unit: quick intro to Logiya
   - d = get_unit('02')
     mixin section({unit:d, images:images})
-    != d.contentRendered  
+    mixin render_unit(d) 
   //- extension -- *todo incorporate in unit_02
   // *notes We need a formal language because ambiguity is awkward to deal with theoretically
   section.slide
@@ -69,7 +69,7 @@ include ../../fragments/slide_mixins
   //- unit: logically valid arguments
   - d = get_unit('03')
     mixin section({unit:d, images:images})
-    != d.contentRendered  
+    mixin render_unit(d)
 
   // *notes didn't do this in 2012-3 but leave it in in case you do have time!
   //- counterexamples & sound argument
@@ -80,10 +80,10 @@ include ../../fragments/slide_mixins
         .spacer &nbsp;
         .title-block: .title-container
             h2.title1 #{d.title}
-      != d.contentRendered
+      mixin render_unit(d)
     //- omit title for sound argument, treat it as part of counterexamples
     - each d in getCollection("documents").findAll({url:'/units/unit_041.html'},[{year:-1,sort_order:1}]).toJSON()
-      != d.contentRendered
+      mixin render_unit(d)
      
 
     a.deck-permalink(href='.', title='Permalink to this slide') #

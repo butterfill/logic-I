@@ -11,6 +11,9 @@ docpadConfig = {
 
 	templateData:
 
+		moment:
+			require('moment')
+			
 		# Specify some site properties
 		site:
 			# The production url of our website

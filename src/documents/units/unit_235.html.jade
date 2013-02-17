@@ -3,7 +3,7 @@ layout: 'deck_units'
 title: 'DeMorgan: ¬(A ∧ B) ⫤⊨ ¬A ∨ ¬B'
 tags: ['truth-tables']
 description: "Introduces DeMorgan's Laws relating ¬, ∧ and ∨.  The laws can be stated as A ∧ B ⫤⊨ ¬(¬A ∨ ¬B) and A ∨ B ⫤⊨ ¬(¬A ∧ ¬B).  Also mentions that A → B ⫤⊨ ¬A ∨ B."
-depends: ['']
+depends: ['unit_700']
 source: ['ph126 fastlecture 05']
 duration: 5
 book: ['3.6']
@@ -65,7 +65,7 @@ include ../../../fragments/slide_mixins
               span.arrow-inner-equiv ¬A ∨ B
               span ) &nbsp; &nbsp;
             td.step9.hide ⫤⊨ &nbsp; &nbsp;
-            td.step9.hide ¬A ∧ B
+            td.step9.hide A ∧ ¬B
         //- switch truth tables in bottom white half
         mixin showhide(['#truth-tables-2'],['#truth-tables-1', '#truth-tables-2 .result-col-3','#truth-tables-2 .result-col-4','#truth-tables-2 .result-col-5'])
         //- reveal more of the truth tables

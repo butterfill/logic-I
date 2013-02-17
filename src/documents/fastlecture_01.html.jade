@@ -2,99 +2,70 @@
 layout: 'default'
 title: 'Fast Lecture 01'
 weburl: 'http://goo.gl/eksH8'
+units: []
 ---
 
 include ../../fragments/slide_mixins
 
+- var images = get_images('bali')
+
 
 .deck-container
-  #title-slide.slide
-    // *notes This course is about the notion of logical Validity
-    img.bkg(src='/img/bkg/bali/P3232956.JPG')
-    .spacer &nbsp;
-    .title-block: .title-container
-        h1.title1 Logic I (PH126)
-        h1.title2 #{document.title}
-        h3.email s.butterfill@warwick.ac.uk
-    if document.weburl
-      .words
-        span(style="position:relative;top:250px;left:450px;").white-box.big.center #{document.weburl}
+  mixin title_slide({document:document, images:images})
  
   //- section: unit_029, unit_03
-  - each d in getCollection("documents").findAll({url:'/units/unit_029.html'},[{year:-1,sort_order:1}]).toJSON()
-    != d.contentRendered
-  - each d in getCollection("documents").findAll({url:'/units/unit_03.html'},[{year:-1,sort_order:1}]).toJSON()
-    != d.contentRendered
+  - d = get_unit('029')
+    mixin render_unit(d)
+  - d = get_unit('03')
+    mixin render_unit(d)
   
   //- unit: sentence letters
-  - each d in getCollection("documents").findAll({url:'/units/unit_012.html'},[{year:-1,sort_order:1}]).toJSON()
-    section#unit_012.slide
-      img.bkg(src='/img/bkg/bali/P3242997.JPG')
-      .spacer &nbsp;
-      .title-block: .title-container
-          h2.title1 #{d.title}
-    != d.contentRendered  
+  - d = get_unit('012')
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)  
   
   //- unit: counterexamples
-  - each d in getCollection("documents").findAll({url:'/units/unit_04.html'},[{year:-1,sort_order:1}]).toJSON()
-    section#unit_04.slide
-      img.bkg(src='/img/bkg/bali/P3242965.JPG')
-      .spacer &nbsp;
-      .title-block: .title-container
-          h2.title1 #{d.title}
-    != d.contentRendered
+  - d = get_unit('04')
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)
 
   //- unit: identity
-  - each d in getCollection("documents").findAll({url:'/units/unit_06.html'},[{year:-1,sort_order:1}]).toJSON()
-    section#unit_06.slide
-      img.bkg(src='/img/bkg/bali/P3192679.JPG')
-      .spacer &nbsp;
-      .title-block(style="position:relative; top:425px"): .title-container
-          h2.title1 #{d.title}
-    != d.contentRendered
+  - d = get_unit('06')
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)
 
   //- unit: truth tables
-  - each d in getCollection("documents").findAll({url:'/units/unit_071.html'},[{year:-1,sort_order:1}]).toJSON()
-    section#unit_071.slide
-      img.bkg(src='/img/bkg/bali/P3222906.JPG')
-      .spacer &nbsp;
-      .title-block(style="position:relative; top:425px"): .title-container
-          h2.title1 #{d.title}
-    != d.contentRendered
+  - d = get_unit('071')
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)
 
   //- unit: complex truth tables example
-  - each d in getCollection("documents").findAll({url:'/units/unit_09.html'},[{year:-1,sort_order:1}]).toJSON()
-    section#unit_09.slide
-      img.bkg(src='/img/bkg/bali/P3232936.JPG')
-      .spacer &nbsp;
-      .title-block: .title-container
-          h2.title1 #{d.title} 
-    != d.contentRendered
+  - d = get_unit('09')
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)
+
 
   //- unit: using truth-tables for validity
-  - each d in getCollection("documents").findAll({url:'/units/unit_14.html'},[{year:-1,sort_order:1}]).toJSON()
-    section#unit_14.slide
-      img.bkg(src='/img/bkg/bali/P3232956.JPG')
-      .spacer &nbsp;
-      .title-block: .title-container
-          h2.title1 #{d.title} 
-      section.slide
-       .words
-        p.middle.center We can use truth tables to establish that 
-          br
-          | some arguments are logically valid
-    != d.contentRendered
+  - d = get_unit('14')
+    mixin section({unit:d, images:images})
+    section.slide
+     .words
+      p.middle.center We can use truth tables to establish that 
+        br
+        | some arguments are logically valid
+    mixin render_unit(d)
+
   //- unit: tautologies and contradictions, logical validity is not what you think it is.
   //- omit title, treat as part of previous unit
   section.slide#unit_160
     p.middle.center Two more examples
-  - each d in getCollection("documents").findAll({url:'/units/unit_160.html'},[{year:-1,sort_order:1}]).toJSON()
-    != d.contentRendered
+  - d = get_unit('160')
+    mixin render_unit(d)
   //- the Bush examples
-  - each d in getCollection("documents").findAll({url:'/units/unit_162.html'},[{year:-1,sort_order:1}]).toJSON()
-    != d.contentRendered
+  - d = get_unit('162')
+    mixin render_unit(d)
     
   
-  //- *todo add more stuff --- too short in 2012/3
+  //- *todo add more stuff -- too short in 2012/3
 
-    a.deck-permalink(href='.', title='Permalink to this slide') #
+  a.deck-permalink(href='.', title='Permalink to this slide') #

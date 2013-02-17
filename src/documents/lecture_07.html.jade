@@ -25,7 +25,7 @@ include ../../fragments/slide_mixins
 
   //- unit: All squares are blue
   - d = get_unit(503)
-    != d.contentRendered  
+    mixin render_unit(d)  
 
 
   //- unit: Vegetarians are evil
@@ -35,7 +35,7 @@ include ../../fragments/slide_mixins
       .spacer &nbsp;
       .title-block(style="position:relative; top:425px"): .title-container
           h2.title1 #{d.title}
-    != d.contentRendered  
+    mixin render_unit(d)  
 
   //- feedback: rules of proof are on your handout
   .slide.nodim
@@ -51,7 +51,7 @@ include ../../fragments/slide_mixins
       .spacer &nbsp;
       .title-block: .title-container
           h2.title1 #{d.title}
-    != d.contentRendered  
+    mixin render_unit(d)  
 
 
   //- logical validity doesn't require that the conclusion follow from the premises
@@ -89,7 +89,7 @@ include ../../fragments/slide_mixins
       .spacer &nbsp;
       .title-block: .title-container
           h2.title1 #{d.title}
-    != d.contentRendered  
+    mixin render_unit(d)  
 
 
 
@@ -100,7 +100,7 @@ include ../../fragments/slide_mixins
       .spacer &nbsp;
       .title-block: .title-container
           h2.title1 #{d.title}
-    != d.contentRendered  
+    mixin render_unit(d)  
 
 
 
@@ -111,7 +111,7 @@ include ../../fragments/slide_mixins
       .spacer &nbsp;
       .title-block: .title-container
           h2.title1 #{d.title}
-    != d.contentRendered  
+    mixin render_unit(d)  
 
 
   
@@ -124,10 +124,10 @@ include ../../fragments/slide_mixins
         h2.title1 Scope
   //- introduce it with discussion of a mistake about ¬Intro (rules of proof apply only to connective with widest scope)
   - d = get_unit(291)
-    != d.contentRendered
+    mixin render_unit(d)
   //- scope 
   - d = get_unit(290)
-    != d.contentRendered  
+    mixin render_unit(d)  
 
 
   //- extra, probably no time
@@ -139,6 +139,6 @@ include ../../fragments/slide_mixins
         .spacer &nbsp;
         .title-block: .title-container
             h2.title1 #{d.title}
-      != d.contentRendered  
+      mixin render_unit(d)  
 
     a.deck-permalink(href='.', title='Permalink to this slide') #

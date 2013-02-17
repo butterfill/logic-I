@@ -32,9 +32,9 @@ include ../../fragments/slide_mixins
       | or: what the brackets mean
   //- unit_231 is just a recap
   - var d = get_unit(231)
-    != d.contentRendered  
+    mixin render_unit(d)  
   - d = get_unit(230)
-    != d.contentRendered  
+    mixin render_unit(d)  
 
   //- syntax is followed by postsecret quiz but do this later in the lecture (see below)
 
@@ -53,8 +53,8 @@ include ../../fragments/slide_mixins
           h2.title1 #{d.title}
     //- prefix with super quick into to ∨Intro
     - d2 = get_unit(222)
-      != d2.contentRendered  
-    != d.contentRendered  
+      mixin render_unit(d2)  
+    mixin render_unit(d)  
 
   //- unit: subproofs are tricky
   - d = get_unit(224)
@@ -63,11 +63,11 @@ include ../../fragments/slide_mixins
       .spacer &nbsp;
       .title-block: .title-container
           h2.title1 #{d.title}
-    != d.contentRendered  
+    mixin render_unit(d)  
 
   //- postsecret quiz: syntax
   - each d in getCollection("documents").findAll({url:'/quizes/postsecret_02.html'},[{year:-1,sort_order:1}]).toJSON()
-    != d.contentRendered
+    mixin render_unit(d)
 
 
   //- unit: negation and contradiction (rules of proof for contradiction)
@@ -77,14 +77,14 @@ include ../../fragments/slide_mixins
       .spacer &nbsp;
       .title-block(style="position:relative; top:425px"): .title-container
           h2.title1 #{d.title}
-    != d.contentRendered  
+    mixin render_unit(d)  
 
   .slide
     p.center.middle No lecture next week (Tuesday 29 January)
 
   //- skit: feedback
   - each d in getCollection("documents").findAll({url:'/skits/skit_01.html'},[{year:-1,sort_order:1}]).toJSON()
-    != d.contentRendered
+    mixin render_unit(d)
     #2012_3.slide
       .container_12: .grid_12
         p.center.middle ‘The lectures are really helpful and engaging, however it is quite difficult to write down all the important points during the lectures so it would be really helpful if the powerpoints from the lectures and maybe even audio recordings could be made available to students.’
@@ -98,13 +98,13 @@ include ../../fragments/slide_mixins
         h2.title1 ¬Elim, ¬Intro
   //- ¬Elim 
   - d = get_unit(280)
-    != d.contentRendered
+    mixin render_unit(d)
   //- ¬Intro
   - d = get_unit(281)
-    != d.contentRendered  
+    mixin render_unit(d)  
   //- unit_282 just completes the proof --- unnecessary for fast group
     - d = get_unit(282)
-      != d.contentRendered  
+      mixin render_unit(d)  
   
 
   //- unit: arrow intro, arrow elim
@@ -114,10 +114,10 @@ include ../../fragments/slide_mixins
       .spacer &nbsp;
       .title-block: .title-container
           h2.title1 #{d.title}
-    != d.contentRendered  
+    mixin render_unit(d)  
   //- continuation: arrow elim hard proof example (is this appropriate for fast lectures?)
   - d = get_unit(391)
-    != d.contentRendered  
+    mixin render_unit(d)  
 
   .slide
     p.center.middle No lecture next week (Tuesday 29 January)
@@ -130,10 +130,10 @@ include ../../fragments/slide_mixins
         h2.title1 Scope
   //- introduce it with discussion of a mistake about ¬Intro (rules of proof apply only to connective with widest scope)
   - d = get_unit(291)
-    != d.contentRendered
+    mixin render_unit(d)
   //- scope
   - d = get_unit(290)
-    != d.contentRendered
+    mixin render_unit(d)
 
   
   //- nb this ended up in lecture_04 in 2011-2
@@ -146,8 +146,8 @@ include ../../fragments/slide_mixins
           h2.title1 #{d.title}
     //- choose your quantifiers (polka, value)
     - d2 = get_unit(473)
-      != d2.contentRendered
-    != d.contentRendered
+      mixin render_unit(d2)
+    mixin render_unit(d)
 
   .slide
     p.center.middle No lecture next week (Tuesday 29 January)

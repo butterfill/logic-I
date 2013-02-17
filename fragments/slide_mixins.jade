@@ -4,6 +4,19 @@
 - get_images = function(folder) { var images = getFilesAtPath('img/bkg/'+folder+'/',[{basename:-1}]).toJSON(); return images }
 
 
+//- ----------------
+//- render a unit as part of a larger slide show document
+//- ----------------
+mixin render_unit(unit)
+  //- first if the unit is coded as images, do a slide for each image
+  if unit.layout.replace('.html.jade','') == 'deck_slides_img'
+    each f in getFilesAtPath('img/'+unit.images+'/',[{basename:1}]).toJSON()
+      section.slide
+        img(src=f.url)
+  else
+    != unit.contentRenderedWithoutLayouts
+
+
 //- -------------
 //- title slides
 //- -------------
@@ -144,6 +157,8 @@ mixin steps(start_num, end_num, container)
 //- logically valid df
 //- -------------
 mixin df_valid(p)
+  if !p
+    - p = {}
   div.white-box(style="width:230px;position:absolute;top:20px;left:500px;")
     p(style="padding: 0 0.3em;") An argument is 
       strong logically valid 
@@ -156,6 +171,16 @@ mixin df_valid(p)
         span.conclusion-false the conclusion false.
   if p.reveal
     .slide.anim-show(data-what=".the_df")
+
+//- sound df
+mixin df_sound_argument(p)
+  if !p
+    - p = {}
+  div.white-box(style="width:230px;position:absolute;top:350px;left:500px;")
+    p(style="padding: 0 0.3em;") An argument is 
+      strong sound  
+      | just if it is logically valid and all its premises are true.
+
 
 
 //- -------------

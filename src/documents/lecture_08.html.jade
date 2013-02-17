@@ -20,13 +20,13 @@ include ../../fragments/slide_mixins
     .center.middle
       p recap: scope
   - d = get_unit(292)
-    != d.contentRendered  
+    mixin render_unit(d)  
 
 
   //- unit: scope and negation
   - d = get_unit(320)
     mixin section({unit:d, images:images})
-    != d.contentRendered  
+    mixin render_unit(d)  
 
 
   //- PhilSoc Logic Support 
@@ -44,47 +44,47 @@ include ../../fragments/slide_mixins
 
   //- postsecret quiz: state rules of proof
   - each d in getCollection("documents").findAll({url:'/quizes/postsecret_03.html'},[{year:-1,sort_order:1}]).toJSON()
-    != d.contentRendered
+    mixin render_unit(d)
 
   //- unit: proof example: ¬P∨R therefore P→R
   - d = get_unit(820)
     mixin section({unit:d, images:images})
-    != d.contentRendered  
+    mixin render_unit(d)  
 
 
   //- unit: what does  ∃ mean?
   - d = get_unit(491)
     mixin section({unit:d, images:images})
-    != d.contentRendered  
+    mixin render_unit(d)  
 
   //- unit: scope and quantifiers
   - d = get_unit(710)
     mixin section({unit:d, images:images})
-    != d.contentRendered  
+    mixin render_unit(d)  
 
 
   //- *ended here in 2012-3 (would have been much too long!)
     //- unit: translating sentences with quantifiers
     - d = get_unit(507)
       mixin section({unit:d, images:images})
-      != d.contentRendered  
+      mixin render_unit(d)  
   
   
     //- unit: ∃Elim
     - d = get_unit(550)
       mixin section({unit:d, images:images})
-      != d.contentRendered  
+      mixin render_unit(d)  
   
   
     //- unit: what arrow means
     - d = get_unit(700)
       mixin section({unit:d, images:images})
-      != d.contentRendered  
+      mixin render_unit(d)  
   
   
     //- unit: Proof Example: ¬(P∨Q) therefore ¬P∧¬Q
     - d = get_unit(821)
       mixin section({unit:d, images:images})
-      != d.contentRendered  
+      mixin render_unit(d)  
 
   a.deck-permalink(href='.', title='Permalink to this slide') #

@@ -2,42 +2,31 @@
 layout: 'default'
 title: 'Lecture 03'
 weburl: ''
+units: []
 ---
 
 include ../../fragments/slide_mixins
 
+- var images = get_images('budapest')
+
 
 .deck-container
-  #title-slide.slide
-    img.bkg(src='/img/bkg/budapest/IMG_nc_5766.JPG')
-    .spacer &nbsp;
-    .title-block: .title-container
-        h1.title1 Logic I (PH126)
-        h1.title2 #{document.title}
-        h3.email s.butterfill@warwick.ac.uk
-    if document.weburl
-      .words
-        span(style="position:relative;top:250px;left:450px;").white-box.big.center #{document.weburl}
+  mixin title_slide({document:document, images:images})
 
   //- 2012/3 : decided not to do this (or put in lecture 04?): important to get stuck into formal proof
     //- recap: validity and counterexamples (quick opener)
     //- nb: this might have been used in lecture 02 (depending on whether counterexamples where covered in lecture 01 or later)
-    - each d in getCollection("documents").findAll({url:'/units/unit_05.html'},[{year:-1,sort_order:1}]).toJSON()
-      != d.contentRendered
+    - var d = get_unit('05')
+      mixin render_unit(d)
 
   //- section: unit_211, unit_21 = formal proof 1
-  - each d in getCollection("documents").findAll({url:'/units/unit_211.html'},[{year:-1,sort_order:1}]).toJSON()
-    //- (*check: because right after title slide lecture)
-      section.slide#unit_211
-          img.bkg(src='/img/bkg/budapest/IMG_nc_5364.JPG')
-          .spacer &nbsp;
-          .title-block(style="position:relative; top:425px"): .title-container
-              h2.title1 #{d.title} 
-    != d.contentRendered
-  - each d in getCollection("documents").findAll({url:'/units/unit_213.html'},[{year:-1,sort_order:1}]).toJSON()
-    != d.contentRendered
-  - each d in getCollection("documents").findAll({url:'/units/unit_21.html'},[{year:-1,sort_order:1}]).toJSON()
-    != d.contentRendered
+  - var d = get_unit('211')
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)
+  - var d = get_unit('213')
+    mixin render_unit(d)
+  - var d = get_unit('21')
+    mixin render_unit(d)
 
 
   //- break
@@ -53,7 +42,7 @@ include ../../fragments/slide_mixins
       span.diff different exercises.
     .slide.anim-addclass(data-what=".diff", data-class="bkg-words-highlight-red")
   
-  //- reply to student email (keep anonymous; o.j.neil-smith@warwick.ac.uk)
+  //- reply to student email (keep anonymous)
   section#disjunction_is_exclusive.slide
     .words: .container_12: .grid_12
       p ‘... some confusion in regards to 
@@ -106,48 +95,32 @@ include ../../fragments/slide_mixins
 
 
   //- unit: rules for identity
-  - each d in getCollection("documents").findAll({url:'/units/unit_11.html'},[{year:-1,sort_order:1}]).toJSON()
-    section#unit_011.slide
-      img.bkg(src='/img/bkg/budapest/IMG_nc_5507.JPG')
-      .spacer &nbsp;
-      .title-block: .title-container
-          h2.title1 #{d.title}
-    != d.contentRendered  
+  - var d = get_unit('11')
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)  
   
 
   //- unit: how to write proofs
-  - each d in getCollection("documents").findAll({url:'/units/unit_130.html'},[{year:-1,sort_order:1}]).toJSON()
-    section#unit_130.slide
-      img.bkg(src='/img/bkg/budapest/IMG_nc_5546.JPG')
-      .spacer &nbsp;
-      .title-block: .title-container
-          h2.title1 #{d.title}
-    != d.contentRendered  
+  - var d = get_unit('130')
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)  
   
 
   //- unit: complex truth tables: (P and R) or R
-  - each d in getCollection("documents").findAll({url:'/units/unit_09.html'},[{year:-1,sort_order:1}]).toJSON()
-    section#unit_09.slide
-      img.bkg(src='/img/bkg/budapest/IMG_nc_5605.JPG')
-      .spacer &nbsp;
-      .title-block(style="position:relative; top:425px"): .title-container
-          h2.title1 #{d.title}
-    != d.contentRendered  
+  - var d = get_unit('09')
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)  
   
 
 
   //- unit: tautologies and contradictions, logical validity is not what you think it is.
   //- *check: this might have been used in lecture 02 (if run out of time)
   //- 2012-3 didn't have time for bush part (unit_162)
-  - each d2 in getCollection("documents").findAll({url:'/units/unit_161.html'},[{year:-1,sort_order:1}]).toJSON()
-    != d2.contentRendered
-  - each d in getCollection("documents").findAll({url:'/units/unit_160.html'},[{year:-1,sort_order:1}]).toJSON()
-    section.slide#unit_160
-      img.bkg(src='/img/bkg/budapest/IMG_nc_5805.JPG')
-      .spacer &nbsp;
-      .title-block: .title-container
-          h2.title1 #{d.title} 
-    != d.contentRendered
+  - var d2 = get_unit('161')
+    mixin render_unit(d2)
+  - var d = get_unit('160')
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)
 
 
     a.deck-permalink(href='.', title='Permalink to this slide') #
