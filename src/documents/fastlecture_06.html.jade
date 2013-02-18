@@ -1,0 +1,31 @@
+---
+layout: 'default'
+title: 'Fast Lecture 06'
+weburl: ''
+units: []
+lecture_date: '2013/02/26'
+---
+
+include ../../fragments/slide_mixins
+
+- var images = get_images('twins_2009')
+
+
+
+
+.deck-container
+
+  mixin title_slide({document:document, images:images})
+
+
+  //- unit: variables
+  - var d = get_unit(600)
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)
+  
+  //- *check is this appropriate?
+  //- unit: relations revision: notequal
+  - var d = get_unit(122)
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)
+

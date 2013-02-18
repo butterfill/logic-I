@@ -58,6 +58,8 @@ html
             div(id='#{lecture.basename}')
               .page-header
                 h1 #{lecture.title}
+              if lecture.lecture_date
+                p Date given: #{moment(lecture.lecture_date).format('dddd Do MMMM YYYY')}
               p 
                 a(href='#{lecture.url}',target='_blank') slides
                 |  , 

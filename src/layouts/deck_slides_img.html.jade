@@ -3,7 +3,7 @@
 
 if document.url.indexOf('units_grid') !=-1
   div(style="background-color:grey; margin: 0px; padding: 0px; width: 100%;")
-    each f in getFilesAtPath('img/'+document.images+'/',[{basename:1}]).toJSON()
+    each f in getFilesAtPath('img/'+document.basename+'/',[{basename:1}]).toJSON()
       img(src=f.url, width="300", style="padding: 15px")
 
 else
@@ -76,11 +76,12 @@ else
       meta(name="viewport", content="width=device-width")
   
       //- Icons
-      link(rel="shortcut icon", href="ico/favicon.ico")
-      //- link(rel="apple-touch-icon-precomposed", sizes="144x144", href="ico/apple-touch-icon-144-precomposed.png")
-      //- link(rel="apple-touch-icon-precomposed", sizes="114x114", href="ico/apple-touch-icon-114-precomposed.png")
-      //- link(rel="apple-touch-icon-precomposed", sizes="72x72", href="ico/apple-touch-icon-72-precomposed.png")
-      //- link(rel="apple-touch-icon-precomposed", href="ico/apple-touch-icon-57-precomposed.png")
+      //- disabled
+        link(rel="shortcut icon", href="ico/favicon.ico")
+        //- link(rel="apple-touch-icon-precomposed", sizes="144x144", href="ico/apple-touch-icon-144-precomposed.png")
+        //- link(rel="apple-touch-icon-precomposed", sizes="114x114", href="ico/apple-touch-icon-114-precomposed.png")
+        //- link(rel="apple-touch-icon-precomposed", sizes="72x72", href="ico/apple-touch-icon-72-precomposed.png")
+        //- link(rel="apple-touch-icon-precomposed", href="ico/apple-touch-icon-57-precomposed.png")
   
   
   
@@ -108,7 +109,7 @@ else
                   h2.title1 #{document.title}
   
           //- the slides
-          each f in getFilesAtPath('img/'+document.images+'/',[{basename:1}]).toJSON()
+          each f in getFilesAtPath('img/'+document.basename+'/',[{basename:1}]).toJSON()
             section.slide
               img(src=f.url)
 

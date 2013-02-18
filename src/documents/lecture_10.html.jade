@@ -3,22 +3,99 @@ layout: 'default'
 title: 'Lecture 10'
 weburl: ''
 units: []
+lecture_date: '2013/02/19'
 ---
 
 include ../../fragments/slide_mixins
 
 
-// *todo change images
-- var images = get_images('twins_2009')
+// *todo: enough images?
+- var images = get_images('sunclouds')
+
+
+//- *todo --- create unit on how rules of proof specify patterns, so can do arrow elim on
+//-   not-p arrow not-q together with not-p, e.g.  Add this to an earlier lecture.
  
 
 .deck-container
 
+  .slide
+    p.middle.center Take feedback forms
+
   mixin title_slide({document:document, images:images})
 
+  //- ---
+  //- translation using multiple quantifiers
 
-  //- *todo --- create unit on how rules of proof specify patterns, so can do arrow elim on
-  //-   not-p arrow not-q together with not-p, e.g.  Add this to an earlier lecture.
+  //- intro
+  - d = get_unit('744')
+  mixin render_unit(d)
+
+  //- something is above something (logic terrorists)
+  - d = get_unit('740')
+  mixin section({unit:d, images:images})
+  mixin render_unit(d)
   
+  //- if this is all too, easy think about a harder case
+  section.slide#wiki-everything
+    .words: .container_12: .grid_12
+      p.middle.center Wikipedia has 
+        span.first-q an
+        span  article about 
+        span.second-q everything
+        | .
+      mixin invert(['.second-q'])
+      mixin invert(['.first-q'])
+
+  //- unit: Something makes me want to die inside
+  section.slide#unit_741
+    p.center.middle another example ...
+  - d = get_unit('741')
+    mixin render_unit(d)
+
+  //- unit: Everyone likes puffins
+  section.slide#unit_742
+    p.center.middle one last example, with ∀ this time  ...
+  - d = get_unit('742')
+    mixin render_unit(d)
+
+
+  //- ---
+  
+  //- tonk
+  - var d = get_unit('730')
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)
+    
+    
+  //- scope and binding for quantifiers
+  - var d = get_unit('711')
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)
+  
+  
+  //- 570: universal intro
+  //- 571: prefixed by summary so far 
+  - var d2 = get_unit('571')
+  - var d = get_unit('570')
+    mixin section({unit:d, images:images})
+    mixin render_unit(d2)
+    mixin render_unit(d)
+
+
+  //- *todo: should this come in a later lecture?
+  //- unit: ∀Intro: An Incorrect Proof
+  //- *nb there is an explanation of the mistake in a later unit (573)
+  - var d = get_unit(572)
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)
+
+
+  //- quantifiers and number (two things are broken)
+  - var d = get_unit('470')
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)
+    
+
 
   a.deck-permalink(href='.', title='Permalink to this slide') #

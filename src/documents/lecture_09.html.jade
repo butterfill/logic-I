@@ -3,6 +3,7 @@ layout: 'default'
 title: 'Lecture 09'
 weburl: ''
 units: []
+lecture_date: '2013/02/07'
 ---
 
 include ../../fragments/slide_mixins
@@ -47,8 +48,11 @@ include ../../fragments/slide_mixins
     mixin render_unit(d)  
 
   //- unit: ∃Elim
+  - d2 = get_unit(551)
   - d = get_unit(550)
+  //- intro to this unit
     mixin section({unit:d, images:images})
+    mixin render_unit(d2)  
     mixin render_unit(d)  
 
 

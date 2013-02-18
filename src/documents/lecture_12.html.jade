@@ -1,0 +1,76 @@
+---
+layout: 'default'
+title: 'Lecture 12'
+weburl: ''
+units: []
+lecture_date: '2013/02/26'
+---
+
+include ../../fragments/slide_mixins
+
+
+- var images = get_images('birds_mexico')
+
+//- ******************************************************
+//- * TODO take postits for postsecret
+//- ******************************************************
+
+
+.deck-container
+
+  mixin title_slide({document:document, images:images})
+
+
+  //- *check not done in lecture 11
+
+  //- there is a store for everything
+  - d = get_unit(560)
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)
+
+  //- TAUT CON is Evil
+  - d = get_unit(305)
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)
+
+  //- postsecret quiz: translation with multiple quantifiers
+  - each d in getCollection("documents").findAll({url:'/quizes/postsecret_04.html'},[{year:-1,sort_order:1}]).toJSON()
+    mixin render_unit(d)
+
+  //- unit: relations revision: notequal
+  - var d = get_unit(122)
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)
+
+
+
+
+
+
+
+
+  //- ---------------------------------------------------
+  //- the following should appear in a lecture at some point, but maybe later
+  //- ---------------------------------------------------
+
+  //- from lecture 14
+  //- unit: every time I go to the dentist
+  - var d = get_unit(750)
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)
+
+  //- from lecture 14
+  //- unit: incorrect universal intro example explained
+  - var d = get_unit(573)
+  mixin section({unit:d, images:images})
+  //- prefix with revision of quantifier rules
+  - var d2 = get_unit(575)
+  mixin render_unit(d2)
+  //- prefix with revision of universal intro
+  - var d2 = get_unit(574)
+  mixin render_unit(d2)
+  //- finally render the thing itself
+  mixin render_unit(d)
+
+
+  a.deck-permalink(href='.', title='Permalink to this slide') #

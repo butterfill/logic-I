@@ -3,6 +3,7 @@ layout: 'default'
 title: 'Fast Lecture 04'
 weburl: ''
 units: []
+lecture_date: '2013/02/05'
 ---
 
 include ../../fragments/slide_mixins
@@ -131,20 +132,20 @@ include ../../fragments/slide_mixins
   
   
   // 2012-3 ended here
-    
-  //- unit: Something is above something
-  - d = get_unit(740)
-    mixin section({unit:d, images:images})
-    mixin render_unit(d)
-    
-  //- unit: Two things are broken
-  - d = get_unit(470)
-    mixin section({unit:d, images:images})
-    mixin render_unit(d)
-
-
-  //- *hope not to have time for this (but it's a good one to end on)
-  //- unit: Does ‘if’ mean what ‘→’ means?
+      
+    //- unit: Something is above something
+    - d = get_unit(740)
+      mixin section({unit:d, images:images})
+      mixin render_unit(d)
+      
+    //- unit: Two things are broken
+    - d = get_unit(470)
+      mixin section({unit:d, images:images})
+      mixin render_unit(d)
+  
+  
+    //- *hope not to have time for this (but it's a good one to end on)
+    //- unit: Does ‘if’ mean what ‘→’ means?
   - var d = get_unit(640)
     mixin section({unit:d, images:images})
     mixin render_unit(d)

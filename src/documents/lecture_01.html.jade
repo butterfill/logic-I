@@ -73,17 +73,13 @@ include ../../fragments/slide_mixins
 
   // *notes didn't do this in 2012-3 but leave it in in case you do have time!
   //- counterexamples & sound argument
-  // 
-    - each d in getCollection("documents").findAll({url:'/units/unit_04.html'},[{year:-1,sort_order:1}]).toJSON()
-      section#unit_04.slide
-        img.bkg(src='/img/bkg/bees/DSC_0170_crop.jpg')
-        .spacer &nbsp;
-        .title-block: .title-container
-            h2.title1 #{d.title}
+  //- cut
+    - d = get_unit('04')
+      mixin section({unit:d, images:images})
       mixin render_unit(d)
     //- omit title for sound argument, treat it as part of counterexamples
-    - each d in getCollection("documents").findAll({url:'/units/unit_041.html'},[{year:-1,sort_order:1}]).toJSON()
+    - d = get_unit('041')
       mixin render_unit(d)
      
 
-    a.deck-permalink(href='.', title='Permalink to this slide') #
+

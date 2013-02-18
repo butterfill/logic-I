@@ -1,0 +1,82 @@
+---
+layout: 'default'
+title: 'Lecture 11'
+weburl: ''
+units: []
+lecture_date: '2013/02/21'
+---
+
+include ../../fragments/slide_mixins
+
+
+- var images = get_images('usa_parks')
+
+
+
+.deck-container
+
+  .slide
+    p.middle.center Take: ***
+
+  mixin title_slide({document:document, images:images})
+
+
+  //- -----------------------
+  //- relations (includes how to express counterexamples formally)
+
+  - d = get_unit(120)
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)
+  - d = get_unit(125)
+    mixin render_unit(d)
+  - d = get_unit(127)
+    mixin render_unit(d)
+    
+  - d = get_unit(128)
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)
+    
+  - d = get_unit(129)
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)
+
+  - d = get_unit(581)
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)
+
+  - d = get_unit(583)
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)
+
+  //- summary of relations (can come before units 581, 583 if not including those in this lecture)
+  - d = get_unit(126)
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)
+
+
+  //- -----------------------
+
+
+  //- why logic?
+  - d = get_unit(380)
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)
+
+
+  //- truth for ∃
+  - d = get_unit(495)
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)
+
+
+  //- spare topics: hope this won't be needed
+
+  //- there is a store for everything
+  - d = get_unit(560)
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)
+
+    
+
+
+  a.deck-permalink(href='.', title='Permalink to this slide') #

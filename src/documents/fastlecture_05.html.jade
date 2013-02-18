@@ -3,12 +3,12 @@ layout: 'default'
 title: 'Fast Lecture 05'
 weburl: ''
 units: []
+lecture_date: '2013/02/19'
 ---
 
 include ../../fragments/slide_mixins
 
-//- *todo change images
-- var images = get_images('flowers')
+- var images = get_images('birds_mexico')
 
 
 
@@ -24,3 +24,82 @@ include ../../fragments/slide_mixins
     mixin section({unit:d, images:images})
     mixin render_unit(d)
   
+  //- unit: ∀Intro: An Incorrect Proof
+  - var d = get_unit(572)
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)
+
+  //- -----------------------
+  //- translation with multiple quantifiers
+      
+  //- unit: Something is above something
+  - d = get_unit(740)
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)
+    
+  //- if this is all too, easy think about a harder case
+  section.slide#wiki-everything
+    .words: .container_12: .grid_12
+      p.middle.center Wikipedia has 
+        span.first-q an
+        span  article about 
+        span.second-q everything
+        | .
+      mixin invert(['.second-q'])
+      mixin invert(['.first-q'])
+
+  //- unit: Everyone likes puffins
+  section.slide#unit_742
+    p.center.middle one last example, with ∀ this time  ...
+  - d = get_unit(742)
+    mixin render_unit(d)
+    
+  //- quantifiers and number (two things are broken)
+  - var d = get_unit('470')
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)
+    
+  //- -----------------------
+
+
+  //- unit: Statement of soundness and completeneness
+  - d = get_unit(400)
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)
+
+
+  //- -----------------------
+  //- relations (includes how to express counterexamples formally)
+
+  - d = get_unit(125)
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)
+
+  - d = get_unit(581)
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)
+
+  - d = get_unit(583)
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)
+
+
+  //- -----------------------
+
+
+  //- truth functional completeness
+  - d = get_unit(435)
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)
+  - d = get_unit(430)
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)
+
+
+
+  //- spare topics: hope this won't be needed
+
+  //- there is a store for everything
+  - d = get_unit(560)
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)

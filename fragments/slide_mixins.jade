@@ -1,18 +1,42 @@
 
 
-- get_unit = function(unit_num) { var extract=(unit_num+'').match(/^unit_([0-9]*)/); if(extract){ unit_num=extract[1]; }; var d = getCollection("documents").findAll({url:'/units/unit_'+unit_num+'.html'},[{year:-1,sort_order:1}]).toJSON(); if (document.units && document.units.indexOf(unit_num)==-1) { document.units.push(unit_num); } return d[0]; }
-- get_images = function(folder) { var images = getFilesAtPath('img/bkg/'+folder+'/',[{basename:-1}]).toJSON(); return images }
+- get_unit = function(unit_num) { var extract=(unit_num+'').match(/^unit_([0-9]*)/); if(extract){ unit_num=extract[1]; }; var d = getCollection("documents").findAll({url:'/units/unit_'+unit_num+'.html'},[{year:-1,sort_order:1}]).toJSON(); if (document.units && document.units.indexOf(unit_num)==-1) { document.units.push(unit_num); } return d[0]; };
+
+//- wrap a list so that it has a next() method that cycles through the elements
+- wrap_list = function(lst) {
+-   var res = { list:lst, counter:-1 };
+-   res.next = function() {
+-     res.counter += 1;
+-     if( res.counter >= res.list.length ) {
+-       res.counter = 0;
+-     }
+-     return res.list[res.counter];
+-   }
+-   return res;
+- };
+
+- get_images = function(folder) {
+-   var images = getFilesAtPath('img/bkg/'+folder+'/',[{basename:1}]).toJSON();
+-   return wrap_list(images)
+- };
+
 
 
 //- ----------------
-//- render a unit as part of a larger slide show document
+//- rendering
 //- ----------------
+
+//- render images associated with a unit as slides
+mixin display_images_as_slides(unit)
+  each f in getFilesAtPath('img/'+unit.basename+'/',[{basename:1}]).toJSON()
+    section.slide
+      img(src=f.url)
+
+//- render a unit as part of a larger slideshow document
 mixin render_unit(unit)
   //- first if the unit is coded as images, do a slide for each image
   if unit.layout.replace('.html.jade','') == 'deck_slides_img'
-    each f in getFilesAtPath('img/'+unit.images+'/',[{basename:1}]).toJSON()
-      section.slide
-        img(src=f.url)
+    mixin display_images_as_slides(unit)
   else
     != unit.contentRenderedWithoutLayouts
 
@@ -25,7 +49,7 @@ mixin render_unit(unit)
 // param p contains document and images (an array of images to use)
 mixin title_slide(p)
   #title-slide.slide
-    - var img = p.images.pop()
+    - var img = p.images.next()
     img.bkg(src='#{img.url}')
     .spacer &nbsp;
     - var low = false
@@ -45,7 +69,7 @@ mixin section(p)
   section(id="#{p.unit ? p.unit.basename : ''}").slide
     - var low = false
     if p.images
-      - var img = p.images.pop()
+      - var img = p.images.next()
       img.bkg(src='#{img.url}')
       if img.filename.indexOf('.low.') != -1
         - low = true
