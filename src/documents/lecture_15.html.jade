@@ -1,0 +1,54 @@
+---
+layout: 'default'
+title: 'Lecture 15'
+weburl: ''
+units: []
+lecture_date: '2013/03/07'
+---
+
+include ../../fragments/slide_mixins
+
+
+- var images = get_images('usa_parks')
+
+
+
+.deck-container
+
+  mixin title_slide({document:document, images:images})
+
+  //- Loving and being loved
+  - d = get_unit(755)
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)
+
+  //- Quantifier equivalences
+  - d = get_unit(770)
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)
+
+  //- Numerical quantifiers
+  - d = get_unit(620)
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)
+
+  //- More records than the KGB
+  - d = get_unit(780)
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)
+
+  //- The End Is Near
+  //- *nb don't use section header with this one!
+  - d = get_unit(790)
+    mixin render_unit(d)
+
+
+
+
+  //- spare topics: hope this won't be needed
+
+
+    
+
+
+  a.deck-permalink(href='.', title='Permalink to this slide') #

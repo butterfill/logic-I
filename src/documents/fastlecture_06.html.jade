@@ -29,3 +29,55 @@ include ../../fragments/slide_mixins
     mixin section({unit:d, images:images})
     mixin render_unit(d)
 
+
+  //- *feedback
+  .slide
+    .words: .grid_12: .container_12
+      p Exam papers with answers: five sets are on the module web page.
+      p More examples.
+
+  //- truth functional completeness
+  - d = get_unit(435)
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)
+  - d = get_unit(430)
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)
+
+
+  //- *todo check not done in fastlecture 04 (was there as spare)
+  //- unit: Does ‘if’ mean what ‘→’ means?
+  - var d = get_unit(640)
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)
+
+  
+  //- *todo check this
+  //- unit: ∀Intro: An Incorrect Proof
+  - var d = get_unit(572)
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)
+
+
+  //- unit: quantifier equivalences: using propositional equivalences
+  - var d = get_unit(760)
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)
+  //- unit: quantifier equivalences: universal not existential
+  - var d = get_unit(764)
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)
+    
+    
+  //- quantifiers and number (two things are broken)
+  - var d = get_unit('470')
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)
+  
+  //- *todo: add the other stuff about number and identity
+
+  
+  //- -----------------------
+  //- spare topics: hope this won't be needed
+
+  

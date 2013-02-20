@@ -1,0 +1,66 @@
+---
+layout: 'default'
+title: 'Lecture 13'
+weburl: ''
+units: []
+lecture_date: '2013/02/28'
+---
+
+include ../../fragments/slide_mixins
+
+
+- var images = get_images('usa_parks')
+
+
+
+.deck-container
+
+  mixin title_slide({document:document, images:images})
+
+
+
+  //- unit: every time I go to the dentist
+  - var d = get_unit(750)
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)
+
+  
+  //- unit: quantifier equivalences: ∀x(Square(x) → Broken(x)) ⫤⊨ ∀x(¬Broken(x) → ¬Square(x)) 
+  - var d = get_unit(760)
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)
+
+  //- unit: quantifier equivalences: ∀x(Square(x) → Broken(x)) ⫤⊨ ∀x(¬Square(x) ∨ Broken(x))
+  - var d = get_unit(762)
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)
+    
+    
+  //- --------------------------------------------------
+  //- soundness theorem
+    
+  //- statement of soundness and completeness theorems
+  - d = get_unit(400)
+    mixin render_unit(d)
+
+  //- and-fubar and the soundness properly
+  - d = get_unit(345)
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)
+    
+  //- proof of soundness theorem
+  - d = get_unit(410)
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)
+    
+  
+
+
+
+  //- spare topics: hope this won't be needed
+
+
+    
+
+
+  a.deck-permalink(href='.', title='Permalink to this slide') #

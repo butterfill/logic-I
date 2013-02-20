@@ -19,9 +19,6 @@ include ../../fragments/slide_mixins
 
 .deck-container
 
-  .slide
-    p.middle.center Take feedback forms
-
   mixin title_slide({document:document, images:images})
 
   //- ---
@@ -82,8 +79,6 @@ include ../../fragments/slide_mixins
     mixin render_unit(d2)
     mixin render_unit(d)
 
-
-  //- *todo: should this come in a later lecture?
   //- unit: ∀Intro: An Incorrect Proof
   //- *nb there is an explanation of the mistake in a later unit (573)
   - var d = get_unit(572)
@@ -96,6 +91,15 @@ include ../../fragments/slide_mixins
     mixin section({unit:d, images:images})
     mixin render_unit(d)
     
-
+  //- relations:
+  //- *hope to keep this for next lecture, just in case
+  //- not needed in 2012-3
+    - d = get_unit(120)
+      mixin section({unit:d, images:images})
+      mixin render_unit(d)
+    - d = get_unit(125)
+      mixin render_unit(d)
+    - d = get_unit(127)
+      mixin render_unit(d)
 
   a.deck-permalink(href='.', title='Permalink to this slide') #

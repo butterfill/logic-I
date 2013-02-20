@@ -10,24 +10,13 @@ include ../../fragments/slide_mixins
 
 - var images = get_images('birds_mexico')
 
-
+//- *******************************
+//- take feedback forms
 
 
 .deck-container
 
   mixin title_slide({document:document, images:images})
-
-
-  //- *todo check not done in fastlecture 04 (was there as spare)
-  //- unit: Does ‘if’ mean what ‘→’ means?
-  - var d = get_unit(640)
-    mixin section({unit:d, images:images})
-    mixin render_unit(d)
-  
-  //- unit: ∀Intro: An Incorrect Proof
-  - var d = get_unit(572)
-    mixin section({unit:d, images:images})
-    mixin render_unit(d)
 
   //- -----------------------
   //- translation with multiple quantifiers
@@ -36,28 +25,38 @@ include ../../fragments/slide_mixins
   - d = get_unit(740)
     mixin section({unit:d, images:images})
     mixin render_unit(d)
-    
-  //- if this is all too, easy think about a harder case
-  section.slide#wiki-everything
-    .words: .container_12: .grid_12
-      p.middle.center Wikipedia has 
-        span.first-q an
-        span  article about 
-        span.second-q everything
-        | .
-      mixin invert(['.second-q'])
-      mixin invert(['.first-q'])
 
   //- unit: Everyone likes puffins
   section.slide#unit_742
     p.center.middle one last example, with ∀ this time  ...
   - d = get_unit(742)
     mixin render_unit(d)
-    
-  //- quantifiers and number (two things are broken)
-  - var d = get_unit('470')
+
+  //- there is a store for everything
+  - d = get_unit(560)
     mixin section({unit:d, images:images})
     mixin render_unit(d)
+
+    
+  //- -----------------------
+
+  //- *I made a website
+  .slide
+    .words: .container_12: .grid_12
+      p.middle.center http://logic-1.butterfill.com
+    
+  //- *Do feedback forms
+  .slide
+    .words: .container_12: .grid_12
+      p.middle.center feedback
+    
+  //- *report feedback
+  .slide
+    .words: .container_12: .grid_12
+      p 'The (fastrack) lectures are interesting and useful and feel as though they go at a reasonable pace.
+      p 'The seminars are useful and help with specific problems in a more in depth way.
+      p.slide 'The book and software are the downfall of the module. The book doesn't explain things well and adds confusion to the material, and the software is difficult to use and makes me understand things less. I think the module could be improved if the Language, Proof and Logic book was no longer classed as essential, but rather just recommended.
+      p.slide Problems for the seminars should not revolve around using the programme, but instead have exercises which need to be written up, to help further aid the understanding of the material.'
     
   //- -----------------------
 
@@ -87,19 +86,39 @@ include ../../fragments/slide_mixins
   //- -----------------------
 
 
-  //- truth functional completeness
-  - d = get_unit(435)
-    mixin section({unit:d, images:images})
-    mixin render_unit(d)
-  - d = get_unit(430)
-    mixin section({unit:d, images:images})
-    mixin render_unit(d)
+  //- *2012-3 ended here 
+    //- truth functional completeness
+    - d = get_unit(435)
+      mixin section({unit:d, images:images})
+      mixin render_unit(d)
+    - d = get_unit(430)
+      mixin section({unit:d, images:images})
+      mixin render_unit(d)
+  
+  
+    //- *todo check not done in fastlecture 04 (was there as spare)
+    //- unit: Does ‘if’ mean what ‘→’ means?
+    - var d = get_unit(640)
+      mixin section({unit:d, images:images})
+      mixin render_unit(d)
+  
+    
+    //- unit: ∀Intro: An Incorrect Proof
+    - var d = get_unit(572)
+      mixin section({unit:d, images:images})
+      mixin render_unit(d)
+  
+  
+    //- -----------------------
+    //- spare topics: hope this won't be needed
+  
+    //- unit: quantifier equivalences: using propositional equivalences
+    - var d = get_unit(760)
+      mixin section({unit:d, images:images})
+      mixin render_unit(d)
+    //- unit: quantifier equivalences: universal not existential
+    - var d = get_unit(764)
+      mixin section({unit:d, images:images})
+      mixin render_unit(d)
 
 
-
-  //- spare topics: hope this won't be needed
-
-  //- there is a store for everything
-  - d = get_unit(560)
-    mixin section({unit:d, images:images})
-    mixin render_unit(d)

@@ -15,9 +15,6 @@ include ../../fragments/slide_mixins
 
 .deck-container
 
-  .slide
-    p.middle.center Take: ***
-
   mixin title_slide({document:document, images:images})
 
 
@@ -25,7 +22,6 @@ include ../../fragments/slide_mixins
   //- relations (includes how to express counterexamples formally)
 
   - d = get_unit(120)
-    mixin section({unit:d, images:images})
     mixin render_unit(d)
   - d = get_unit(125)
     mixin render_unit(d)
@@ -44,6 +40,34 @@ include ../../fragments/slide_mixins
     mixin section({unit:d, images:images})
     mixin render_unit(d)
 
+
+  //- -----------------------
+  //- *todo move this block earlier?
+ 
+  //- *Do feedback forms
+  .slide
+    .words: .container_12: .grid_12
+      p.middle.center feedback
+    
+  //- *report feedback
+  .slide
+    .words: .container_12: .grid_12
+      p Just thought I'd mention that I like your new tweed jacket! :)
+      //- Also, you're a really good lecturer - I like how you digress from one section to another and then revisit previous ones again because then the topic doesn't turn out to be boring or monotonous. I must admit that Logic still makes me want to die inside a little, but hopefully that will change.
+      p.slide I do wish that seminars would focus more on solving really difficult proofs or exercises, where the tutor explains more in detail how one would approach a tricky question.
+  //- cut
+    .slide
+      .words: .container_12: .grid_12
+        p 'The (fastrack) lectures are interesting and useful and feel as though they go at a reasonable pace.
+        p 'The seminars are useful and help with specific problems in a more in depth way.
+        p.slide 'The book and software are the downfall of the module. The book doesn't explain things well and adds confusion to the material, and the software is difficult to use and makes me understand things less. I think the module could be improved if the Language, Proof and Logic book was no longer classed as essential, but rather just recommended.
+        p.slide Problems for the seminars should not revolve around using the programme, but instead have exercises which need to be written up, to help further aid the understanding of the material.'
+
+    
+  //- -----------------------
+  //- relations continued
+
+  //- expressing transitivity etc with quantifiers
   - d = get_unit(583)
     mixin section({unit:d, images:images})
     mixin render_unit(d)
@@ -55,26 +79,36 @@ include ../../fragments/slide_mixins
 
 
   //- -----------------------
+  //- spare topics: hope this won't be needed
 
+  //- Proof Example: A∧B therefore ¬(¬A∨¬B)
+  - d = get_unit(822)
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)
+    
+  //- Proof Example: P therefore ¬¬P
+  - d = get_unit(823)
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)
+    
+  //- Proof Example: S∨(Q∧R) therefore S∨Q
+  - d = get_unit(824)
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)
 
   //- why logic?
   - d = get_unit(380)
     mixin section({unit:d, images:images})
     mixin render_unit(d)
 
-
+  //- *not very good; repeats some of an earlier unit
   //- truth for ∃
   - d = get_unit(495)
     mixin section({unit:d, images:images})
     mixin render_unit(d)
 
 
-  //- spare topics: hope this won't be needed
 
-  //- there is a store for everything
-  - d = get_unit(560)
-    mixin section({unit:d, images:images})
-    mixin render_unit(d)
 
     
 
