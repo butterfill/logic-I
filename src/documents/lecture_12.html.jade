@@ -20,9 +20,6 @@ include ../../fragments/slide_mixins
 
   mixin title_slide({document:document, images:images})
 
-
-  //- *check not done in lecture 11
-
   //- there is a store for everything
   - d = get_unit(560)
     mixin section({unit:d, images:images})
@@ -32,15 +29,37 @@ include ../../fragments/slide_mixins
   - each d in getCollection("documents").findAll({url:'/quizes/postsecret_04.html'},[{year:-1,sort_order:1}]).toJSON()
     mixin render_unit(d)
 
-  //- unit: relations revision: notequal
-  - var d = get_unit(122)
+
+  //- Proof Example: A∧B therefore ¬(¬A∨¬B)
+  - d = get_unit(822)
     mixin section({unit:d, images:images})
     mixin render_unit(d)
-
+    
   //- TAUT CON is Evil
   - d = get_unit(305)
     mixin section({unit:d, images:images})
     mixin render_unit(d)
+
+  //- Fubar Rules
+  - d = get_unit(340)
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)
+
+  //- Proof Example: P therefore ¬¬P
+  - d = get_unit(823)
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)
+    
+  //- Proof Example: S∨(Q∧R) therefore S∨Q
+  - d = get_unit(824)
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)
+  
+  //- Substitution of Equivalents
+  - d = get_unit(250)
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)
+  
 
   //- proofs about proofs
   - d = get_unit(440)

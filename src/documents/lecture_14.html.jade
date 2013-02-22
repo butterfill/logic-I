@@ -16,6 +16,11 @@ include ../../fragments/slide_mixins
 
   mixin title_slide({document:document, images:images})
 
+  //- unit: More Dead Horse
+  - var d = get_unit(565)
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)
+
 
   //- unit: quantifier equivalences: ∀x Created(x) ⫤⊨ ¬∃x Created(x) 
   - var d = get_unit(764)

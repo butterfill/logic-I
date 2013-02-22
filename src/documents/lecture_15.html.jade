@@ -17,12 +17,13 @@ include ../../fragments/slide_mixins
 
   mixin title_slide({document:document, images:images})
 
-  //- Loving and being loved
-  - d = get_unit(755)
+
+  //- unit: every time I go to the dentist
+  - var d = get_unit(750)
     mixin section({unit:d, images:images})
     mixin render_unit(d)
 
-  //- Quantifier equivalences
+  //- Quantifier equivalences: ∀x(Square(x) → Broken(x)) ⫤⊨ ¬∃x(Square(x) ∧ ¬Broken(x)) 
   - d = get_unit(770)
     mixin section({unit:d, images:images})
     mixin render_unit(d)

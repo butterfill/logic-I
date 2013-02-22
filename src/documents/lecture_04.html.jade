@@ -22,7 +22,12 @@ include ../../fragments/slide_mixins
   //- unit: formal proof (identity again)
   - var d = get_unit('111')
     mixin section({unit:d, images:images})
-    mixin render_unit(d)  
+    mixin render_unit(d)
+    
+  .slide
+    .words: .container_12: .grid_12
+      p.middle.center Too slow?  Try fast-track.
+
 
   //- unit: truth-functional connectives
   - var d = get_unit('072')

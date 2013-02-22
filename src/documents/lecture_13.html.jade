@@ -11,16 +11,12 @@ include ../../fragments/slide_mixins
 
 - var images = get_images('usa_parks')
 
-
-
 .deck-container
 
   mixin title_slide({document:document, images:images})
 
-
-
-  //- unit: every time I go to the dentist
-  - var d = get_unit(750)
+  //- Loving and being loved
+  - d = get_unit(755)
     mixin section({unit:d, images:images})
     mixin render_unit(d)
 
@@ -34,13 +30,27 @@ include ../../fragments/slide_mixins
   - var d = get_unit(762)
     mixin section({unit:d, images:images})
     mixin render_unit(d)
+
     
+  //- Does ‘if’ mean what ‘→’ means?
+  - d = get_unit(640)
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)
+
+
+  //- why logic?
+  - d = get_unit(380)
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)
+  
+
     
   //- --------------------------------------------------
   //- soundness theorem
     
   //- statement of soundness and completeness theorems
   - d = get_unit(400)
+    mixin section({unit:d, images:images})
     mixin render_unit(d)
 
   //- and-fubar and the soundness properly

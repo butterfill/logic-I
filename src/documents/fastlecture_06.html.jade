@@ -17,15 +17,28 @@ include ../../fragments/slide_mixins
 
   mixin title_slide({document:document, images:images})
 
+  //- ----------------------------
+  //- quantifier equivalances: semantics and proofs
+  
+  //- unit: quantifier equivalences: using propositional equivalences
+  - var d = get_unit(760)
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)
 
-  //- unit: variables
-  - var d = get_unit(600)
+  //- unit: quantifier equivalences: universal not existential
+  - var d = get_unit(764)
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)
+
+  //- *note related proofs of not-existential etc    
+  
+  //- ∃x Dead(x) ⊢ ¬∀x¬ Dead(x)
+  - var d = get_unit(825)
     mixin section({unit:d, images:images})
     mixin render_unit(d)
   
-  //- *check is this appropriate?
-  //- unit: relations revision: notequal
-  - var d = get_unit(122)
+  //- ¬∀x Dead(x) ⊢ ∃x¬ Dead(x)
+  - var d = get_unit(826)
     mixin section({unit:d, images:images})
     mixin render_unit(d)
 
@@ -36,8 +49,42 @@ include ../../fragments/slide_mixins
       p Exam papers with answers: five sets are on the module web page.
       p More examples.
 
+
+  //- ----------------------------
+  //- numerical quantifiers
+
+  //- *don't need unit 470 for fast lectures (this starts with a recap anyway)
+  //- numerical quantifiers
+  - var d = get_unit('620')
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)
+
+  //- unit: More Dead Horse 
+  - var d = get_unit(565)
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)
+
+
+
+  
+  //- *todo check this
+  //- unit: ∀Intro: An Incorrect Proof
+  - var d = get_unit(572)
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)
+
+
+
+
+  //- unit: variables
+  - var d = get_unit(600)
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)
+  
+
   //- truth functional completeness
-  - d = get_unit(435)
+  //- unit: how big is truth table (for truth-functional completeness)
+  - var d = get_unit(431)
     mixin section({unit:d, images:images})
     mixin render_unit(d)
   - d = get_unit(430)
@@ -52,30 +99,6 @@ include ../../fragments/slide_mixins
     mixin render_unit(d)
 
   
-  //- *todo check this
-  //- unit: ∀Intro: An Incorrect Proof
-  - var d = get_unit(572)
-    mixin section({unit:d, images:images})
-    mixin render_unit(d)
-
-
-  //- unit: quantifier equivalences: using propositional equivalences
-  - var d = get_unit(760)
-    mixin section({unit:d, images:images})
-    mixin render_unit(d)
-  //- unit: quantifier equivalences: universal not existential
-  - var d = get_unit(764)
-    mixin section({unit:d, images:images})
-    mixin render_unit(d)
-    
-    
-  //- quantifiers and number (two things are broken)
-  - var d = get_unit('470')
-    mixin section({unit:d, images:images})
-    mixin render_unit(d)
-  
-  //- *todo: add the other stuff about number and identity
-
   
   //- -----------------------
   //- spare topics: hope this won't be needed

@@ -45,7 +45,7 @@ include ../../fragments/slide_mixins
   //- *todo move this block earlier?
  
   //- *Do feedback forms
-  .slide
+  .slide#feedback
     .words: .container_12: .grid_12
       p.middle.center feedback
     
@@ -54,7 +54,10 @@ include ../../fragments/slide_mixins
     .words: .container_12: .grid_12
       p Just thought I'd mention that I like your new tweed jacket! :)
       //- Also, you're a really good lecturer - I like how you digress from one section to another and then revisit previous ones again because then the topic doesn't turn out to be boring or monotonous. I must admit that Logic still makes me want to die inside a little, but hopefully that will change.
-      p.slide I do wish that seminars would focus more on solving really difficult proofs or exercises, where the tutor explains more in detail how one would approach a tricky question.
+      p.slide.nodim I do wish that seminars would focus more on solving really difficult proofs or exercises, where 
+        span.as7das the tutor explains
+        span  more in detail how one would approach a tricky question.
+      mixin words-bkg(['.as7das'],'red')
   //- cut
     .slide
       .words: .container_12: .grid_12
@@ -79,33 +82,33 @@ include ../../fragments/slide_mixins
 
 
   //- -----------------------
-  //- spare topics: hope this won't be needed
-
-  //- Proof Example: A∧B therefore ¬(¬A∨¬B)
-  - d = get_unit(822)
-    mixin section({unit:d, images:images})
-    mixin render_unit(d)
-    
-  //- Proof Example: P therefore ¬¬P
-  - d = get_unit(823)
-    mixin section({unit:d, images:images})
-    mixin render_unit(d)
-    
-  //- Proof Example: S∨(Q∧R) therefore S∨Q
-  - d = get_unit(824)
-    mixin section({unit:d, images:images})
-    mixin render_unit(d)
-
-  //- why logic?
-  - d = get_unit(380)
-    mixin section({unit:d, images:images})
-    mixin render_unit(d)
-
-  //- *not very good; repeats some of an earlier unit
-  //- truth for ∃
-  - d = get_unit(495)
-    mixin section({unit:d, images:images})
-    mixin render_unit(d)
+  //- spare topics: not needed in 2012-3
+  
+    //- Proof Example: A∧B therefore ¬(¬A∨¬B)
+    - d = get_unit(822)
+      mixin section({unit:d, images:images})
+      mixin render_unit(d)
+      
+    //- Proof Example: P therefore ¬¬P
+    - d = get_unit(823)
+      mixin section({unit:d, images:images})
+      mixin render_unit(d)
+      
+    //- Proof Example: S∨(Q∧R) therefore S∨Q
+    - d = get_unit(824)
+      mixin section({unit:d, images:images})
+      mixin render_unit(d)
+  
+    //- why logic?
+    - d = get_unit(380)
+      mixin section({unit:d, images:images})
+      mixin render_unit(d)
+  
+    //- *not very good; repeats some of an earlier unit
+    //- truth for ∃
+    - d = get_unit(495)
+      mixin section({unit:d, images:images})
+      mixin render_unit(d)
 
 
 

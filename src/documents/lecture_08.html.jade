@@ -15,7 +15,6 @@ include ../../fragments/slide_mixins
 
   mixin title_slide({document:document, images:images})
 
-
   //- unit: recap on scope (from trees on)
   .slide
     .center.middle
@@ -57,6 +56,19 @@ include ../../fragments/slide_mixins
   - d = get_unit(491)
     mixin section({unit:d, images:images})
     mixin render_unit(d)  
+
+
+  //- unit: ∀Elim
+  - d = get_unit(800)
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)  
+
+
+  //- unit: ∃Intro
+  - d = get_unit(801)
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)
+
 
   //- unit: scope and quantifiers
   - d = get_unit(710)
