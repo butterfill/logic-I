@@ -59,6 +59,11 @@ include ../../fragments/slide_mixins
     mixin section({unit:d, images:images})
     mixin render_unit(d)
 
+  //- there is exactly one
+  - var d = get_unit('625')
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)
+
   //- unit: More Dead Horse 
   - var d = get_unit(565)
     mixin section({unit:d, images:images})

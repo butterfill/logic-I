@@ -33,6 +33,11 @@ include ../../fragments/slide_mixins
     mixin section({unit:d, images:images})
     mixin render_unit(d)
 
+  //- there is exactly one
+  - var d = get_unit('625')
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)
+
   //- More records than the KGB
   - d = get_unit(780)
     mixin section({unit:d, images:images})
