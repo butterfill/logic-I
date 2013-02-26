@@ -22,7 +22,6 @@ include ../../fragments/slide_mixins
   
   //- unit: quantifier equivalences: using propositional equivalences
   - var d = get_unit(760)
-    mixin section({unit:d, images:images})
     mixin render_unit(d)
 
   //- unit: quantifier equivalences: universal not existential
@@ -46,8 +45,9 @@ include ../../fragments/slide_mixins
   //- *feedback
   .slide
     .words: .grid_12: .container_12
-      p Exam papers with answers: five sets are on the module web page.
-      p More examples.
+      .middle.center
+        p.bkg-words-pink Feedback
+        p Exam papers with answers: five sets are on the module web page.
 
 
   //- ----------------------------

@@ -276,13 +276,15 @@ mixin tt-highlight-rows(rows, container)
 //- e.g.:
 //-  - var prf = {premises:['P ∧ Q', 'Q ∧ R'], lines:[['P','∧Elim', [1]],['R', '∧Elim',[2]]]}
 //-  mixin fitch_proof(prf)
-mixin fitch_proof(prf)
+mixin fitch_proof(prf,start_line)
+  if !start_line
+    - start_line = 1
   table.fitch-proof
     - var premises = prf['premises']
-    - var line_no = 1
+    - var line_no = start_line 
     each premise in premises
       tr(class="premise row-#{line_no}")
-        td(class="#{line_no == premises.length ? 'last-premise' : ''}")
+        td(class="#{(line_no-(start_line-1)) == premises.length ? 'last-premise' : ''}")
             span.highlight-hook &#8203;
         td #{prf.no_line_numbers ? '' : line_no+'.'}
         td
@@ -294,10 +296,15 @@ mixin fitch_proof(prf)
       if line.__proto__ == Object().__proto__
         //- subproof
         - var subproof = line
+        //- *todo: won't work for deeper nested subproofs
+        - var subproof_length = subproof.lines.length
+        - var subproof_start_line_no = line_no
+        - line_no += (subproof_length+1)
         tr
           td 
           td(colspan="3")
-            mixin fitch_proof(subproof)
+            mixin fitch_proof(subproof, subproof_start_line_no)
+            
       if line.__proto__ == [].__proto__
         //- ordinary line
         tr(class="line row-#{line_no}")
@@ -317,6 +324,7 @@ mixin fitch_proof(prf)
                       | ,
                   - ctr += 1
         - line_no += 1
+
 
 //- animations to highlight rows / sentences / reference numbers in proofs
 //- nb: these use anim-continue so you can do several highlights in one slide

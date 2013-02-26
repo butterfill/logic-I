@@ -1,0 +1,71 @@
+---
+layout: 'default'
+title: "There Does Not Exist"
+tags: ['translation','quantification']
+description: "How can we translate sentences involving quantifiers and negation from English into our formal language Logiya?  Discusses translating 'Something is not dead' and 'Nothing is dead'; also 'Everything is not broken' and 'Not everything is broken'."
+depends: ['']
+source: ['']
+duration: 5
+book: []
+exercises: []
+exercises_fast: []
+---
+
+include ../../../fragments/slide_mixins
+
+
+.slide
+  .words
+    .container_12
+      .grid_6.left-half
+        p.hidelater Something is dead.
+        p.hidelater.indent.slide.nodim ∃x Dead(x)
+        .slide.nodim
+          p.hidelater.em-above Something is not dead.
+          p.indent.side.translation-with-negation
+            span ∃x  
+            span.negation ¬
+            span Dead(x)
+        .slide.nodim
+          p.hidelater.em-above Nothing is dead.
+          p.indent.slide.translation-with-negation
+            span.negation ¬
+            span ∃x  
+            span Dead(x)
+        mixin words-bkg(['.negation'],'pink','.left-half')
+        mixin dim(['.left-half'])
+        .step2.hide.em-above
+          - var prf1 = {premises:[''], lines:[['a=a','=Intro'],['∃x (x=x)', '∃Intro',[2]]]}
+          mixin fitch_proof(prf1)
+      .grid_6.slide.right-half
+        .old-right-half
+          p.hidelater.nodim Everything is broken.
+          p.hidelater.indent.slide.nodim
+            span ∀x 
+            span Broken(x)
+          p.hidelater.em-above.slide.nodim Everything is not broken.
+          p.indent.slide.nodim.translation-with-negation
+            span ∀x 
+            span.negation ¬
+            span Broken(x)
+          p.hidelater.em-above.slide.nodim Not everything is broken.
+          p.indent.slide.nodim.translation-with-negation
+            span.negation ¬
+            span ∀x 
+            span Broken(x)
+        mixin words-bkg(['.negation'],'yellow','.right-half')
+        //- *notes Quick discussion of which of the sentences entail the others
+        mixin undim(['.left-half'])
+        mixin hide(['.hidelater'])
+        mixin show(['.step2'])
+    .clear
+    mixin remove(['.hidelater','.step2'])
+    .container_12: grid_12
+      .slide.em-above
+        - var prf2sub1 = {premises:['Dead(a)'], lines:[['∃x Dead(x)','∃Intro',[2]],['⊥','⊥Intro',[1,3]]]}
+        - var prf2 = {premises:['¬∃x Dead(x)'], lines:[prf2sub1,['¬Dead(a)','¬Intro',['2-4']],['∃x ¬Dead(x)', '∃Intro',[5]]]}
+        mixin fitch_proof(prf2)
+        
+
+
+a.deck-permalink(href='.', title='Permalink to this slide') #

@@ -20,6 +20,10 @@ include ../../fragments/slide_mixins
     mixin section({unit:d, images:images})
     mixin render_unit(d)
 
+  //- Somebody Is Not Dead
+  - d = get_unit(607)
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)
   
   //- unit: quantifier equivalences: ∀x(Square(x) → Broken(x)) ⫤⊨ ∀x(¬Broken(x) → ¬Square(x)) 
   - var d = get_unit(760)

@@ -20,6 +20,10 @@ include ../../fragments/slide_mixins
 
   mixin title_slide({document:document, images:images})
 
+  //- There Does Not Exist (translating with negation and quantifiersn)
+  - d = get_unit(605)
+    mixin render_unit(d)
+
   //- there is a store for everything
   - d = get_unit(560)
     mixin section({unit:d, images:images})
@@ -40,32 +44,34 @@ include ../../fragments/slide_mixins
     mixin section({unit:d, images:images})
     mixin render_unit(d)
 
-  //- Fubar Rules
-  - d = get_unit(340)
-    mixin section({unit:d, images:images})
-    mixin render_unit(d)
-
   //- Proof Example: P therefore ¬¬P
   - d = get_unit(823)
     mixin section({unit:d, images:images})
     mixin render_unit(d)
     
-  //- Proof Example: S∨(Q∧R) therefore S∨Q
-  - d = get_unit(824)
-    mixin section({unit:d, images:images})
-    mixin render_unit(d)
-  
-  //- Substitution of Equivalents
-  - d = get_unit(250)
-    mixin section({unit:d, images:images})
-    mixin render_unit(d)
-  
 
-  //- proofs about proofs
-  - d = get_unit(440)
-    mixin section({unit:d, images:images})
-    mixin render_unit(d)
+  //- *skipped in 2012-3
+    //- Fubar Rules
+    - d = get_unit(340)
+      mixin section({unit:d, images:images})
+      mixin render_unit(d)
+  
+    //- Proof Example: S∨(Q∧R) therefore S∨Q
+    - d = get_unit(824)
+      mixin section({unit:d, images:images})
+      mixin render_unit(d)
     
+    //- Substitution of Equivalents
+    - d = get_unit(250)
+      mixin section({unit:d, images:images})
+      mixin render_unit(d)
+    
+  
+    //- proofs about proofs
+    - d = get_unit(440)
+      mixin section({unit:d, images:images})
+      mixin render_unit(d)
+      
 
 
 
