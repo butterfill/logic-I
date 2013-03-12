@@ -23,11 +23,14 @@
 -     }
 -     return res.list[res.counter];
 -   }
+-   res.first = function() { return res.list[0]; }
 -   return res;
 - };
 
 - get_images = function(folder) {
 -   var images = getFilesAtPath('img/bkg/'+folder+'/',[{basename:1}]).toJSON();
+-   var sorter = function(a,b) { return a.basename.localeCompare(b.basename) };
+-   images.sort(sorter);
 -   return wrap_list(images)
 - };
 
@@ -60,7 +63,8 @@ mixin render_unit(unit)
 // param p contains document and images (an array of images to use)
 mixin title_slide(p)
   #title-slide.slide
-    - var img = p.images.next()
+    - var img = p.images.first()
+    - var _ = p.images.next(); //avoid re-using first image 
     img.bkg(src='#{img.url}')
     .spacer &nbsp;
     - var low = false
@@ -98,29 +102,73 @@ mixin section(p)
 mixin anim_end()
   .slide.anim-addclass(data-what="#notanelement", data-class="")
 
+
+//- draw a connector between elements
+mixin connect(p)
+  .slide.anim-connect(data-from='#{p.from}', data-to='#{p.to}', data-from-anchor="#{p.fromAnchor||'LeftMiddle'}",data-to-anchor='#{p.toAnchor || "RightMiddle"}',data-color="#{p.color || 'hotpink'}")
+
+
+mixin blur(what)
+  if typeof(what)==='string'
+    - what = [what]
+  each thing in what
+    .slide.anim-continue.anim-addclass(data-what="#{thing}",data-class="blur-text")
+  mixin anim_end()
+
+mixin unblur(what)
+  if typeof(what)==='string'
+    - what = [what]
+  each thing in what
+    .slide.anim-continue.anim-removeclass(data-what="#{thing}",data-class="blur-text")
+  mixin anim_end()
+
+
+
 //- show something(s)
-//- param what is an array of jquery identifiers
+//- param what is a string or an array of jquery identifiers
 mixin show(what)
+  if typeof(what)==='string'
+    - what = [what]
   each thing in what
     .slide.anim-continue.anim-removeclass(data-what="#{thing}",data-class="hide")
   mixin anim_end()
   
 mixin hide(what)
+  if typeof(what)==='string'
+    - what = [what]
   each thing in what
     .slide.anim-continue.anim-addclass(data-what="#{thing}",data-class="hide")
   mixin anim_end()
 
+mixin collapse(what, speed)
+  if typeof(what)==='string'
+    - what = [what]
+  each thing in what
+    if speed
+      .slide.anim-continue.anim-collapse(data-what="#{thing}",data-dur="#{speed}")
+    else
+      .slide.anim-continue.anim-collapse(data-what="#{thing}")
+  mixin anim_end()
+
 mixin remove(what)
+  if typeof(what)==='string'
+    - what = [what]
   each thing in what
     .slide.anim-continue.anim-addclass(data-what="#{thing}",data-class="remove-me")
   mixin anim_end()
 
 mixin unremove(what)
+  if typeof(what)==='string'
+    - what = [what]
   each thing in what
     .slide.anim-continue.anim-removeclass(data-what="#{thing}",data-class="remove-me")
   mixin anim_end()
 
 mixin showhide(showwhat, hidewhat)
+  if typeof(showwhat)==='string'
+    - showwhat = [showwhat]
+  if typeof(hidewhat)==='string'
+    - hidewhat = [hidewhat]
   each thing in showwhat
     .slide.anim-continue.anim-removeclass(data-what="#{thing}",data-class="hide")
   each thing in hidewhat
@@ -128,6 +176,10 @@ mixin showhide(showwhat, hidewhat)
   mixin anim_end()
 
 mixin showremove(showwhat, hidewhat)
+  if typeof(showwhat)==='string'
+    - showwhat = [showwhat]
+  if typeof(hidewhat)==='string'
+    - hidewhat = [hidewhat]
   each thing in showwhat
     .slide.anim-continue.anim-removeclass(data-what="#{thing}",data-class="hide")
   each thing in hidewhat
@@ -135,44 +187,99 @@ mixin showremove(showwhat, hidewhat)
   mixin anim_end()
 
 mixin dim(what)
+  if typeof(what)==='string'
+    - what = [what]
   each thing in what
     .slide.anim-continue.anim-addclass(data-what="#{thing}",data-class="dim")
   mixin anim_end()
 
 mixin undim(what)
+  if typeof(what)==='string'
+    - what = [what]
   each thing in what
     .slide.anim-continue.anim-removeclass(data-what="#{thing}",data-class="dim")
   mixin anim_end()
 
+mixin nodim(what)
+  if typeof(what)==='string'
+    - what = [what]
+  each thing in what
+    .slide.anim-continue.anim-addclass(data-what="#{thing}",data-class="nodim")
+  mixin anim_end()
+
+
+mixin fade(what, dur)
+  if typeof(what)==='string'
+    - what = [what]
+  each thing in what
+    if dur
+      .slide.anim-continue.anim-fade(data-what="#{thing}", data-dur="#{dur}")
+    else
+      .slide.anim-continue.anim-fade(data-what="#{thing}")
+  mixin anim_end()
+
+mixin unfade(what, dur)
+  if typeof(what)==='string'
+    - what = [what]
+  each thing in what
+    if dur
+      .slide.anim-continue.anim-show(data-what="#{thing}", data-dur="#{dur}")
+    else
+      .slide.anim-continue.anim-show(data-what="#{thing}")
+  mixin anim_end()
+
+
 mixin words-bkg(what, color, container)
+  if typeof(what)==='string'
+    - what = [what]
   each thing in what
     .slide.anim-continue.anim-addclass(data-what="#{container ? container : ''} #{thing}",data-class="bkg-words-highlight-#{color}")
   mixin anim_end()
 
 mixin words-bkg-faint(what, color, container)
+  if typeof(what)==='string'
+    - what = [what]
   each thing in what
     .slide.anim-continue.anim-addclass(data-what="#{container ? container : ''} #{thing}",data-class="bkg-words-highlight-faint-#{color}")
   mixin anim_end()
 
 mixin words-bkg-remove(what, color, container)
+  if typeof(what)==='string'
+    - what = [what]
   each thing in what
     .slide.anim-continue.anim-removeclass(data-what="#{container ? container : ''} #{thing}",data-class="bkg-words-highlight-#{color}")
   mixin anim_end()
 
 
+
+mixin row-bkg(what, color, container)
+  if typeof(what)==='string'
+    - what = [what]
+  each thing in what
+    .slide.anim-continue.anim-addclass(data-what="#{container ? container : ''} #{thing}",data-class="bkg-#{color}-row")
+    if color=='white'
+      .slide.anim-continue.anim-addclass(data-what="#{container ? container : ''} #{thing}", data-class="invert")
+  mixin anim_end()
+
+
+
 mixin invert(what, container)
+  if typeof(what)==='string'
+    - what = [what]
   each thing in what
     .slide.anim-continue.anim-addclass(data-what="#{container ? container : ''} #{thing}", data-class="invert")
     .slide.anim-continue.anim-addclass(data-what="#{container ? container : ''} #{thing}",data-class="bkg-words-highlight-white")
   mixin anim_end()
 
+
 //- add a slide for the specified step
 mixin step(num, container)
   //- uses deck.anim extension to unhide elements
-  div.slide.anim-removeclass(data-what="#{container ? container : ''} .step#{num}",data-class="hide")
+  .slide.anim-removeclass(data-what="#{container ? container : ''} .step#{num}",data-class="hide")
 
 //- add slides for num steps, where @param num is the total number of steps 
 mixin steps(start_num, end_num, container)
+  //- sort out params
   if !end_num
     - end_num = start_num
     - start_num = 2
@@ -180,6 +287,7 @@ mixin steps(start_num, end_num, container)
     - container = end_num
     - end_num = start_num
     - start_num = 2
+  //- do it
   - var counter = start_num //start at slide 2
   while counter <= end_num
     mixin step(counter, container)

@@ -9,11 +9,17 @@ lecture_date: '2013/02/28'
 include ../../fragments/slide_mixins
 
 
-- var images = get_images('usa_parks')
+- var images = get_images('indo_2003')
 
 .deck-container
 
   mixin title_slide({document:document, images:images})
+
+
+  //- Fubar Rules
+  - d = get_unit(340)
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)
 
   //- Loving and being loved
   - d = get_unit(755)
@@ -29,26 +35,21 @@ include ../../fragments/slide_mixins
   - var d = get_unit(760)
     mixin section({unit:d, images:images})
     mixin render_unit(d)
-
   //- unit: quantifier equivalences: ∀x(Square(x) → Broken(x)) ⫤⊨ ∀x(¬Square(x) ∨ Broken(x))
   - var d = get_unit(762)
-    mixin section({unit:d, images:images})
     mixin render_unit(d)
-
     
-  //- Does ‘if’ mean what ‘→’ means?
-  - d = get_unit(640)
-    mixin section({unit:d, images:images})
-    mixin render_unit(d)
-
-
-  //- why logic?
-  - d = get_unit(380)
-    mixin section({unit:d, images:images})
-    mixin render_unit(d)
+    
+  //- feedback
+  .slide
+    .words: .container_12: .grid_12
+      p ‘First of all, I really appreciate the fact that you keep trying to improve your lectures and provide us with all the necessary information. 
+      p.slide.nodim ‘Second of all, with the new website containing the lecture slides and rules of thumb, 
+        span.tohighlight there even might be a slight chance for some of us to pass the exam. 
+      p.slide ‘And third of all, I also loved the new tweed jacket.’
+      mixin words-bkg('.tohighlight', 'pink')
   
-
-    
+ 
   //- --------------------------------------------------
   //- soundness theorem
     
@@ -72,6 +73,25 @@ include ../../fragments/slide_mixins
 
 
   //- spare topics: hope this won't be needed
+
+  //- * 
+    //- --------------------------------------------------
+    //- todo: decide what of this to cover
+    //- Proof Example: S∨(Q∧R) therefore S∨Q
+    - d = get_unit(824)
+      mixin section({unit:d, images:images})
+      mixin render_unit(d)
+  
+    //- why logic?
+    - d = get_unit(380)
+      mixin section({unit:d, images:images})
+      mixin render_unit(d)
+  
+    //- proofs about proofs
+    - d = get_unit(440)
+      mixin section({unit:d, images:images})
+      mixin render_unit(d)
+
 
 
     

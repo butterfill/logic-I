@@ -1,5 +1,5 @@
 ---
-layout: 'default'
+layout: 'deck_units'
 title: "There Does Not Exist"
 tags: ['translation','quantification']
 description: "How can we translate sentences involving quantifiers and negation from English into our formal language Logiya?  Discusses translating 'Something is not dead' and 'Nothing is dead'; also 'Everything is not broken' and 'Not everything is broken'."
@@ -14,6 +14,8 @@ exercises_fast: []
 include ../../../fragments/slide_mixins
 
 
+
+  
 .slide
   .words
     .container_12
@@ -33,7 +35,7 @@ include ../../../fragments/slide_mixins
             span ∃x  
             span Dead(x)
         mixin words-bkg(['.negation'],'pink','.left-half')
-        mixin dim(['.left-half'])
+        mixin fade('.left-half')
         .step2.hide.em-above
           - var prf1 = {premises:[''], lines:[['a=a','=Intro'],['∃x (x=x)', '∃Intro',[2]]]}
           mixin fitch_proof(prf1)
@@ -55,17 +57,15 @@ include ../../../fragments/slide_mixins
             span Broken(x)
         mixin words-bkg(['.negation'],'yellow','.right-half')
         //- *notes Quick discussion of which of the sentences entail the others
-        mixin undim(['.left-half'])
-        mixin hide(['.hidelater'])
-        mixin show(['.step2'])
+        mixin unfade('.left-half')
+        mixin fade('.hidelater')
+        mixin show('.step2')
     .clear
-    mixin remove(['.hidelater','.step2'])
+    mixin collapse(['.hidelater','.step2'], 1000)
     .container_12: grid_12
       .slide.em-above
         - var prf2sub1 = {premises:['Dead(a)'], lines:[['∃x Dead(x)','∃Intro',[2]],['⊥','⊥Intro',[1,3]]]}
         - var prf2 = {premises:['¬∃x Dead(x)'], lines:[prf2sub1,['¬Dead(a)','¬Intro',['2-4']],['∃x ¬Dead(x)', '∃Intro',[5]]]}
         mixin fitch_proof(prf2)
         
-
-
 a.deck-permalink(href='.', title='Permalink to this slide') #

@@ -9,6 +9,16 @@ html
 
 
 
+.spotlight {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 200%;
+    background: -moz-radial-gradient(center 45deg, circle closest-side, transparent 0%, black 60%);
+    background: -webkit-gradient(radial, center center, 0, center center, 250, from(rgba(0,0,0,0)), to(rgba(0,0,0,.8)));
+}
+
 
 /**
  * overwrite core defaults
@@ -37,6 +47,17 @@ invert_text()
 
 .deck-container .noinvert
   noinvert_text()
+
+
+.deck-container
+  .blur-text
+   color: rgba(255,255,255,0.2)
+   text-shadow: 0 0 5px rgba(255,255,255,1);
+   .invert
+	 color: rgba(0,0,0,0.2)
+	 text-shadow: 0 0 5px rgba(0,0,0,1);
+
+
 
 /**
  * supposed to prevent reduced opacity for previous slide
@@ -165,9 +186,15 @@ f_scale(x,y)
   -ms-transform:scale(x,y) /* IE 9 */
   -o-transform:scale(x,y) /* Opera */  
 
+
 .stretch-2
   display: inline-block
-  f_scale(1,2)
+  f_scale(2,2)
+
+.stretch-3
+  display: inline-block
+  f_scale(3,3)
+
 
 .stretch-5
   display: inline-block
@@ -316,13 +343,12 @@ btm-white(height,top)
 
 /**
  * highlight blocks
- * (configured so that highlights disappear if not current slide)
  */
-.deck-container .deck-current .bkg-highlight-yellow
+.deck-container .bkg-highlight-yellow
   background-color: rgba(255,248,61,0.5)
   box-shadow: 0 0 20px 15px rgba(255,248,61,0.5)
 
-.deck-container .deck-current .bkg-white-row
+.deck-container .bkg-white-row
   background-color: white
   box-shadow: 0 0 1px black, 0 0 1.5em white
   margin-left: -40em
@@ -331,23 +357,27 @@ btm-white(height,top)
   border-right: solid 40em white
   text-outline: 1px 2px red
 
+
 .deck-container .bkg-grey-row
-  background-color: rgba(255,255,255,0.6)
+  background-color: rgba(125,125,125,1)
   box-shadow: 0 0 1px black, 0 0 0.5em white
-  margin-left: -40em
-  border-left: solid 40em rgba(255,255,255,0.3)
-  margin-right: -40em
-  border-right: solid 40em rgba(255,255,255,0.3)
+  margin-left: -80em
+  border-left: solid 80em rgba(125,125,125,1)
+  margin-right: -80em
+  border-right: solid 80em rgba(125,125,125,1)
   text-outline: 1px 2px red
+  box-shadow: 0px 4px 2px -2px rgba(255,255,255,0.33), 0px -4px 2px -2px rgba(255,255,255,0.33)
 
 .deck-container .invert .bkg-grey-row
-  background-color: rgba(0,0,0,0.6)
+  background-color: rgba(125,125,125,1)
   box-shadow: 0 0 1px white, 0 0 0.5em black
-  margin-left: -40em
-  border-left: solid 40em rgba(0,0,0,0.3)
-  margin-right: -40em
-  border-right: solid 40em rgba(0,0,0,0.3)
+  margin-left: -80em
+  border-left: solid 80em rgba(125,125,125,1)
+  margin-right: -80em
+  border-right: solid 80em rgba(125,125,125,1)
   text-outline: 1px 2px red
+
+
 
 
 /**
@@ -374,79 +404,58 @@ btm-white(height,top)
 
 /**
  * highlight words -- permanent
- * (configured so that highlights disappear if not current slide)
  */
  
-highlight-bkg(col)
-  background-color col
-  box-shadow 0 0 15px 8px col
-  border-radius 5px
-  //marging-right doesn't work in firefox  (margin-left does!)
-  //margin-left: -10px
-  //border-left: solid 10px  rgba(255,0,0,0.8)
-  //margin-right: -10px
-  //border-right: solid 10px  rgba(255,0,0,0.8)
-  //outline: 5px solid rgba(255,0,0,0.8)
- 
-.deck-container .bkg-words-highlight-white
-  highlight-bkg rgba(255, 255, 255, 1)
+/**
+ * highlight words -- permanent
+ */
 
-.deck-container .bkg-words-highlight-faint-white
-  highlight-bkg rgba(255, 255, 255, 0.3)
+make-bkg-words(name,color)
+ .deck-container
+   .bkg-words-highlight-{name}
+   .bkg-{name}
+	 background-color color
+	 box-shadow 0 0 15px 8px color
+	 border-radius 5px
+	 //marging-right doesn't work in firefox  (margin-left does!)
+	 //margin-left: -10px
+	 //border-left: solid 10px  rgba(255,0,0,0.8)
+	 //margin-right: -10px
+	 //border-right: solid 10px  rgba(255,0,0,0.8)
+	 //outline: 5px solid rgba(255,0,0,0.8)
+   span.bkg-words-highlight-{name}
+   span.bkg-{name}
+	 position relative
+	 z-index -1
+   p.bkg-words-highlight-{name}
+   p.bkg-{name}
+	 position relative
+	 top 0
+	 left 0
+	 z-index -2
 
-.deck-container .bkg-words-highlight-blue
-  highlight-bkg rgba(0, 128, 255,1)
+make-bkg-words('blue', rgba(0, 128, 255,1))
+make-bkg-words('pink', rgba(255, 111, 207,1))
+make-bkg-words('white', rgba(255, 255, 255, 1))
+make-bkg-words('faint-white', rgba(255, 255, 255, 0.3))
+make-bkg-words('faint-blue', rgba(0, 128, 255, 0.3))
+make-bkg-words('faint-pink', rgba(255, 111, 207,0.3))
+make-bkg-words('yellow', rgba(255, 255, 0, 1))
+make-bkg-words('faint-yellow', rgba(255, 255, 0, 0.3))
+make-bkg-words('red', rgba(255, 0, 0, 1))
+make-bkg-words('faint-red', rgba(255, 0, 0, 0.3))
+make-bkg-words('forestgreen', rgba(34,139,34,1))
+make-bkg-words('faint-forestgreen', rgba(34,139,34,0.3))
+make-bkg-words('olive', rgba(128,128,0,1))
+make-bkg-words('faint-olive', rgba(128,128,0,0.3))
+make-bkg-words('teal', rgba(0,128,128,1))
+make-bkg-words('faint-teal', rgba(0,128,128,0.3))
+make-bkg-words('lime', rgba(0,255,0,1))
+make-bkg-words('faint-lime', rgba(0,255,0,0.3))
+make-bkg-words('limegreen', rgba(50,205,50,1))
+make-bkg-words('faint-limegreen', rgba(50,205,50,0.3))
 
-.deck-container .bkg-words-highlight-faint-blue
-  highlight-bkg rgba(0, 128, 255, 0.3)
 
-.deck-container .bkg-words-highlight-pink
-  highlight-bkg rgba(255, 111, 207,1)
-
-.deck-container .bkg-words-highlight-faint-pink
-  highlight-bkg rgba(255, 111, 207,0.3)
-
-.deck-container .bkg-words-highlight-yellow
-  highlight-bkg rgba(255, 255, 0, 1)
-
-.deck-container .bkg-words-highlight-faint-yellow
-  highlight-bkg rgba(255, 255, 0, 0.3)
-
-.deck-container .bkg-words-highlight-red
-  highlight-bkg rgba(255, 0, 0, 1)
-
-.deck-container .bkg-words-highlight-faint-red
-  highlight-bkg rgba(255, 0, 0, 0.3)
-
-.deck-container .bkg-words-highlight-forestgreen
-  highlight-bkg: rgba(34,139,34,1)
-
-.deck-container .bkg-words-highlight-faint-forestgreen
-  highlight-bkg: rgba(34,139,34,0.3)
-
-.deck-container .bkg-words-highlight-olive
-  highlight-bkg: rgba(128,128,0,1)
-
-.deck-container .bkg-words-highlight-faint-olive
-  highlight-bkg: rgba(128,128,0,0.3)
-
-.deck-container .bkg-words-highlight-teal
-  highlight-bkg: rgba(0,128,128,1)
-
-.deck-container .bkg-words-highlight-faint-teal
-  highlight-bkg: rgba(0,128,128,0.3)
-
-.deck-container .bkg-words-highlight-lime
-  highlight-bkg: rgba(0,255,0,1)
-
-.deck-container .bkg-words-highlight-faint-lime
-  highlight-bkg: rgba(0,255,0,0.3)
-
-.deck-container .bkg-words-highlight-limegreen
-  highlight-bkg: rgba(50,205,50,1)
-
-.deck-container .bkg-words-highlight-faint-limegreen
-  highlight-bkg: rgba(50,205,50,0.3)
 
 
 /**

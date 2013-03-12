@@ -218,6 +218,27 @@ include ../../fragments/slide_mixins
           
         });
       });
+
+  .slide#connect-anim-slide
+    .words
+      .container_12: .grid_12
+        p test connectors with deck.anim plugin
+        p.em-above
+          span#origin-b2.white-box from here (2)
+        p.em-above
+          span#dest-b2.white-box  to here (2)
+        .slide.anim-connect(data-from='#origin-b2', data-to='#dest-b2', data-from-anchor="LeftMiddle",data-color="hotpink")
+
+  .slide#connect-anim-mixin-slide
+    .words
+      .container_12: .grid_12
+        p test connectors with mixin that uses deck.anim plugin
+        p.em-above from here  
+          span#origin-c (1)
+        p.em-above to here  
+          span#dest-c (2)
+        mixin connect({from:'#origin-c', to:'#dest-c', fromAnchor:'BottomCenter', color:'turquoise'})
+
           
 
 
@@ -297,33 +318,32 @@ include ../../fragments/slide_mixins
             table.fitch-proof
               tr
                 td.last-premise
-                td 2.
+                td 3.
                 td Q ∧ R
               tr
                 td
                   span.bkg-grey-row &#8203;
-                td 3.
+                td 4.
                 td P
                 td ∧Elim: 1
               tr
                 td
-                td 4.
+                td 5.
                 td R
                 td ∧Elim: 2
               tr
                 td
-                td 5.
+                td 6.
                 td P ∧ R
                 td ∧Intro: 3,4
-          
         tr
           td
-          td 4.
+          td 7.
           td R
           td ∧Elim: 2
         tr
           td
-          td 5.
+          td 8.
           td P ∧ R
           td ∧Intro: 3,4
 
@@ -338,25 +358,6 @@ include ../../fragments/slide_mixins
       #firstproof
         mixin fitch_proof(prf1)
       
-      //- attempt to draw line from citation to sentence
-      //- fails!
-        script(src="/vendor/jquery.min.js")
-        script
-          $(document).ready(function(){
-            jsPlumb.ready(function(){
-              console.log('drawing connector');
-              jsPlumb.connect({
-                source : $('#firstproof .fitch-proof .row-1 .sentence'),
-                target : $('#firstproof .fitch-proof .row-3 .citation-1'),
-                endpoint : ["Dot", {radius:3}],
-                anchors : ["RightMiddle","LeftMiddle"],
-                overlays : [
-                  //["PlainArrow", {length:50, width:20, location:0.95}]
-                ]
-              });
-            });
-          });
-      
       //- highlight bits of the proof
       mixin highlight_row(3)
       mixin anim_end()
@@ -366,29 +367,8 @@ include ../../fragments/slide_mixins
         mixin unhighlight_row(3)
         mixin highlight_citation(3,1)
         mixin highlight_cited_sentence(1)
-        script(src="/vendor/jquery.min.js")
-        script
-          $(document).ready(function(){
-            $('#fitch1_high .slide').first().bind('deck.becameCurrent', function(ev, direction){
-              
-              //- be sure to disable scale before adding connectors, otherwise positioning is off
-              $.deck('disableScale')
-              
-              console.log('connecting bits of proof together')
-              jsPlumb.connect({
-                source : $('#firstproof .fitch-proof .row-1 .sentence'),
-                target : $('#firstproof .fitch-proof .row-3 .citation-1'),
-                anchors : ["RightMiddle","RightMiddle"],
-                container: $('#firstproof')
-              });
-    
-              //- re-enable scale afer adding connectors
-              $.deck('enableScale')
-              
-            });
-          });
+        mixin connect({from:'#firstproof .fitch-proof .row-1 .sentence', to:'#firstproof .fitch-proof .row-3 .citation-1', color:'yellow'})
 
-      mixin anim_end()
       mixin unhighlight_citation(3,1)
       mixin unhighlight_cited_sentence(1)
       mixin highlight_row(4)

@@ -3,13 +3,13 @@ layout: 'default'
 title: 'Lecture 15'
 weburl: ''
 units: []
-lecture_date: '2013/03/07'
+lecture_date: '2013/03/12'
 ---
 
 include ../../fragments/slide_mixins
 
 
-- var images = get_images('usa_parks')
+- var images = get_images('portugal_others')
 
 
 
@@ -17,41 +17,68 @@ include ../../fragments/slide_mixins
 
   mixin title_slide({document:document, images:images})
 
-
   //- unit: every time I go to the dentist
   - var d = get_unit(750)
-    mixin section({unit:d, images:images})
-    mixin render_unit(d)
+  mixin render_unit(d)
 
   //- Quantifier equivalences: ∀x(Square(x) → Broken(x)) ⫤⊨ ¬∃x(Square(x) ∧ ¬Broken(x)) 
   - d = get_unit(770)
-    mixin section({unit:d, images:images})
-    mixin render_unit(d)
+  mixin section({unit:d, images:images})
+  mixin render_unit(d)
 
-  //- Numerical quantifiers
-  - d = get_unit(620)
-    mixin section({unit:d, images:images})
-    mixin render_unit(d)
 
-  //- there is exactly one
-  - var d = get_unit('625')
-    mixin section({unit:d, images:images})
-    mixin render_unit(d)
+  //- negating identity
+  - d = get_unit(323)
+  mixin section({unit:d, images:images})
+  mixin render_unit(d)
 
-  //- More records than the KGB
-  - d = get_unit(780)
-    mixin section({unit:d, images:images})
-    mixin render_unit(d)
+  //- *todo started creating a unit on translation from Logiya to English
 
-  //- The End Is Near
-  //- *nb don't use section header with this one!
-  - d = get_unit(790)
-    mixin render_unit(d)
 
+  //- numerical quantifiers
+  - var d = get_unit('620')
+  mixin section({unit:d, images:images})
+  mixin render_unit(d)
+
+
+  //- ++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  //- completeness theorem
+    
+    
+  //- restatement of soundness and completeness theorems
+  //- *cut : not needed (unit 450 restates completeness better)
+    - d = get_unit(401)
+      mixin render_unit(d)
+
+  //- outline of completeness theorem
+  - d = get_unit(450)
+  mixin section({unit:d, images:images})
+  mixin render_unit(d)
+
+  //- lemma for completeness
+  - d = get_unit(453)
+  mixin section({unit:d, images:images})
+  mixin render_unit(d)
+  
+  //- completeness
+  - d = get_unit(455)
+  mixin section({unit:d, images:images})
+  mixin render_unit(d)
 
 
 
   //- spare topics: hope this won't be needed
+
+
+
+  //- unit: Does ‘if’ mean what ‘→’ means?
+  - var d = get_unit(640)
+  mixin section({unit:d, images:images})
+  mixin render_unit(d)
+
+
+
+
 
 
     

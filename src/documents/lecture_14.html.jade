@@ -8,89 +8,132 @@ lecture_date: '2013/03/05'
 
 include ../../fragments/slide_mixins
 
-//- *TODO change images
-- var images = get_images('birds_mexico')
+- var images = get_images('twins_2009c')
 
 
 .deck-container
 
-  mixin title_slide({document:document, images:images})
+  //- title slide with spotlight animation
+  .slide#title_container
+    p.middle.center#instruction Use the arrow keys to navigate.
+    mixin title_slide({document:document, images:images})
+    .nodim.spotlight(style="background-position: -400px -500px; ")
+    script(src="/vendor/jquery.min.js")
+    script
+      $(document).ready(function(){
+        $('#title-slide').bind('deck.becameCurrent', function(ev, direction){
+          console.log('move spotlight with crSpline (for #title_move_spotlight)');
+
+          $('#instruction').hide()
+
+          var $spot = $('#title_container .spotlight')
+          $spot.show();
+
+          var minX = -800;
+          var minY = -700;
+          var maxX = -100;
+          var maxY = -100;
+      
+          var numPoints = 20;
+          var i;
+
+          // Make a random list of waypoints for the animation to follow
+          var points = [];
+          for (i=0; i<numPoints; i++) {
+              points.push([Math.floor(Math.random()*(maxX-minX))+minX, Math.floor(Math.random()*(maxY-minY))+minY]);
+          }
+
+          var _doit = function () {
+            points.reverse();
+            var spline = $.crSpline.buildSequence(points);
+            $spot.animate({ crSpline: spline }, 40000, function(){ $spot.hide(); } );
+          };
+          _doit();
+        });
+      });
+
 
   //- unit: More Dead Horse
   - var d = get_unit(565)
-    mixin section({unit:d, images:images})
     mixin render_unit(d)
 
+
+  //- --------------------
+  //- ∀x Created(x) ⫤⊨ ¬∃x Created(x) 
 
   //- unit: quantifier equivalences: ∀x Created(x) ⫤⊨ ¬∃x Created(x) 
   - var d = get_unit(764)
+  mixin section({unit:d, images:images})
+  mixin render_unit(d)
+
+  //- *note related proofs of not-existential etc    
+  
+  //- prefix with revision of quantifier rules
+  - var d2 = get_unit(575)
+  //- ∃x Dead(x) ⊢ ¬∀x¬ Dead(x)
+  - var d = get_unit(825)
+  mixin section({unit:d, images:images})
+  mixin render_unit(d2)
+  mixin render_unit(d)
+  
+  //- ¬∀x Dead(x) ⊢ ∃x¬ Dead(x)
+  - var d = get_unit(826)
     mixin section({unit:d, images:images})
     mixin render_unit(d)
 
 
-  //- unit: incorrect universal intro example explained
-  //- prefix with revision of quantifier rules
-  - var d2 = get_unit(575)
-  //- prefix with revision of universal intro
-  - var d3 = get_unit(574)
-  - var d = get_unit(573)
-  mixin section({unit:d, images:images})
-  mixin render_unit(d2)
-  mixin render_unit(d3)
-  //- finally render the thing itself
-  mixin render_unit(d)
+
+  //- proofs about proofs
+  - d = get_unit(440)
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)
+
+
+  //- *cut *todo: this seems too long for too little reward!
+    //- unit: incorrect universal intro example explained
+    //- *todo: done this earlier!!! prefix with revision of quantifier rules
+    - var d2 = get_unit(575)
+    //- prefix with revision of universal intro
+    - var d3 = get_unit(574)
+    - var d = get_unit(573)
+    mixin section({unit:d, images:images})
+    mixin render_unit(d2)
+    mixin render_unit(d3)
+    //- finally render the thing itself
+    mixin render_unit(d)
 
 
   //- --------------------------------------------------
   //- truth-functional completeness
     
-  //- unit: how big is truth table (for truth-functional completeness)
-  - var d = get_unit(431)
-    mixin section({unit:d, images:images})
-    mixin render_unit(d)
-  //- unit: truth-functional completeness
-  - var d = get_unit(430)
+  
+  //- Substitution of Equivalents
+  - d = get_unit(250)
     mixin section({unit:d, images:images})
     mixin render_unit(d)
 
-
-  //- --------------------------------------------------
-  //- completeness theorem
+  //- *2012-3 ended here
     
-    
-  //- statement of soundness and completeness theorems
-  //- *repeated!
-  - d = get_unit(400)
-    mixin render_unit(d)
-
-  //- outline of completeness theorem
-  - d = get_unit(450)
-    mixin section({unit:d, images:images})
-    mixin render_unit(d)
-
-  //- moved to lecture 12
-  //- *todo: create recap!
-    //- proofs about proofs
-    - d = get_unit(440)
+    //- unit: how big is truth table (for truth-functional completeness)
+    - var d = get_unit(431)
       mixin section({unit:d, images:images})
       mixin render_unit(d)
-    
-  //- lemma for completeness
-  - d = get_unit(453)
-    mixin section({unit:d, images:images})
-    mixin render_unit(d)
+    //- unit: truth-functional completeness
+    - var d = get_unit(430)
+      mixin section({unit:d, images:images})
+      mixin render_unit(d)
   
-  //- completeness
-  - d = get_unit(455)
-    mixin section({unit:d, images:images})
-    mixin render_unit(d)
-
-
-
-  //- unit: variables
-  - var d = get_unit(600)
-    mixin section({unit:d, images:images})
-    mixin render_unit(d)
+  
+    //- Does ‘if’ mean what ‘→’ means?
+    - d = get_unit(640)
+      mixin section({unit:d, images:images})
+      mixin render_unit(d)
+  
+  
+    //- unit: variables
+    - var d = get_unit(600)
+      mixin section({unit:d, images:images})
+      mixin render_unit(d)
 
 
 

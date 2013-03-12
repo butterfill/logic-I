@@ -1,0 +1,102 @@
+---
+layout: 'default'
+title: 'Fast Lecture 07'
+weburl: ''
+units: []
+lecture_date: '2013/03/05'
+---
+
+include ../../fragments/slide_mixins
+
+- var images = get_images('sunclouds')
+
+
+
+
+.deck-container
+
+  mixin title_slide({document:document, images:images})
+
+
+  //- unit: every time I go to the dentist
+  - var d = get_unit(750)
+    mixin render_unit(d)
+
+  //- *cut in 2012-13 (I get the sense they understand this)
+    //- Quantifier equivalences: ∀x(Square(x) → Broken(x)) ⫤⊨ ¬∃x(Square(x) ∧ ¬Broken(x)) 
+    - d = get_unit(770)
+      mixin section({unit:d, images:images})
+      mixin render_unit(d)
+
+
+  //- --------------------------------------------------
+  //- soundness theorem
+    
+  //- *cut (not needed)
+    //- re-statement of soundness and completeness theorems
+    - d = get_unit(401)
+      mixin section({unit:d, images:images})
+      mixin render_unit(d)
+
+  //- and-fubar and the soundness properly
+  - d = get_unit(346)
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)
+    
+  //- proof of soundness theorem
+  - d = get_unit(410)
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)
+    
+
+  //- *cut in 2012-3 (want to finish)
+    //- unit: Does ‘if’ mean what ‘→’ means?
+    - var d = get_unit(640)
+      mixin section({unit:d, images:images})
+      mixin render_unit(d)
+
+
+
+  //- --------------------------------------------------
+  //- completeness
+
+  //- outline of completeness theorem
+  - d = get_unit(450)
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)
+
+  //- proofs about proofs
+  - d = get_unit(440)
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)
+    
+  //- lemma for completeness
+  - d = get_unit(453)
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)
+  
+  //- completeness
+  - d = get_unit(455)
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)
+
+
+  //- *cut in 2012-3 : I really like this but no time
+    //- Could there be nothing
+    - d = get_unit(805)
+      mixin section({unit:d, images:images})
+      mixin render_unit(d)
+
+  //- More records than the KGB
+  - d = get_unit(780)
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)
+
+  //- The End Is Near
+  //- *nb don't use section header with this one!
+  - d = get_unit(790)
+    mixin render_unit(d)
+
+
+
+  

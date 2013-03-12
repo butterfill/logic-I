@@ -10,6 +10,12 @@
         selectors: {
             animShow: ".anim-show",
             animHide: ".anim-hide",
+			//* added
+			animCollapse : ".anim-collapse",
+			//* added
+			animFade : ".anim-fade",
+			//* added
+			animConnect: ".anim-connect",
             animAddClass: ".anim-addclass",
             animRemoveClass: ".anim-removeclass",
             animAttribute: ".anim-attribute",
@@ -39,6 +45,13 @@
         var context = function(el) {
             return {
                 what: function() {return $(el).attr("data-what")},
+				//* added
+                from: function() {return $(el).attr("data-from")},
+                fromAnchor: function() {return $(el).attr("data-from-anchor") || "RightMiddle"},
+                to: function() {return $(el).attr("data-to")},
+                toAnchor: function() {return $(el).attr("data-to-anchor") || "RightMiddle"},
+                color: function() {return $(el).attr("data-color") || "rgba(255,255,0,1)"},
+                lineWidth: function() {return $(el).attr("data-width") || "3"},
                 dur: function() {return $(el).attr("data-dur")*1 || o.anim.duration},
                 classs: function() {return $(el).attr("data-class")},
                 attribute: function() {return $(el).attr("data-attr").split(':')[0]},
@@ -72,6 +85,53 @@
             undo: function(c) {c.all().animate({'opacity': 0.}, c.dur()/100)},
             doit: function(c) {c.all().animate({'opacity': 1.}, c.dur())},
             fast: function(c) {c.all().animate({'opacity': 1.}, 0)}
+        });
+		//* added
+        classical(o.selectors.animCollapse, {
+            init: function(c) {c.all().show(0)},
+            undo: function(c) {c.all().show(c.dur()/100)},
+            doit: function(c) {c.all().hide(c.dur())},
+            fast: function(c) {c.all().hide(0)}
+        });
+		//* added
+        classical(o.selectors.animFade, {
+            init: function(c) {c.all().animate({'opacity': 1.}, 0)},
+            undo: function(c) {c.all().animate({'opacity': 1.}, c.dur()/100)},
+            doit: function(c) {c.all().animate({'opacity': 0.3}, c.dur())},
+            fast: function(c) {c.all().animate({'opacity': 0.3}, 0)}
+        });
+		//* added
+        classical(o.selectors.animConnect, {
+            init: function(c) {},
+            undo: function(c) {
+				jsPlumb.detachAllConnections($(c.from()));
+			},
+            doit: function(c) {
+				$.deck('disableScale');
+				var tmp = jsPlumb.Defaults.PaintStyle.strokeStyle;
+				jsPlumb.Defaults.PaintStyle.strokeStyle = c.color();
+				jsPlumb.connect({
+				  source : $(c.from()),
+				  target : $(c.to()),
+				  anchors : [c.fromAnchor(),c.toAnchor()],
+				  container: c.toplevel()
+				});
+				jsPlumb.Defaults.PaintStyle.strokeStyle = tmp;
+				$.deck('enableScale')
+			},
+            fast: function(c) {
+				$.deck('disableScale');
+				var tmp = jsPlumb.Defaults.PaintStyle.strokeStyle;
+				jsPlumb.Defaults.PaintStyle.strokeStyle = c.color();
+				jsPlumb.connect({
+				  source : $(c.from()),
+				  target : $(c.to()),
+				  anchors : [c.fromAnchor(),c.toAnchor()],
+				  container: c.toplevel()
+				});
+				jsPlumb.Defaults.PaintStyle.strokeStyle = tmp;
+				$.deck('enableScale')
+			}
         });
         classical(o.selectors.animHide, {
             init: function(c) {c.all().animate({'opacity': 1.}, 0)},
