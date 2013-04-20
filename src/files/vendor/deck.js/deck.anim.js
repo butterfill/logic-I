@@ -16,6 +16,8 @@
 			animFade : ".anim-fade",
 			//* added
 			animConnect: ".anim-connect",
+			//* added
+			animRun: ".anim-run",
             animAddClass: ".anim-addclass",
             animRemoveClass: ".anim-removeclass",
             animAttribute: ".anim-attribute",
@@ -133,6 +135,13 @@
 				$.deck('enableScale')
 			}
         });
+		//* added
+        classical(o.selectors.animRun, {
+            init: function(c) {scripts[c.what()]['init']()},
+            undo: function(c) {scripts[c.what()]['undo']()},
+            doit: function(c) {scripts[c.what()]['doit']()},
+            fast: function(c) {scripts[c.what()]['fast']()}
+        });
         classical(o.selectors.animHide, {
             init: function(c) {c.all().animate({'opacity': 1.}, 0)},
             undo: function(c) {c.all().animate({'opacity': 1.}, c.dur()/100)},
@@ -146,10 +155,64 @@
             fast: function(c) {c.all().addClass(c.classs())}
         });
         classical(o.selectors.animRemoveClass, {
-            init: function(c) {c.all().addClass(c.classs())},
-            undo: function(c) {c.all().addClass(c.classs())},
-            doit: function(c) {c.all().removeClass(c.classs())},
-            fast: function(c) {c.all().removeClass(c.classs())}
+            init: function(c) {
+				var to_rm = c.classs();
+				if(to_rm && to_rm.indexOf && to_rm.indexOf('*') != -1) {
+					c.all().each(function(idx){
+						var to_add = $(this).attr('data-cls-rmd');
+						if( to_add ) {
+							$(this).addClass(to_add);
+							$(this).removeAttr('data-cls-rmd')
+						}
+					});
+				} else {
+					c.all().addClass(c.classs())
+				}
+			},
+            undo: function(c) {
+				var to_rm = c.classs();
+				if(to_rm && to_rm.indexOf && to_rm.indexOf('*') != -1) {
+					c.all().each(function(idx){
+						var to_add = $(this).attr('data-cls-rmd');
+						if( to_add ) {
+							$(this).addClass(to_add);
+							$(this).removeAttr('data-cls-rmd')
+						}
+					});
+				} else {
+					c.all().addClass(c.classs())
+				}
+			},
+            doit: function(c) {
+				var to_rm = c.classs();
+				if(to_rm && to_rm.indexOf && to_rm.indexOf('*') != -1) {
+					//class contains wildcards, convert to regex
+					var to_rm_re = new RegExp('\\b' + to_rm.replace(/\*/g,'\\S+').replace(/\s+/g,'|\\b'), 'g');
+					var cls_rmd;
+					c.all().removeClass(function(idx,cls){
+						cls_rmd = (cls.match(to_rm_re)||[]).join(' ');
+						$(this).attr('data-cls-rmd',cls_rmd);
+						return cls_rmd;
+					});
+				} else {
+					c.all().removeClass(c.classs());
+				}
+			},
+            fast: function(c) {
+				var to_rm = c.classs();
+				if(to_rm && to_rm.indexOf && to_rm.indexOf('*') != -1) {
+					//class contains wildcards, convert to regex
+					var to_rm_re = new RegExp('\\b' + to_rm.replace(/\*/g,'\\S+').replace(/\s+/g,'|\\b'), 'g');
+					var cls_rmd;
+					c.all().removeClass(function(idx,cls){
+						cls_rmd = (cls.match(to_rm_re)||[]).join(' ');
+						$(this).attr('data-cls-rmd',cls_rmd);
+						return cls_rmd;
+					});
+				} else {
+					c.all().removeClass(c.classs());
+				}
+			}
         });
         classical(o.selectors.animAttribute, {
             init: function(c) {

@@ -1,0 +1,78 @@
+---
+layout: 'default'
+title: 'Lecture 1'
+weburl: ''
+units: []
+lecture_date: '2013/04/23'
+---
+
+include ../../fragments/slide_mixins
+
+- var images = get_images('bali2')
+
+
+
+.deck-container
+
+  mixin title_slide({document:document, images:images})
+
+  //- learning objectives
+  - var d = get_unit('013')
+  mixin render_unit(d)
+
+    
+  //- unit: terminology
+  - var d = get_unit('02')
+  mixin section({unit:d, images:images})
+  mixin render_unit(d)
+
+  //- unit: define logically valid
+  - var d = get_unit('029')
+  mixin section({unit:d, images:images})
+  mixin render_unit(d)
+
+  //- unit: sample argument
+  - var d = get_unit('03')
+  mixin section({unit:d, images:images})
+  mixin render_unit(d)
+
+    
+  // *notes admin section
+  section.slide
+    img.bkg(src='/img/bkg/bees/DSC_0157_crop.jpg')
+    .spacer &nbsp;
+    .title-block: .title-container
+        h2.title1 Admin
+    .words: .container_12: .grid_12
+      ul
+        li.slide Texbook
+        li.slide Seminar groups (check email or see module web page)
+        li.slide Exercises
+  // *notes bad email the night before resit exam
+  section.slide
+    img.bkg(src='/img/lecture_01/slide-031.jpeg')
+  // *notes staircase, need to progress stepwise but we will go into the light
+  section.slide
+    img.bkg(src='/img/lecture_01/P4258786 merge2.jpg')
+
+
+  //- unit: counterexamples
+  - var d = get_unit('04')
+  mixin section({unit:d, images:images})
+  mixin render_unit(d)
+
+  //- unit: identity
+  - var d = get_unit('06')
+  mixin section({unit:d, images:images})
+  mixin render_unit(d)
+
+  //- unit: sentence lettes
+  - var d = get_unit('012')
+  mixin section({unit:d, images:images})
+  mixin render_unit(d)
+
+  //- unit: truth tables
+  - var d = get_unit('071')
+  mixin section({unit:d, images:images})
+  mixin render_unit(d)
+

@@ -93,6 +93,8 @@ docpadConfig = {
 	
 	collections:
 		lectures: -> @getCollection('documents').findAll({basename:/^(fast)?lecture_/}, [basename:1])
+		normal_lectures: -> @getCollection('documents').findAll({basename:/^lecture_/}, [basename:1])
+		short_lectures: -> @getCollection('documents').findAll({basename:/^short_lecture_/}, [basename:1])
 		fast_lectures: -> @getCollection('documents').findAll({basename:$startsWith:'fastlecture_'}, [basename:1])
 		units: -> @getCollection('documents').findAll({url:/\/units\/unit_/}, [sequence:1])
 }

@@ -252,6 +252,15 @@ mixin words-bkg-remove(what, color, container)
 
 
 
+mixin words-bkg-remove-all(what, container)
+  if typeof(what)==='string'
+    - what = [what]
+  each thing in what
+    .slide.anim-continue.anim-removeclass(data-what="#{container ? container : ''} #{thing}",data-class="bkg-words-highlight-*")
+  mixin anim_end()
+
+
+
 mixin row-bkg(what, color, container)
   if typeof(what)==='string'
     - what = [what]

@@ -1,0 +1,67 @@
+---
+layout: 'default'
+title: 'Lecture 2'
+weburl: ''
+units: []
+lecture_date: '2013/04/24'
+---
+
+include ../../fragments/slide_mixins
+
+- var images = get_images('bali')
+
+
+
+.deck-container
+
+  mixin title_slide({document:document, images:images})
+
+  //- complex truth tables
+  - var d = get_unit('60')
+  mixin render_unit(d)
+
+  //- complex truth tables plus how to order reference columns
+  section.slide
+    p.middle.center another example
+  - var d = get_unit('09')
+  mixin render_unit(d)
+
+  //- unit: logically valid with truth tables
+  - var d = get_unit('14')
+  mixin section({unit:d, images:images})
+  mixin render_unit(d)
+  
+  //- what to read: which sections of the text book
+  section.slide#what_to_read
+    img.bkg(src='/img/what_to_read.jpg')
+  
+  //- postsecret quiz: logically valid arguments
+  - each d in getCollection("documents").findAll({url:'/quizes/postsecret_01.html'},[{year:-1,sort_order:1}]).toJSON()
+    mixin render_unit(d)
+
+
+  //- unit: logical validity is not what you think it is
+  - var d = get_unit('162')
+  mixin render_unit(d)
+  - var d = get_unit('160')
+  mixin render_unit(d)
+  
+  //- unit: formal proof
+  - var d = get_unit('211')
+  mixin section({unit:d, images:images})
+  mixin render_unit(d)
+  - var d = get_unit('213')
+  mixin render_unit(d)
+  - var d = get_unit('21')
+  mixin render_unit(d)
+
+  
+  //- unit: rules of proof for identity
+  - var d = get_unit('110')
+  mixin section({unit:d, images:images})
+  mixin render_unit(d)
+
+  //- unit: how to write proofs
+  - var d = get_unit('130')
+  mixin section({unit:d, images:images})
+  mixin render_unit(d)

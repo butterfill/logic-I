@@ -8,8 +8,7 @@ lecture_date: '2013/03/14'
 
 include ../../fragments/slide_mixins
 
-//- *todo change images!
-- var images = get_images('portugal_others')
+- var images = get_images('bali2')
 
 
 
@@ -17,33 +16,36 @@ include ../../fragments/slide_mixins
 
   mixin title_slide({document:document, images:images})
 
-  //- Could there be nothing?
-  - d = get_unit(805)
-    mixin section({unit:d, images:images})
-    mixin render_unit(d)
-
-  //- *todo something on not-equals (John is not Jane.  (Does negation somehow combine with Jane to produce a predicate, as in 'John is not strong'?  Maybe.  We don't have anything comparable in Logiya.)
-
-  //- *todo started creating a unit on translation from Logiya to English
-
   //- there is exactly one
   - var d = get_unit('625')
-    mixin section({unit:d, images:images})
-    mixin render_unit(d)
+  mixin render_unit(d)
 
     
   //- unit: how big is truth table (for truth-functional completeness)
   - var d = get_unit(431)
-    mixin section({unit:d, images:images})
-    mixin render_unit(d)
+  mixin section({unit:d, images:images})
+  mixin render_unit(d)
   //- unit: truth-functional completeness
   - var d = get_unit(430)
-    mixin section({unit:d, images:images})
-    mixin render_unit(d)
+  mixin section({unit:d, images:images})
+  mixin render_unit(d)
 
 
-  //- unit: Does ‘if’ mean what ‘→’ means?
-  - var d = get_unit(640)
+  //- Translation from Logiya to English
+  - d = get_unit(951)
+  mixin section({unit:d, images:images})
+  mixin render_unit(d)
+
+
+  //- Could there be nothing?
+  - d = get_unit(805)
+  mixin section({unit:d, images:images})
+  mixin render_unit(d)
+
+
+  //- will there be time?  2012-3 = would have been a bit of a squeeze (glad I cut it)
+    //- unit: Does ‘if’ mean what ‘→’ means?
+    - var d = get_unit(640)
     mixin section({unit:d, images:images})
     mixin render_unit(d)
 
@@ -53,19 +55,10 @@ include ../../fragments/slide_mixins
 
   //- More records than the KGB
   - d = get_unit(780)
-    mixin section({unit:d, images:images})
-    mixin render_unit(d)
+  mixin section({unit:d, images:images})
+  mixin render_unit(d)
 
   //- The End Is Near
   //- *nb don't use section header with this one!
   - d = get_unit(790)
-    mixin render_unit(d)
-
-
-
-
-
-    
-
-
-  a.deck-permalink(href='.', title='Permalink to this slide') #
+  mixin render_unit(d)

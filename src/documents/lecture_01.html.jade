@@ -71,6 +71,11 @@ include ../../fragments/slide_mixins
     mixin section({unit:d, images:images})
     mixin render_unit(d)
 
+  // *notes didn't do this in 2012-3 but should have, I think
+  - d = get_unit('06')
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)
+
   // *notes didn't do this in 2012-3 but leave it in in case you do have time!
   //- counterexamples & sound argument
   //- cut

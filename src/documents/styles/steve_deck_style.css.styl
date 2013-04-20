@@ -49,13 +49,23 @@ invert_text()
   noinvert_text()
 
 
+
 .deck-container
   .blur-text
-   color: rgba(255,255,255,0.2)
-   text-shadow: 0 0 5px rgba(255,255,255,1);
-   .invert
-	 color: rgba(0,0,0,0.2)
-	 text-shadow: 0 0 5px rgba(0,0,0,1);
+	color: rgba(255,255,255,0.2)
+	text-shadow: 0 0 5px rgba(255,255,255,1);
+	.invert
+	  color: rgba(0,0,0,0.2)
+	  text-shadow: 0 0 5px rgba(0,0,0,1);
+	.white-box
+	  background-color rgba(125, 125, 125,1)
+	  border none
+	  box-shadow 0 0 24px 16px rgba(125, 125, 125,1)
+	  color: rgba(0,0,0,0.2)
+	  text-shadow: 0 0 5px rgba(0,0,0,1);
+	span[class*='bkg-words-']
+	  opacity 0.4
+
 
 
 
@@ -113,58 +123,65 @@ div.container_12 {
  * layout
  */
 /* use div.words to wrap the text of every slide (but don't wrap background images) */
-div.words
-  padding-top: 40px
+.deck-container
+  div.words
+    padding-top: 40px
 
-.deck-container .center
-  text-align: center
-
-.deck-container .right
-  text-align: right
-
-.deck-container .middle
-  position: absolute
-  left: 0
-  right: 0
-  top: 300px
-  transform: translate3d(0, -50%, 0)
-
-.deck-container .indent
-  padding-left: 1em
-
-.deck-container .hem-above
-  padding-top: 0.5em
-
-.deck-container .em-above
-  padding-top: 1em
-
-.deck-container .half-above
-  padding-top: 0.5em
+  .center
+	text-align: center
   
-.deck-container .em-above-p p
-  padding-top: 1em
+  .right
+	text-align: right
+  
+  .middle
+	position: absolute
+	left: 0
+	right: 0
+	top: 300px
+	transform: translate3d(0, -50%, 0)
+  
+  .indent
+	padding-left: 1em
+  
+  .hem-above
+	padding-top: 0.5em
+  
+  .em-above
+	padding-top: 1em
+  
+  .em-above-each-td td
+	padding-top: 1em
+  
+  .half-above
+	padding-top: 0.5em
+	
+  .em-above-p p
+	padding-top: 1em
+  
+  .em-around-p p
+	padding-top: 0.5em
+	padding-bottom: 0.5em
+  
+  .no-below-p p
+	padding-bottom: 0
+	margin-bottom: 0
+  
+  .em-after
+	padding-bottom: 1em
+  
+  .pad-left
+	padding-left: 0.66em
+  
+  .pad-right
+	padding-right: 0.66em
 
-.deck-container .em-around-p p
-  padding-top: 0.5em
-  padding-bottom: 0.5em
+  .pad-1
+	padding 1em
+  
+  img.float-right 
+	float: right
+	margin-left: 1em
 
-.deck-container .no-below-p p
-  padding-bottom: 0
-  margin-bottom: 0
-
-.deck-container .em-after
-  padding-bottom: 1em
-
-.deck-container .pad-left
-  padding-left: 0.66em
-
-.deck-container .pad-right
-  padding-right: 0.66em
-
-img.float-right {
-  float: right
-  margin-left: 1em
-}
 
 
 /**
@@ -344,38 +361,42 @@ btm-white(height,top)
 /**
  * highlight blocks
  */
-.deck-container .bkg-highlight-yellow
-  background-color: rgba(255,248,61,0.5)
-  box-shadow: 0 0 20px 15px rgba(255,248,61,0.5)
+.deck-container
+  .bkg-highlight-yellow
+    background-color: rgba(255,248,61,0.5)
+    box-shadow: 0 0 20px 15px rgba(255,248,61,0.5)
 
-.deck-container .bkg-white-row
-  background-color: white
-  box-shadow: 0 0 1px black, 0 0 1.5em white
-  margin-left: -40em
-  border-left: solid 40em white
-  margin-right: -40em
-  border-right: solid 40em white
-  text-outline: 1px 2px red
+  .bkg-white-row
+    background-color: white
+    box-shadow: 0 0 1px black, 0 0 1.5em white
+    margin-left: -40em
+    border-left: solid 40em white
+    margin-right: -40em
+    border-right: solid 40em white
+    text-outline: 1px 2px red
+    position relative
+    z-index -20
 
+  .bkg-grey-row
+    background-color: rgba(125,125,125,1)
+    box-shadow: 0 0 1px black, 0 0 0.5em white
+    margin-left: -80em
+    border-left: solid 80em rgba(125,125,125,1)
+    margin-right: -80em
+    border-right: solid 80em rgba(125,125,125,1)
+    text-outline: 1px 2px red
+    box-shadow: 0px 4px 2px -2px rgba(255,255,255,0.33), 0px -4px 2px -2px rgba(255,255,255,0.33)
+    position relative
+    z-index -20
 
-.deck-container .bkg-grey-row
-  background-color: rgba(125,125,125,1)
-  box-shadow: 0 0 1px black, 0 0 0.5em white
-  margin-left: -80em
-  border-left: solid 80em rgba(125,125,125,1)
-  margin-right: -80em
-  border-right: solid 80em rgba(125,125,125,1)
-  text-outline: 1px 2px red
-  box-shadow: 0px 4px 2px -2px rgba(255,255,255,0.33), 0px -4px 2px -2px rgba(255,255,255,0.33)
-
-.deck-container .invert .bkg-grey-row
-  background-color: rgba(125,125,125,1)
-  box-shadow: 0 0 1px white, 0 0 0.5em black
-  margin-left: -80em
-  border-left: solid 80em rgba(125,125,125,1)
-  margin-right: -80em
-  border-right: solid 80em rgba(125,125,125,1)
-  text-outline: 1px 2px red
+  .invert .bkg-grey-row
+    background-color: rgba(125,125,125,1)
+    box-shadow: 0 0 1px white, 0 0 0.5em black
+    margin-left: -80em
+    border-left: solid 80em rgba(125,125,125,1)
+    margin-right: -80em
+    border-right: solid 80em rgba(125,125,125,1)
+    text-outline: 1px 2px red
 
 
 
@@ -415,7 +436,7 @@ make-bkg-words(name,color)
    .bkg-words-highlight-{name}
    .bkg-{name}
 	 background-color color
-	 box-shadow 0 0 15px 8px color
+	 box-shadow 0 0 8px 8px color
 	 border-radius 5px
 	 //marging-right doesn't work in firefox  (margin-left does!)
 	 //margin-left: -10px
@@ -454,6 +475,8 @@ make-bkg-words('lime', rgba(0,255,0,1))
 make-bkg-words('faint-lime', rgba(0,255,0,0.3))
 make-bkg-words('limegreen', rgba(50,205,50,1))
 make-bkg-words('faint-limegreen', rgba(50,205,50,0.3))
+make-bkg-words('orange', rgba(255,165,0,1))
+make-bkg-words('faint-orange', rgba(255,165,0,0.3))
 
 
 
@@ -467,6 +490,7 @@ make-bkg-words('faint-limegreen', rgba(50,205,50,0.3))
   padding: .25em !important
   text-shadow 0 0 2px #fff, 1px 1px 2px #fff, 1px -1px 2px #fff, -1px 1px 2px #fff, -1px -1px 2px #fff, 0 0 5px #fff, 0 0 5px #fff
   border-radius: 5px
+  box-shadow 0 0 4px 4px black
 
 .glow-border-red
   box-shadow: 0 0 15px 8px rgba(255,0,0,1), 0 0 18px 9px rgba(255,255,102,0.5)
