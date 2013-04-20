@@ -33,7 +33,7 @@ include ../../fragments/slide_mixins
   
   //- what to read: which sections of the text book
   section.slide#what_to_read
-    img.bkg(src='/img/what_to_read.jpg')
+    img.bkg(src='/img/what_to_read.jpeg')
   
   //- postsecret quiz: logically valid arguments
   - each d in getCollection("documents").findAll({url:'/quizes/postsecret_01.html'},[{year:-1,sort_order:1}]).toJSON()
