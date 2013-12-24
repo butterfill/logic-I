@@ -1,0 +1,82 @@
+---
+layout: 'default'
+title: 'Lecture 4'
+weburl: ''
+units: []
+lecture_date: '2013/05/07'
+---
+
+include ../../fragments/slide_mixins
+
+- var images = get_images('bees')
+
+
+
+.deck-container
+
+  mixin title_slide({document:document, images:images})
+
+
+  //- everything is broken
+  - var d = get_unit('471')
+  //- mixin section({unit:d, images:images})
+  mixin render_unit(d)
+  - var d = get_unit('473')
+  mixin render_unit(d)
+  
+  //- what does exists mean?
+  - var d = get_unit('491')
+  mixin section({unit:d, images:images})
+  mixin render_unit(d)
+
+  //- =Elim again
+  //- *notes explain that we could have other =Elim rules; prove the right =Elim proof
+  //- *notes go back to the soundness of <!> -- say that we could have the rule but it wouldn't give us soundness
+  - var d = get_unit('112')
+  mixin section({unit:d, images:images})
+  mixin render_unit(d)
+
+  //- *** CHECK NOT DONE IN lecture_03 ****
+  //- →Intro, →Elim 
+  - var d = get_unit('390')
+  mixin section({unit:d, images:images})
+  mixin render_unit(d)
+  //- harder example of →Intro (skip)
+    - var d = get_unit('391')
+    mixin render_unit(d)
+  
+  
+  //- **** TODO MENTION Biconditionals
+ 
+  
+  //- ∨Intro (225)
+  - var d = get_unit('225')
+  mixin section({unit:d, images:images})
+  mixin render_unit(d)
+
+  //- ∨Elim (221, 226) 
+  - var d = get_unit('221')
+  mixin section({unit:d, images:images})
+  mixin render_unit(d)
+  - var d = get_unit('226')
+  mixin render_unit(d)
+  
+  
+  //- not done in 2012-3
+  
+    //- I met a philosopher
+    - var d = get_unit('501')
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)
+  
+    
+    
+    //- * in case need more material
+  
+    //- truth-functional connectives
+    - var d = get_unit('072')
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)
+    
+
+

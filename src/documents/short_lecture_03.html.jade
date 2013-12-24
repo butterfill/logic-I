@@ -1,0 +1,88 @@
+---
+layout: 'default'
+title: 'Lecture 3'
+weburl: ''
+units: []
+lecture_date: '2013/05/01'
+---
+
+include ../../fragments/slide_mixins
+
+- var images = get_images('bees')
+
+
+
+.deck-container
+
+  mixin title_slide({document:document, images:images})
+
+  //- *2011-2 lecture started with conjunction elim and conjunction intro: recap or re-order if starting later
+
+  //- compare and contrast disjuntcion intro with conjunction elim
+  - var d = get_unit('212')
+  mixin render_unit(d)
+
+  //- unit: how to write proofs
+  - var d = get_unit('130')
+  mixin section({unit:d, images:images})
+  mixin render_unit(d)
+
+  //- unit: rules of proof for identity
+  - var d = get_unit('110')
+  mixin section({unit:d, images:images})
+  mixin render_unit(d)
+
+  //- logic makes me die inside
+  - var d = get_unit('161')
+  mixin section({unit:d, images:images})
+  mixin render_unit(d)
+  section.slide
+    .words: .container_12
+      .grid_6
+        mixin fitch_proof({premises:[['P ∧ ¬P']], lines:[['Q']], no_line_numbers:true})
+      .slide.grid_6
+        mixin fitch_proof({premises:[['Q']], lines:[['P ∨ ¬P']], no_line_numbers:true})
+
+
+  //- ¬, ⊥
+  - var d = get_unit('270')
+  mixin section({unit:d, images:images})
+  mixin render_unit(d)
+
+  //- A and B or C
+  - var d = get_unit('151')
+  mixin section({unit:d, images:images})
+  mixin render_unit(d)
+  - var d = get_unit('153')
+  mixin render_unit(d)
+  - var d = get_unit('154')
+  mixin render_unit(d)
+
+  //- formal proof: =elim mistake
+  - var d = get_unit('111')
+  mixin section({unit:d, images:images})
+  mixin render_unit(d)
+  
+  
+
+  //- *** aim to end here, following are extras in case too much time (this takes us to the end of 2011-2's Lecture 04)
+
+  //- did end here in 2012-3
+    //- →Intro, →Elim 
+    - var d = get_unit('390')
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)
+    //- harder example of →Intro
+    - var d = get_unit('391')
+    mixin render_unit(d)
+    
+  
+    - var d = get_unit('072')
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)
+    
+
+  
+  
+
+

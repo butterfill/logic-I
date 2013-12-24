@@ -1,0 +1,115 @@
+---
+layout: 'default'
+title: 'Lecture 8'
+weburl: ''
+units: []
+lecture_date: '2013/05/21'
+---
+
+include ../../fragments/slide_mixins
+
+- var images = get_images('pylons')
+
+
+
+.deck-container
+
+  mixin title_slide({document:document, images:images})
+
+
+
+  //- **** TODO MENTION Biconditionals
+
+  //- **** Also missing is giving counterexamples to arguments involving quantifiers
+  
+
+  //- There Is a Store for Everything 
+  - var d = get_unit('560')
+  mixin render_unit(d)
+
+
+  //- ↔ biconditional
+  - var d = get_unit('567')
+  mixin section({unit:d, images:images})
+  mixin render_unit(d)
+
+
+
+  //- *might skip these?
+  
+  //- There Does Not Exist
+  - var d = get_unit('605')
+  mixin section({unit:d, images:images})
+  mixin render_unit(d)
+
+
+  //- Somebody is not dead
+  - var d = get_unit('607')
+  mixin section({unit:d, images:images})
+  mixin render_unit(d)
+
+  //- Quantifier Equivalences: ∀x Created(x) ⫤⊨ ¬∃x Created(x) (764)
+  - var d = get_unit('764')
+  mixin section({unit:d, images:images})
+  mixin render_unit(d)
+
+  //- *may have to skip proof examples --- note that these follow directly from 764
+
+  //- Proof Example: ∃x Dead(x) ⊢ ¬∀x¬ Dead(x). (825)
+  - var d = get_unit('825')
+  mixin section({unit:d, images:images})
+  mixin render_unit(d)
+
+  //- Proof Example: ¬∀x Dead(x) ⊢ ∃x¬ Dead(x). (826)
+  - var d = get_unit('826')
+  mixin section({unit:d, images:images})
+  mixin render_unit(d)
+
+
+
+  //- Loving and Being Loved (755)
+  - var d = get_unit('755')
+  mixin section({unit:d, images:images})
+  mixin render_unit(d)
+
+
+  
+  //- The End Is Near (790)
+  - var d = get_unit('790')
+  //- *has title built in
+  //- mixin section({unit:d, images:images})
+  mixin render_unit(d)
+
+
+
+  //- *CUT*
+    //- Scope: A Mistaken Application of ¬Elim 
+    - var d = get_unit('291')
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)
+  
+    //- planned for lecture 5
+    //-  Does ‘if’ mean what ‘→’ means? 
+    - var d = get_unit('640')
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)
+   
+    //- Subproofs Are Tricky: The Answer
+    //- 2012-3 they answered this straight away
+      - var d = get_unit('227')
+      mixin section({unit:d, images:images})
+      mixin render_unit(d)
+  
+    //- planned for lecture 5
+    //- fubar rules 
+    - var d = get_unit('340')
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)
+  
+    //- * in case need more material
+  
+    //- truth-functional connectives
+    - var d = get_unit('072')
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)
+        

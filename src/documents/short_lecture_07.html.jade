@@ -1,0 +1,84 @@
+---
+layout: 'default'
+title: 'Lecture 7'
+weburl: ''
+units: []
+lecture_date: '2013/05/15'
+---
+
+include ../../fragments/slide_mixins
+
+- var images = get_images('twins_2009c')
+
+
+
+.deck-container
+
+  mixin title_slide({document:document, images:images})
+
+
+  //- Watch Out, Here Come Multiple Quantifiers
+  //- *notes: mention this as a topic for the final lecture; this one is about rules of proof
+  - var d = get_unit('744')
+  mixin render_unit(d)
+
+
+  //- existential intro
+  - var d = get_unit('801')
+  mixin section({unit:d, images:images})
+  mixin render_unit(d)
+
+  //- ∃Elim 
+  - var d = get_unit('550')
+  mixin section({unit:d, images:images})
+  mixin render_unit(d)
+  
+ 
+ 
+  //- vegetarians are evil
+  //- cut (time!)
+    - var d = get_unit('502')
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)
+  
+  //- Translation with Quantifiers (507)
+  - var d = get_unit('507')
+  mixin section({unit:d, images:images})
+  mixin render_unit(d)
+
+
+  //- Scope and Quantifiers (∀Intro  relies on this)
+  - var d = get_unit('710')
+  mixin section({unit:d, images:images})
+  mixin render_unit(d)
+
+  //- ∀Intro 
+  - var d = get_unit('570')
+  mixin section({unit:d, images:images})
+  mixin render_unit(d)
+
+  //- Summary of Quantifier Rules
+  - var d = get_unit('575')
+  mixin section({unit:d, images:images})
+  mixin render_unit(d)
+
+
+
+  //- Something Is Above Something 
+  - var d = get_unit('740')
+  mixin section({unit:d, images:images})
+  mixin render_unit(d)
+
+  //- Multiple Quantifiers: Something Makes Someone Want to Die Inside 
+  - var d = get_unit('741')
+  mixin section({unit:d, images:images})
+  mixin render_unit(d)
+
+
+  //- Two Things Are Broken 
+  - var d = get_unit('470')
+  mixin section({unit:d, images:images})
+  mixin render_unit(d)
+
+
+

@@ -2,7 +2,7 @@
 layout: 'deck_units'
 title: "There Does Not Exist"
 tags: ['translation','quantification']
-description: "How can we translate sentences involving quantifiers and negation from English into our formal language Logiya?  Discusses translating 'Something is not dead' and 'Nothing is dead'; also 'Everything is not broken' and 'Not everything is broken'."
+description: "How can we translate sentences involving quantifiers and negation from English into our formal language Logiya?  Discusses translating 'Something is not dead' and 'Nothing is dead'; also 'Everything is not broken' and 'Not everything is broken'.  New: now includes discussion of first-order counterexamples."
 depends: ['']
 source: ['']
 duration: 5
@@ -64,8 +64,26 @@ include ../../../fragments/slide_mixins
     mixin collapse(['.hidelater','.step2'], 1000)
     .container_12: grid_12
       .slide.em-above
-        - var prf2sub1 = {premises:['Dead(a)'], lines:[['∃x Dead(x)','∃Intro',[2]],['⊥','⊥Intro',[1,3]]]}
-        - var prf2 = {premises:['¬∃x Dead(x)'], lines:[prf2sub1,['¬Dead(a)','¬Intro',['2-4']],['∃x ¬Dead(x)', '∃Intro',[5]]]}
-        mixin fitch_proof(prf2)
-        
+        .proof2u605
+          - var prf2sub1 = {premises:['Dead(a)'], lines:[['∃x Dead(x)','∃Intro',[2]],['⊥','⊥Intro',[1,3]]]}
+          - var prf2 = {premises:['¬∃x Dead(x)'], lines:[prf2sub1,['¬Dead(a)','¬Intro',['2-4']],['∃x ¬Dead(x)', '∃Intro',[5]]]}
+          mixin fitch_proof(prf2)
+        mixin collapse(['.proof2u605'],1000)
+      .slide.em-above.nodim
+        .proof3u605
+          - var prf3 = {premises:['∃x ¬Dead(x)'], lines:[['¬∃x Dead(x)']]}
+          mixin fitch_proof(prf3)
+      .slide.em-above.nodim
+        .counterexample(style='width:300px;')
+          p Counterexample: 
+          p.indent Domain: {a,b}
+          p.indent Dead : {b}
+      .slide.em-above.nodim
+        .indent
+          p.nodim ... Dead(b) is true
+            span.slide.nodim ; so the conclusion, ¬∃x Dead(x), is false
+          p.slide.nodim ... and ¬Dead(a) is true
+            span.slide.nodim ; so the premise, ∃x ¬Dead(x), is true
+        mixin words-bkg(['.counterexample'],'blue')
+
 a.deck-permalink(href='.', title='Permalink to this slide') #

@@ -25,11 +25,12 @@ include ../../fragments/slide_mixins
   - var d = get_unit('02')
   mixin section({unit:d, images:images})
   mixin render_unit(d)
-
-  //- unit: define logically valid
-  - var d = get_unit('029')
-  mixin section({unit:d, images:images})
-  mixin render_unit(d)
+  //- doesn't know jack
+  section.slide
+    .words: .container_12: .grid_12
+      .middle
+        p Ayesha doesn't know diddly squat about logic
+        p Ayesha does know diddly squat about logic
 
   //- unit: sample argument
   - var d = get_unit('03')
@@ -45,9 +46,9 @@ include ../../fragments/slide_mixins
         h2.title1 Admin
     .words: .container_12: .grid_12
       ul
-        li.slide Textbook
         li.slide Seminar groups (check email or see module web page)
         li.slide Exercises
+        li.slide Textbook
   // *notes bad email the night before resit exam
   section.slide
     img.bkg(src='/img/lecture_01/slide-031.jpeg')
@@ -75,4 +76,22 @@ include ../../fragments/slide_mixins
   - var d = get_unit('071')
   mixin section({unit:d, images:images})
   mixin render_unit(d)
+
+    
+  //- *** spare in case need more; but plan to do these in next lecture
+
+  //- did this in 2012-3!
+  //- complex truth tables
+  - var d = get_unit('60')
+  mixin section({unit:d, images:images})
+  mixin render_unit(d)
+
+  //- complex truth tables plus how to order reference columns
+    section.slide
+      p.middle.center another example
+    - var d = get_unit('09')
+    mixin render_unit(d)
+
+
+
 

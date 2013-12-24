@@ -1,0 +1,98 @@
+---
+layout: 'default'
+title: 'Lecture 5'
+weburl: ''
+units: []
+lecture_date: '2013/05/08'
+---
+
+include ../../fragments/slide_mixins
+
+- var images = get_images('twins_2008')
+
+
+
+.deck-container
+
+  mixin title_slide({document:document, images:images})
+
+  //- *todo: I think something better about the use of universal plus arrow is needed!
+  //- *maybe based on new unit 507, something like that but simpler.
+
+  //- *todo: advertise Logic modules; and advertise Origins of Mind
+
+  
+  //- negating disjunctions
+  - var d = get_unit('603')
+  mixin render_unit(d)
+
+  //- I met a philosopher
+  - var d = get_unit('501')
+  mixin section({unit:d, images:images})
+  mixin render_unit(d)
+
+  //- all squares are blue
+  - var d = get_unit('503')
+  mixin render_unit(d)
+
+  //- what does -> arrow mean
+  - var d = get_unit('700')
+  mixin section({unit:d, images:images})
+  mixin render_unit(d)
+
+  //- negating arrow
+  - var d = get_unit('604')
+  mixin section({unit:d, images:images})
+  mixin render_unit(d)
+
+  //- advertise Origins of Mind and logic
+  section.slide
+    .words
+      .container_12
+        .grid_6
+          p Origins of Mind: Philosophical Issues in Cognitive Development
+        .grid_6.slide
+          p Logic II: Metatheory
+          p Logic III: Incompleteness and Undecidability
+          p Modal Logic
+          .slide
+            p Philosophy of Logic
+            p Philosophy of Computation
+            p Philosophy of Mathematics
+        
+
+
+  //- what does universal mean
+  - var d = get_unit('492')
+  mixin section({unit:d, images:images})
+  mixin render_unit(d)
+  
+  
+  //- 2012-3 ended here
+  
+    //-  Does ‘if’ mean what ‘→’ means? 
+    - var d = get_unit('640')
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)
+  
+  
+    //- fubar rules 
+    - var d = get_unit('340')
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)
+  
+    
+    //- Translation with Quantifiers (507)
+    - var d = get_unit('507')
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)
+  
+    //- * in case need more material
+  
+    //- truth-functional connectives
+    - var d = get_unit('072')
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)
+      
+
+

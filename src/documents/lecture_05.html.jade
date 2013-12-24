@@ -49,6 +49,13 @@ include ../../fragments/slide_mixins
   - each d in getCollection("documents").findAll({url:'/skits/skit_01.html'},[{year:-1,sort_order:1}]).toJSON()
     mixin render_unit(d)
   
+  
+  //- =Elim again (how to prove when identity is the wrong way around)
+  - var d = get_unit('112')
+  mixin section({unit:d, images:images})
+  mixin render_unit(d)
+
+  
   //- unit: disjunction-Elim ∨Elim (and ∨Intro)
   section#unit_221.slide
     img.bkg(src='/img/bkg/birds_baby/P5260027_crop.JPG')
@@ -69,13 +76,14 @@ include ../../fragments/slide_mixins
 
   
   //- 2011-2 ended here and was ~10min too short, so I moved syntax into this lecture
+  //- but note that since added stuff above
 
   //- unit: everything is broken (intro to quantifiers)
   - var d = get_unit('471')
     mixin section({unit:d, images:images})
     //- choose your quantifiers (polka, value)
     - var d2 = get_unit('473')
-      mixin render_unit(d2)
+    mixin render_unit(d2)
     mixin render_unit(d)
 
   //2012-3 ended here, was fine (even a bit tight)

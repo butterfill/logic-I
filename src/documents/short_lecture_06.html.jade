@@ -1,0 +1,76 @@
+---
+layout: 'default'
+title: 'Lecture 6'
+weburl: ''
+units: []
+lecture_date: '2013/05/14'
+---
+
+include ../../fragments/slide_mixins
+
+- var images = get_images('twins_2009')
+
+
+
+.deck-container
+
+  mixin title_slide({document:document, images:images})
+
+  //- DeMorgan
+  - var d = get_unit('235')
+  mixin render_unit(d)
+
+  //- negation and arrow (recap)
+  - var d = get_unit('237')
+  mixin section({unit:d, images:images})
+  mixin render_unit(d)
+
+
+  //- all cats are grey
+  - var d = get_unit('505')
+  mixin section({unit:d, images:images})
+  mixin render_unit(d)
+  
+  section.slide
+    .words
+      p.center.middle Seminar moved: In week 5, the Friday 1-2pm seminar will be on Thursday (23 May) 5-6pm in S1.141
+
+  //- prefix with summary: universal:arrow, existential:conjunction
+  //- don't use existential with arrow
+  - var d2 = get_unit('506')
+  - var d = get_unit('245')
+  mixin section({unit:d, images:images})
+  mixin render_unit(d2)
+  mixin render_unit(d)
+
+
+  //- negation intro 
+  - var d = get_unit('281')
+  mixin section({unit:d, images:images})
+  mixin render_unit(d)
+
+
+  //- postsecret quiz: rules of proof
+  - each d in getCollection("documents").findAll({url:'/quizes/postsecret_03.html'},[{year:-1,sort_order:1}]).toJSON()
+    mixin render_unit(d)
+
+
+  //- negation intro : another example
+  - var d = get_unit('283')
+  mixin section({unit:d, images:images})
+  mixin render_unit(d)
+
+
+  //- subproofs are tricky
+  - var d = get_unit('224')
+  mixin section({unit:d, images:images})
+  mixin render_unit(d)
+
+
+  //- universal elim
+  - var d = get_unit('800')
+  mixin section({unit:d, images:images})
+  mixin render_unit(d)
+
+
+

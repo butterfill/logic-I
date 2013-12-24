@@ -414,9 +414,11 @@ mixin fitch_proof(prf,start_line)
         //- subproof
         - var subproof = line
         //- *todo: won't work for deeper nested subproofs
-        - var subproof_length = subproof.lines.length
+        - var subproof_length = subproof.lines.length + 1 
+        if subproof.mylength
+          subproof_length = subproof.mylength
         - var subproof_start_line_no = line_no
-        - line_no += (subproof_length+1)
+        - line_no += (subproof_length)
         tr
           td 
           td(colspan="3")
@@ -441,6 +443,7 @@ mixin fitch_proof(prf,start_line)
                       | ,
                   - ctr += 1
         - line_no += 1
+
 
 
 //- animations to highlight rows / sentences / reference numbers in proofs

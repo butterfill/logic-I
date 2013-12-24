@@ -16,14 +16,18 @@ include ../../fragments/slide_mixins
 
   mixin title_slide({document:document, images:images})
 
-  //- complex truth tables
-  - var d = get_unit('60')
+  //- why logic
+  - var d = get_unit('011')
+  mixin render_unit(d)
+  
+  //- recap validity
+  - var d = get_unit('05')
+  mixin section({unit:d, images:images})
   mixin render_unit(d)
 
-  //- complex truth tables plus how to order reference columns
-  section.slide
-    p.middle.center another example
-  - var d = get_unit('09')
+  //- recap connectives via formalising pigs argument
+  - var d = get_unit('135')
+  mixin section({unit:d, images:images})
   mixin render_unit(d)
 
   //- unit: logically valid with truth tables
@@ -31,6 +35,25 @@ include ../../fragments/slide_mixins
   mixin section({unit:d, images:images})
   mixin render_unit(d)
   
+
+  //- complex truth tables
+  //- done in lecture 01 in 2012-3
+    - var d = get_unit('60')
+    mixin section({unit:d, images:images})
+    mixin render_unit(d)
+    section.slide
+      p.middle.center another example
+
+  //- complex truth tables plus how to order reference columns
+  - var d = get_unit('09')
+  mixin section({unit:d, images:images})
+  mixin render_unit(d)
+  
+  //- cancel lecture
+  section.slide
+    p.middle.center No lecture on Tuesday 30th April.
+
+
   //- what to read: which sections of the text book
   section.slide#what_to_read
     img.bkg(src='/img/what_to_read.jpeg')
@@ -45,6 +68,11 @@ include ../../fragments/slide_mixins
   mixin render_unit(d)
   - var d = get_unit('160')
   mixin render_unit(d)
+
+
+  //- cancel lecture
+  section.slide
+    p.middle.center No lecture on Tuesday 30th April.
   
   //- unit: formal proof
   - var d = get_unit('211')
@@ -55,13 +83,3 @@ include ../../fragments/slide_mixins
   - var d = get_unit('21')
   mixin render_unit(d)
 
-  
-  //- unit: rules of proof for identity
-  - var d = get_unit('110')
-  mixin section({unit:d, images:images})
-  mixin render_unit(d)
-
-  //- unit: how to write proofs
-  - var d = get_unit('130')
-  mixin section({unit:d, images:images})
-  mixin render_unit(d)

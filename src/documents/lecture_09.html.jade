@@ -21,6 +21,12 @@ include ../../fragments/slide_mixins
     mixin section({unit:d, images:images})
     mixin render_unit(d)
 
+  //- ↔ biconditional
+  - var d = get_unit('567')
+  mixin section({unit:d, images:images})
+  mixin render_unit(d)
+
+
   // demorgan
   - d = get_unit(235)
     mixin section({unit:d, images:images})
