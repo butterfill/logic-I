@@ -45,6 +45,7 @@ include ../../fragments/slide_mixins
   
 
   //- unit: disjunction-Elim ∨Elim (and ∨Intro)
+  - d2 = get_unit(222)
   - d = get_unit(221)
     section#unit_221.slide
       img.bkg(src='/img/bkg/birds_baby/P5260007.JPG')
@@ -52,8 +53,7 @@ include ../../fragments/slide_mixins
       .title-block: .title-container
           h2.title1 #{d.title}
     //- prefix with super quick into to ∨Intro
-    - d2 = get_unit(222)
-      mixin render_unit(d2)  
+    mixin render_unit(d2)  
     mixin render_unit(d)  
 
   //- unit: subproofs are tricky
